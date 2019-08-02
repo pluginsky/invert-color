@@ -1,4 +1,4 @@
-figma.showUI(__html__);
+figma.showUI(__html__, { height: 440 });
 
 interface Color {
   r: number;
