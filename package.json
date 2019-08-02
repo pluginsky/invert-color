@@ -1,0 +1,41 @@
+{
+  "name": "reverse-color",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Jakub Biesiada",
+  "license": "MIT",
+  "main": "code.js",
+  "scripts": {
+    "build": "webpack",
+    "prettier": "prettier --write 'src/**'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JB1905/reverse-color.git"
+  },
+  "devDependencies": {
+    "css-loader": "^3.1.0",
+    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**": [
+      "npm run prettier",
+      "git add"
+    ]
+  }
+}

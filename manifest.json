@@ -1,0 +1,7 @@
+{
+  "name": "Reverse Color",
+  "id": "738840049488759901",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
