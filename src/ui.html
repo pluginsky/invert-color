@@ -1,12 +1,85 @@
-<section class="options">
-  <h4>Reverse Color For:</h4>
+<section id="reverse" class="options">
+  <h4>Reverse</h4>
 
-  <label> <input type="checkbox" id="backgrounds" /> Backgrounds </label>
-  <label> <input type="checkbox" id="strokes" /> Strokes </label>
-  <label> <input type="checkbox" id="effects" /> Effects </label>
+  <label>
+    <input type="checkbox" id="backgrounds" checked /><span></span> Backgrounds
+  </label>
+  <label>
+    <input type="checkbox" id="fills" checked /><span></span> Fills
+  </label>
+  <label>
+    <input type="checkbox" id="strokes" checked /><span></span> Strokes
+  </label>
+  <label>
+    <input type="checkbox" id="effects" checked /><span></span> Effects
+  </label>
 </section>
 
-<section class="options">
-  <button id="reverse">Reverse</button>
+<section id="elements" class="options">
+  <h4>Include Elements</h4>
+
+  <label>
+    <input type="checkbox" id="document" checked /><span></span> Document
+  </label>
+  <label> <input type="checkbox" id="page" checked /><span></span> Page </label>
+  <label>
+    <input type="checkbox" id="slice" checked /><span></span> Slice
+  </label>
+  <label>
+    <input type="checkbox" id="frame" checked /><span></span> Frame
+  </label>
+  <label>
+    <input type="checkbox" id="group" checked /><span></span> Group
+  </label>
+  <label>
+    <input type="checkbox" id="component" checked /><span></span> Component
+  </label>
+  <label>
+    <input type="checkbox" id="boolean_operation" checked /><span></span>
+    Boolean Operation
+  </label>
+  <label>
+    <input type="checkbox" id="vector" checked /><span></span> Vector
+  </label>
+  <label> <input type="checkbox" id="star" checked /><span></span> Star </label>
+  <label> <input type="checkbox" id="line" checked /><span></span> Line </label>
+  <label>
+    <input type="checkbox" id="ellipse" checked /><span></span> Ellipse
+  </label>
+  <label>
+    <input type="checkbox" id="polygon" checked /><span></span> Polygon
+  </label>
+  <label>
+    <input type="checkbox" id="rectangle" checked /><span></span> Rectangle
+  </label>
+  <label> <input type="checkbox" id="text" checked /><span></span> Text </label>
+</section>
+
+<section id="patterns" class="options">
+  <h4>Include Patterns</h4>
+
+  <label>
+    <input type="checkbox" id="solid" checked /><span></span> Solid
+  </label>
+  <label>
+    <input type="checkbox" id="gradient_linear" checked /><span></span> Linear
+    Gradient
+  </label>
+  <label>
+    <input type="checkbox" id="gradient_radial" checked /><span></span> Radial
+    Gradient
+  </label>
+  <label>
+    <input type="checkbox" id="gradient_diamond" checked /><span></span> Diamond
+    Gradient
+  </label>
+  <label>
+    <input type="checkbox" id="gradient_angular" checked /><span></span> Angular
+    Gradient
+  </label>
+</section>
+
+<section id="actions">
   <button id="cancel">Cancel</button>
+  <button id="submit">Reverse</button>
 </section>

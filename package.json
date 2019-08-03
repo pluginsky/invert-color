@@ -1,12 +1,13 @@
 {
   "name": "reverse-color",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simply reverse backgrounds, fills, strokes & effects colors in Figma",
   "author": "Jakub Biesiada",
   "license": "MIT",
   "main": "code.js",
   "scripts": {
     "build": "webpack",
+    "watch": "webpack --watch",
     "prettier": "prettier --write 'src/**'"
   },
   "repository": {

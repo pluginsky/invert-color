@@ -1,21 +1,37 @@
 import './ui.css';
 
-document.getElementById('reverse').onclick = () => {
-  const backgrounds = document.getElementById(
-    'backgrounds'
-  ) as HTMLInputElement;
-  const strokes = document.getElementById('strokes') as HTMLInputElement;
-  const effects = document.getElementById('effects') as HTMLInputElement;
+document.getElementById('submit').onclick = () => {
+  const reverseOptions = document.querySelectorAll(
+    '#reverse input[type="checkbox"]:checked'
+  );
+
+  const reverse = [];
+
+  reverseOptions.forEach(option => reverse.push(option.id));
+
+  const elementsOptions = document.querySelectorAll(
+    '#elements input[type="checkbox"]:checked'
+  );
+
+  const elements = [];
+
+  elementsOptions.forEach(option => elements.push(option.id));
+
+  const patternsOptions = document.querySelectorAll(
+    '#patterns input[type="checkbox"]:checked'
+  );
+
+  const patterns = [];
+
+  patternsOptions.forEach(option => patterns.push(option.id));
 
   parent.postMessage(
     {
       pluginMessage: {
         type: 'reverse-color',
-        include: {
-          backgrounds: backgrounds.checked,
-          strokes: strokes.checked,
-          effects: effects.checked
-        }
+        reverse,
+        elements,
+        patterns
       }
     },
     '*'
