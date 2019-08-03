@@ -1,6 +1,6 @@
 import './ui.css';
 
-document.getElementById('submit').onclick = () => {
+document.getElementById('apply').onclick = () => {
   const reverseOptions = document.querySelectorAll(
     '#reverse input[type="checkbox"]:checked'
   );

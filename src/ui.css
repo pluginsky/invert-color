@@ -65,7 +65,7 @@ input[type='checkbox']:checked ~ span::before {
   justify-content: flex-end;
 }
 
-#submit {
+#apply {
   font-size: 11px;
   background-color: #18a0fb;
   border: 2px solid #18a0fb;
@@ -77,7 +77,7 @@ input[type='checkbox']:checked ~ span::before {
   margin-left: 8px;
 }
 
-#submit:active {
+#apply:active {
   border: 2px solid #0071b4;
 }
 
