@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/JB1905/reverse-color/master/assets/logo.png?token=AG4IN5SCTDYKPAVMTK5CVKS5IXV66" alt="logo" />
+<img src="https://raw.githubusercontent.com/JB1905/reverse-color/master/assets/logo.png" alt="logo" />
 </p>
 
 # Reverse Color
