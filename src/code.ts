@@ -30,13 +30,11 @@ figma.ui.onmessage = msg => {
           if (mode in node) {
             const temp = clone(node[mode]);
 
-            if (temp[0]) {
-              if (
-                mode !== 'effects' &&
-                !patterns.includes(temp[0].type.toLowerCase())
-              )
-                break;
-
+            if (
+              temp[0] &&
+              (mode === 'effects' ||
+                patterns.includes(temp[0].type.toLowerCase()))
+            ) {
               switch (temp[0].type) {
                 case 'SOLID':
                 case 'DROP_SHADOW':
