@@ -1,74 +1,68 @@
-figma.showUI(__html__, { height: 440 });
-
-interface Color {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
+if (figma.currentPage.selection.length) {
+  figma.showUI(__html__, { height: 440 });
+} else {
+  figma.closePlugin('Select at least 1 element');
 }
 
-const reversed = (color: Color) => {
-  color.r = 1 - color.r;
-  color.g = 1 - color.g;
-  color.b = 1 - color.b;
-
-  return color;
+type Color = {
+  -readonly [K in keyof RGBA]: RGBA[K];
 };
 
-const clone = (value: symbol | readonly Paint[] | readonly Effect[]) => {
-  return JSON.parse(JSON.stringify(value));
-};
+figma.ui.onmessage = msg => {
+  const { type, reverse, elements, patterns } = msg;
 
-figma.ui.onmessage = message => {
-  const { include } = message;
+  const clone = (value: symbol | readonly Paint[] | readonly Effect[]) => {
+    return JSON.parse(JSON.stringify(value));
+  };
 
-  for (const node of figma.currentPage.selection) {
-    if ('fills' in node && include.backgrounds) {
-      const fills = clone(node.fills);
+  const invert = (color: Color) => {
+    color.r = 1 - color.r;
+    color.g = 1 - color.g;
+    color.b = 1 - color.b;
 
-      switch (fills[0].type) {
-        case 'SOLID': {
-          reversed(fills[0].color);
+    return color;
+  };
 
-          break;
-        }
+  if (type === 'reverse-color') {
+    for (const node of figma.currentPage.selection) {
+      if (elements.includes(node.type.toLowerCase())) {
+        for (const mode of reverse) {
+          if (mode in node) {
+            const temp = clone(node[mode]);
 
-        case 'GRADIENT_LINEAR':
-        case 'GRADIENT_RADIAL':
-        case 'GRADIENT_DIAMOND':
-        case 'GRADIENT_ANGULAR': {
-          for (let i = 0; i < fills[0].gradientStops.length; i++) {
-            reversed(fills[0].gradientStops[i].color);
+            if (temp[0]) {
+              if (
+                mode !== 'effects' &&
+                !patterns.includes(temp[0].type.toLowerCase())
+              )
+                break;
+
+              switch (temp[0].type) {
+                case 'SOLID':
+                case 'DROP_SHADOW':
+                case 'INNER_SHADOW': {
+                  invert(temp[0].color);
+
+                  break;
+                }
+
+                case 'GRADIENT_LINEAR':
+                case 'GRADIENT_RADIAL':
+                case 'GRADIENT_DIAMOND':
+                case 'GRADIENT_ANGULAR': {
+                  for (const stop of temp[0].gradientStops) {
+                    invert(stop.color);
+                  }
+
+                  break;
+                }
+              }
+
+              node[mode] = temp;
+            }
           }
-
-          break;
         }
-
-        default:
-          break;
       }
-
-      node.fills = fills;
-    }
-
-    if ('strokes' in node && include.strokes) {
-      const strokes = clone(node.strokes);
-
-      if (!strokes[0]) return;
-
-      reversed(strokes[0].color);
-
-      node.strokes = strokes;
-    }
-
-    if ('effects' in node && include.effects) {
-      const effects = clone(node.effects);
-
-      if (!effects[0]) return;
-
-      reversed(effects[0].color);
-
-      node.effects = effects;
     }
   }
 
