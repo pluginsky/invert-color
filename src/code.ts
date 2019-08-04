@@ -9,7 +9,7 @@ type Color = {
 };
 
 figma.ui.onmessage = msg => {
-  const { type, reverse, elements, patterns } = msg;
+  const { type, invert, elements, patterns } = msg;
 
   const clone = (value: symbol | readonly Paint[] | readonly Effect[]) => {
     return JSON.parse(JSON.stringify(value));
@@ -23,10 +23,10 @@ figma.ui.onmessage = msg => {
     return color;
   };
 
-  if (type === 'reverse-color') {
+  if (type === 'invert-color') {
     for (const node of figma.currentPage.selection) {
       if (elements.includes(node.type.toLowerCase())) {
-        for (const mode of reverse) {
+        for (const mode of invert) {
           if (mode in node) {
             const temp = clone(node[mode]);
 

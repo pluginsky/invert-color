@@ -1,13 +1,13 @@
 import './ui.css';
 
 document.getElementById('apply').onclick = () => {
-  const reverseOptions = document.querySelectorAll(
-    '#reverse input[type="checkbox"]:checked'
+  const invertOptions = document.querySelectorAll(
+    '#invert input[type="checkbox"]:checked'
   );
 
-  const reverse = [];
+  const invert = [];
 
-  reverseOptions.forEach(option => reverse.push(option.id));
+  invertOptions.forEach(option => invert.push(option.id));
 
   const elementsOptions = document.querySelectorAll(
     '#elements input[type="checkbox"]:checked'
@@ -28,8 +28,8 @@ document.getElementById('apply').onclick = () => {
   parent.postMessage(
     {
       pluginMessage: {
-        type: 'reverse-color',
-        reverse,
+        type: 'invert-color',
+        invert,
         elements,
         patterns
       }

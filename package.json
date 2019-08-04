@@ -1,7 +1,7 @@
 {
-  "name": "reverse-color",
+  "name": "invert-color",
   "version": "1.0.0",
-  "description": "Simply reverse backgrounds, fills, strokes & effects colors in Figma",
+  "description": "Simply invert backgrounds, fills, strokes & effects colors in Figma",
   "author": "Jakub Biesiada",
   "license": "MIT",
   "main": "code.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JB1905/reverse-color.git"
+    "url": "https://github.com/JB1905/invert-color.git"
   },
   "devDependencies": {
     "css-loader": "^3.1.0",
