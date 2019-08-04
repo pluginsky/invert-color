@@ -15,7 +15,7 @@ figma.ui.onmessage = msg => {
     return JSON.parse(JSON.stringify(value));
   };
 
-  const invert = (color: Color) => {
+  const invertColor = (color: Color) => {
     color.r = 1 - color.r;
     color.g = 1 - color.g;
     color.b = 1 - color.b;
@@ -39,7 +39,7 @@ figma.ui.onmessage = msg => {
                 case 'SOLID':
                 case 'DROP_SHADOW':
                 case 'INNER_SHADOW': {
-                  invert(temp[0].color);
+                  invertColor(temp[0].color);
 
                   break;
                 }
@@ -49,7 +49,7 @@ figma.ui.onmessage = msg => {
                 case 'GRADIENT_DIAMOND':
                 case 'GRADIENT_ANGULAR': {
                   for (const stop of temp[0].gradientStops) {
-                    invert(stop.color);
+                    invertColor(stop.color);
                   }
 
                   break;
