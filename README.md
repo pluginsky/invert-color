@@ -1,7 +1,3 @@
-<p align="center">
-<img src="https://raw.githubusercontent.com/JB1905/invert-color/master/assets/logo.png" alt="logo" />
-</p>
-
 # Invert Color
 
 ## About
