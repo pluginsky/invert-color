@@ -37,7 +37,7 @@ input[type='checkbox'] {
   display: none;
 }
 
-input[type='checkbox'] ~ span {
+input[type='checkbox'] + span {
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.8);
   width: 12px;
@@ -45,13 +45,13 @@ input[type='checkbox'] ~ span {
   margin-right: 10px;
 }
 
-input[type='checkbox']:checked ~ span {
+input[type='checkbox']:checked + span {
   border: 1px solid #18a0fb;
   background-color: #18a0fb;
   position: relative;
 }
 
-input[type='checkbox']:checked ~ span::before {
+input[type='checkbox']:checked + span::before {
   content: url('./checkmark.svg');
   position: absolute;
   color: #fff;
