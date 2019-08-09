@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "prettier": "prettier --write 'src/**'"
+    "prettier": "prettier --write 'src/*.{html,css,ts}'"
   },
   "repository": {
     "type": "git",

@@ -1,13 +1,16 @@
+import './figma-ui/main.min.css';
 import './ui.css';
 
+import './figma-ui/scripts.min.js';
+
 document.getElementById('apply').onclick = () => {
-  const invertOptions = document.querySelectorAll(
-    '#invert input[type="checkbox"]:checked'
+  const partsOptions = document.querySelectorAll(
+    '#parts input[type="checkbox"]:checked'
   );
 
-  const invert = [];
+  const parts = [];
 
-  invertOptions.forEach(option => invert.push(option.id));
+  partsOptions.forEach(option => parts.push(option.id));
 
   const elementsOptions = document.querySelectorAll(
     '#elements input[type="checkbox"]:checked'
@@ -29,7 +32,7 @@ document.getElementById('apply').onclick = () => {
     {
       pluginMessage: {
         type: 'invert-color',
-        invert,
+        parts,
         elements,
         patterns
       }

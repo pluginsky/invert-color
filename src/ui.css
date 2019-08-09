@@ -1,99 +1,36 @@
-@import 'https://rsms.me/inter/inter.css';
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  font-family: Inter;
-  margin: 0;
-  padding: 0;
-  outline: none;
+.section-title {
+  height: 24px;
 }
 
-.options {
-  padding: 10px 16px 0;
+.checkbox,
+.checkbox__container,
+.checkbox__label {
+  height: 22px;
 }
 
-#actions {
-  padding: 10px 16px 14px;
+.checkbox__container {
+  width: 30px;
 }
 
-h4 {
-  margin-bottom: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.8);
-}
-
-label {
-  display: flex;
-  margin: 8px 0;
-  font-size: 11px;
-  align-items: center;
-  color: rgba(0, 0, 0, 0.8);
-}
-
-input[type='checkbox'] {
-  display: none;
-}
-
-input[type='checkbox'] + span {
-  border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  width: 12px;
-  height: 12px;
-  margin-right: 10px;
-}
-
-input[type='checkbox']:checked + span {
-  border: 1px solid #18a0fb;
-  background-color: #18a0fb;
-  position: relative;
-}
-
-input[type='checkbox']:checked + span::before {
-  content: url('./checkmark.svg');
-  position: absolute;
-  color: #fff;
+.checkbox__mark {
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 9px;
+  transform: translateY(-50%);
 }
 
-#actions {
-  display: flex;
-  justify-content: flex-end;
+.checkbox__label {
+  padding: 0;
 }
 
-#apply {
-  font-size: 11px;
-  background-color: #18a0fb;
-  border: 2px solid #18a0fb;
-  border-radius: 6px;
-  height: 30px;
-  padding: 0 10px;
-  font-weight: 500;
-  color: #fff;
-  margin-left: 8px;
+.options:not(:last-of-type) {
+  margin: 0 0 10px;
 }
 
-#apply:active {
-  border: 2px solid #0071b4;
+.actions {
+  margin: 15px 10px;
+  float: right;
 }
 
 #cancel {
-  background: none;
-  font-size: 11px;
-  line-height: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 6px;
-  padding: 0 10px;
-  font-weight: 500;
   height: 30px;
-  color: rgba(0, 0, 0, 0.8);
-}
-
-#cancel:active {
-  border: 2px solid #18a0fb;
-  padding: 0 9px;
 }

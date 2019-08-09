@@ -1,85 +1,231 @@
-<section id="invert" class="options">
-  <h4>Invert</h4>
+<div class="options" id="parts">
+  <div class="section-title">
+    Parts
+  </div>
 
-  <label>
-    <input type="checkbox" id="backgrounds" checked /><span></span> Backgrounds
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="backgrounds" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Backgrounds</div>
   </label>
-  <label>
-    <input type="checkbox" id="fills" checked /><span></span> Fills
-  </label>
-  <label>
-    <input type="checkbox" id="strokes" checked /><span></span> Strokes
-  </label>
-  <label>
-    <input type="checkbox" id="effects" checked /><span></span> Effects
-  </label>
-</section>
 
-<section id="elements" class="options">
-  <h4>Include Elements</h4>
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="fills" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Fills</div>
+  </label>
 
-  <label>
-    <input type="checkbox" id="document" checked /><span></span> Document
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="strokes" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Strokes</div>
   </label>
-  <label> <input type="checkbox" id="page" checked /><span></span> Page </label>
-  <label>
-    <input type="checkbox" id="slice" checked /><span></span> Slice
-  </label>
-  <label>
-    <input type="checkbox" id="frame" checked /><span></span> Frame
-  </label>
-  <label>
-    <input type="checkbox" id="group" checked /><span></span> Group
-  </label>
-  <label>
-    <input type="checkbox" id="component" checked /><span></span> Component
-  </label>
-  <label>
-    <input type="checkbox" id="boolean_operation" checked /><span></span>
-    Boolean Operation
-  </label>
-  <label>
-    <input type="checkbox" id="vector" checked /><span></span> Vector
-  </label>
-  <label> <input type="checkbox" id="star" checked /><span></span> Star </label>
-  <label> <input type="checkbox" id="line" checked /><span></span> Line </label>
-  <label>
-    <input type="checkbox" id="ellipse" checked /><span></span> Ellipse
-  </label>
-  <label>
-    <input type="checkbox" id="polygon" checked /><span></span> Polygon
-  </label>
-  <label>
-    <input type="checkbox" id="rectangle" checked /><span></span> Rectangle
-  </label>
-  <label> <input type="checkbox" id="text" checked /><span></span> Text </label>
-</section>
 
-<section id="patterns" class="options">
-  <h4>Include Patterns</h4>
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="effects" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Effects</div>
+  </label>
+</div>
 
-  <label>
-    <input type="checkbox" id="solid" checked /><span></span> Solid
-  </label>
-  <label>
-    <input type="checkbox" id="gradient_linear" checked /><span></span> Linear
-    Gradient
-  </label>
-  <label>
-    <input type="checkbox" id="gradient_radial" checked /><span></span> Radial
-    Gradient
-  </label>
-  <label>
-    <input type="checkbox" id="gradient_diamond" checked /><span></span> Diamond
-    Gradient
-  </label>
-  <label>
-    <input type="checkbox" id="gradient_angular" checked /><span></span> Angular
-    Gradient
-  </label>
-</section>
+<div class="options" id="elements">
+  <div class="section-title">
+    Elements
+  </div>
 
-<section id="actions">
-  <button id="cancel">Cancel</button>
-  <button id="apply">Invert</button>
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="document" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Document</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="page" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Page</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="slice" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Slice</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="frame" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Frame</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="group" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Group</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="component" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Component</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input
+        type="checkbox"
+        class="checkbox__box"
+        id="boolean_operation"
+        checked
+      />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Boolean Operation</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="vector" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Vector</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="star" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Star</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="line" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Line</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="ellipse" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Ellipse</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="polygon" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Polygon</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="rectangle" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Rectangle</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="text" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Text</div>
+  </label>
+</div>
+
+<div class="options" id="patterns">
+  <div class="section-title">
+    Patterns
+  </div>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input type="checkbox" class="checkbox__box" id="solid" checked />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Solid</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input
+        type="checkbox"
+        class="checkbox__box"
+        id="gradient_linear"
+        checked
+      />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Linear Gradient</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input
+        type="checkbox"
+        class="checkbox__box"
+        id="gradient_radial"
+        checked
+      />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Radial Gradient</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input
+        type="checkbox"
+        class="checkbox__box"
+        id="gradient_diamond"
+        checked
+      />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Diamond Gradient</div>
+  </label>
+
+  <label class="checkbox">
+    <div class="checkbox__container">
+      <input
+        type="checkbox"
+        class="checkbox__box"
+        id="gradient_angular"
+        checked
+      />
+      <span class="checkbox__mark"></span>
+    </div>
+    <div class="checkbox__label">Angular Gradient</div>
+  </label>
+</div>
+
+<section class="actions">
+  <button class="button button--secondary" id="cancel">Cancel</button>
+  <button class="button button--primary" id="apply">Invert</button>
 </section>
