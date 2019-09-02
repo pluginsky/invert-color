@@ -2,20 +2,9 @@
   height: 24px;
 }
 
-.checkbox,
-.checkbox__container,
-.checkbox__label {
+.checkbox {
   height: 22px;
-}
-
-.checkbox__container {
-  width: 30px;
-}
-
-.checkbox__mark {
-  top: 50%;
-  left: 9px;
-  transform: translateY(-50%);
+  margin-left: -1px;
 }
 
 .checkbox__label {
