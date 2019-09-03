@@ -6,8 +6,8 @@ module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
   devtool: argv.mode === 'production' ? false : 'inline-source-map',
   entry: {
-    ui: './src/ui.ts',
-    code: './src/code.ts'
+    ui: './src/ui/ui.ts',
+    code: './src/code/code.ts'
   },
   module: {
     rules: [
@@ -29,7 +29,7 @@ module.exports = (env, argv) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/ui.html',
+      template: './src/ui/ui.html',
       filename: 'ui.html',
       inlineSource: '.(js)$',
       chunks: ['ui']
