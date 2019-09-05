@@ -2,6 +2,7 @@ import { clone } from './clone';
 import { getSettings } from './settings';
 import { invertColor } from './invertColor';
 import { invertImage } from './invertImage';
+
 import { Settings } from '../types/settings';
 
 export const invert = async () => {
