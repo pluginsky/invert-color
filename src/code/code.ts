@@ -17,6 +17,10 @@ figma.ui.onmessage = async (
 ) => {
   const { parts, elements, patterns } = message;
 
+  if (type === 'cancel') {
+    return figma.closePlugin();
+  }
+
   for (const node of figma.currentPage.selection) {
     if (elements.includes(node.type.toLowerCase())) {
       for (const mode of parts) {
