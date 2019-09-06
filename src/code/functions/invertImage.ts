@@ -9,7 +9,7 @@ export const invertImage = async (node: ImagePaint) => {
   figma.ui.postMessage(bytes);
 
   const newBytes: Uint8Array = await new Promise(resolve => {
-    figma.ui.onmessage = (message: MessageEvent | any) => {
+    figma.ui.onmessage = (message: MessageEvent & { bytes: Uint8Array }) => {
       if (message.type === 'invert-image') {
         resolve(message.bytes);
       }

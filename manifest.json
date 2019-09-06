@@ -3,5 +3,18 @@
   "id": "738840049488759901",
   "api": "1.0.0",
   "main": "dist/code.js",
-  "ui": "dist/ui.html"
+  "ui": "dist/ui.html",
+  "menu": [
+    {
+      "name": "Invert",
+      "command": "invert"
+    },
+    {
+      "separator": true
+    },
+    {
+      "name": "Configure Settings",
+      "command": "configure"
+    }
+  ]
 }
