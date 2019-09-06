@@ -6,12 +6,14 @@ export const configureSettings = () => {
 
   figma.ui.onmessage = async (
     message: MessageEvent & {
-      parts: string[];
-      elements: string[];
-      patterns: string[];
+      settings: {
+        parts: string[];
+        elements: string[];
+        patterns: string[];
+      };
     }
   ) => {
-    const { type, parts = [], elements = [], patterns = [] } = message;
+    const { type, settings } = message;
 
     if (type === 'get-settings') {
       const settings = await getSettings();
@@ -21,14 +23,10 @@ export const configureSettings = () => {
         settings
       });
     } else if (type === 'save') {
-      const settings = { parts, elements, patterns };
-
       setSettings(settings);
 
       return figma.closePlugin('Settings saved successfuly');
     } else if (type === 'save-invert') {
-      const settings = { parts, elements, patterns };
-
       setSettings(settings);
 
       invert();

@@ -18,15 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('save').onclick = () => {
-  const { parts, elements, patterns } = saveSettings();
-
   parent.postMessage(
     {
       pluginMessage: {
         type: 'save',
-        parts,
-        elements,
-        patterns
+        settings: saveSettings()
       }
     },
     '*'
@@ -34,15 +30,11 @@ document.getElementById('save').onclick = () => {
 };
 
 document.getElementById('save-invert').onclick = () => {
-  const { parts, elements, patterns } = saveSettings();
-
   parent.postMessage(
     {
       pluginMessage: {
         type: 'save-invert',
-        parts,
-        elements,
-        patterns
+        settings: saveSettings()
       }
     },
     '*'
