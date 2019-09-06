@@ -12,9 +12,9 @@ export const invert = async () => {
 
   const { parts, elements, patterns }: Settings = await getSettings();
 
-  figma.currentPage.selection.forEach(selected => {
+  for (const selected of figma.currentPage.selection) {
     if (elements.includes(selected.type.toLowerCase()) && parts.length) {
-      parts.forEach(async part => {
+      for (const part of parts) {
         if (part in selected) {
           const temporary = clone(selected[part]);
 
@@ -54,12 +54,10 @@ export const invert = async () => {
               }
             }
           }
-        } else {
-          figma.closePlugin();
         }
-      });
-    } else {
-      figma.closePlugin();
+      }
     }
-  });
+  }
+
+  figma.closePlugin();
 };
