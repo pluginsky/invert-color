@@ -1,4 +1,4 @@
-export const saveSettings = () => {
+export const getOptions = () => {
   const partsOptions = document.querySelectorAll(
     '#parts input[type="checkbox"]:checked'
   );

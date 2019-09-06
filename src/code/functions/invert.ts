@@ -1,5 +1,5 @@
 import { clone } from './clone';
-import { getSettings } from './settings';
+import { getSettings } from './storeSettings';
 import { invertColor } from './invertColor';
 import { invertImage } from './invertImage';
 

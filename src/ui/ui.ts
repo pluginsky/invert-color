@@ -1,4 +1,4 @@
-import { saveSettings } from './functions/saveSettings';
+import { getOptions } from './functions/getOptions';
 import { invertImage } from './functions/invertImage';
 
 import './figma-ui/main.min.css';
@@ -22,7 +22,7 @@ document.getElementById('save').onclick = () => {
     {
       pluginMessage: {
         type: 'save',
-        settings: saveSettings()
+        settings: getOptions()
       }
     },
     '*'
@@ -34,7 +34,7 @@ document.getElementById('save-invert').onclick = () => {
     {
       pluginMessage: {
         type: 'save-invert',
-        settings: saveSettings()
+        settings: getOptions()
       }
     },
     '*'

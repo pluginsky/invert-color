@@ -1,4 +1,4 @@
-import { getSettings, setSettings } from './settings';
+import { getSettings, setSettings } from './storeSettings';
 import { invert } from './invert';
 
 export const configureSettings = () => {
