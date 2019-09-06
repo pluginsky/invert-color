@@ -51,15 +51,27 @@ document.getElementById('save-invert').onclick = () => {
 
 onmessage = (event: MessageEvent) => {
   if (event.data.pluginMessage.type === 'get-settings') {
-    const { parts, elements, patterns } = event.data.pluginMessage;
+    const { settings } = event.data.pluginMessage;
 
-    const data = [...parts, ...elements, ...patterns];
+    if (settings) {
+      const { parts, elements, patterns } = settings;
 
-    data.forEach(element => {
-      const el = document.getElementById(element) as HTMLInputElement;
+      const data = [...parts, ...elements, ...patterns];
 
-      el.checked = true;
-    });
+      data.forEach(element => {
+        const el = document.getElementById(element) as HTMLInputElement;
+
+        el.checked = true;
+      });
+    } else {
+      const elements = document.querySelectorAll(
+        '.options .checkbox__box'
+      ) as NodeListOf<HTMLInputElement>;
+
+      elements.forEach(element => {
+        element.checked = true;
+      });
+    }
   } else {
     invertImage(event);
   }

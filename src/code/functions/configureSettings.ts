@@ -14,13 +14,11 @@ export const configureSettings = () => {
     const { type, parts = [], elements = [], patterns = [] } = message;
 
     if (type === 'get-settings') {
-      const { parts, elements, patterns } = await getSettings();
+      const settings = await getSettings();
 
       figma.ui.postMessage({
         type: 'get-settings',
-        parts,
-        elements,
-        patterns
+        settings
       });
     } else if (type === 'save') {
       const settings = { parts, elements, patterns };
