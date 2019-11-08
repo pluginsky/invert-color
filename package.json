@@ -1,6 +1,6 @@
 {
   "name": "invert-color",
-  "version": "1.0.0",
+  "version": "7.0.0",
   "description": "Simply invert backgrounds, fills, strokes & effects colors in Figma",
   "author": "Jakub Biesiada",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "prettier": "prettier --write 'src/*.{html,css,ts}'"
+    "prettier": "prettier --write 'src/**/*.{html,css,ts}'"
   },
   "repository": {
     "type": "git",
@@ -18,15 +18,15 @@
     "css-loader": "^3.2.0",
     "html-webpack-inline-source-plugin": "^0.0.10",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "style-loader": "^1.0.0",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.6.2",
-    "url-loader": "^2.1.0",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "url-loader": "^2.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   },
   "husky": {
     "hooks": {
