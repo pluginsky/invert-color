@@ -12,52 +12,60 @@ export const invert = async () => {
 
   const { parts, elements, patterns }: Settings = await getSettings();
 
-  for (const selected of figma.currentPage.selection) {
-    if (elements.includes(selected.type.toLowerCase()) && parts.length) {
-      for (const part of parts) {
-        if (part in selected) {
-          const temporary = clone(selected[part]);
+  const runInvert = async (selections: any) => {
+    for (const selected of selections) {
+      if (elements.includes(selected.type.toLowerCase()) && parts.length) {
+        for (const part of parts) {
+          if (part in selected) {
+            const temporary = clone(selected[part]);
 
-          if (
-            temporary[0] &&
-            (part === 'effects' ||
-              patterns.includes(temporary[0].type.toLowerCase()))
-          ) {
-            switch (temporary[0].type) {
-              case 'SOLID':
-              case 'DROP_SHADOW':
-              case 'INNER_SHADOW': {
-                invertColor(temporary[0].color);
+            if (
+              temporary[0] &&
+              (part === 'effects' ||
+                patterns.includes(temporary[0].type.toLowerCase()))
+            ) {
+              switch (temporary[0].type) {
+                case 'SOLID':
+                case 'DROP_SHADOW':
+                case 'INNER_SHADOW': {
+                  invertColor(temporary[0].color);
 
-                selected[part] = temporary;
+                  selected[part] = temporary;
 
-                break;
-              }
-
-              case 'GRADIENT_LINEAR':
-              case 'GRADIENT_RADIAL':
-              case 'GRADIENT_DIAMOND':
-              case 'GRADIENT_ANGULAR': {
-                for (const stop of temporary[0].gradientStops) {
-                  invertColor(stop.color);
+                  break;
                 }
 
-                selected[part] = temporary;
+                case 'GRADIENT_LINEAR':
+                case 'GRADIENT_RADIAL':
+                case 'GRADIENT_DIAMOND':
+                case 'GRADIENT_ANGULAR': {
+                  for (const stop of temporary[0].gradientStops) {
+                    invertColor(stop.color);
+                  }
 
-                break;
-              }
+                  selected[part] = temporary;
 
-              case 'IMAGE': {
-                selected[part] = await invertImage(temporary[0]);
+                  break;
+                }
 
-                break;
+                case 'IMAGE': {
+                  selected[part] = await invertImage(temporary[0]);
+
+                  break;
+                }
               }
             }
           }
         }
       }
+
+      if ('children' in selected) {
+        await runInvert(selected['children']);
+      }
     }
-  }
+  };
+
+  await runInvert(figma.currentPage.selection);
 
   figma.closePlugin();
 };
