@@ -12,7 +12,7 @@ export const invert = async () => {
 
   const { parts, elements, patterns }: Settings = await getSettings();
 
-  const runInvert = async (selections: any) => {
+  const runInvert = async (selections: readonly SceneNode[]) => {
     for (const selected of selections) {
       if (elements.includes(selected.type.toLowerCase()) && parts.length) {
         for (const part of parts) {
