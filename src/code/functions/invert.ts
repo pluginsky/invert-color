@@ -17,6 +17,10 @@ export const invert = async () => {
       if (elements.includes(selected.type.toLowerCase()) && parts.length) {
         for (const part of parts) {
           if (part in selected) {
+            if (typeof selected[part] === 'symbol') {
+              continue;
+            }
+
             const temporary = clone(selected[part]);
 
             if (

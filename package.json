@@ -1,6 +1,6 @@
 {
   "name": "invert-color",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Simply invert backgrounds, fills, strokes & effects colors in Figma",
   "author": "Jakub Biesiada",
   "license": "MIT",
@@ -34,9 +34,6 @@
     }
   },
   "lint-staged": {
-    "src/**": [
-      "npm run prettier",
-      "git add"
-    ]
+    "src/**": ["npm run prettier", "git add"]
   }
 }
