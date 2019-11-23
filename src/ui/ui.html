@@ -30,28 +30,10 @@
   </div>
 
   <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="document" />
-    <label class="checkbox__label" for="document">Document</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="page" />
-    <label class="checkbox__label" for="page">Page</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="slice" />
-    <label class="checkbox__label" for="slice">Slice</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="frame" />
-    <label class="checkbox__label" for="frame">Frame</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="group" />
-    <label class="checkbox__label" for="group">Group</label>
+    <input type="checkbox" class="checkbox__box" id="boolean_operation" />
+    <label class="checkbox__label" for="boolean_operation">
+      Boolean Operation
+    </label>
   </div>
 
   <div class="checkbox">
@@ -60,20 +42,23 @@
   </div>
 
   <div class="checkbox">
-    <input type="checkbox" class="checkbox__box" id="boolean_operation" />
-    <label class="checkbox__label" for="boolean_operation"
-      >Boolean Operation</label
-    >
+    <input class="checkbox__box" type="checkbox" id="document" />
+    <label class="checkbox__label" for="document">Document</label>
   </div>
 
   <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="vector" />
-    <label class="checkbox__label" for="vector">Vector</label>
+    <input class="checkbox__box" type="checkbox" id="ellipse" />
+    <label class="checkbox__label" for="ellipse">Ellipse</label>
   </div>
 
   <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="star" />
-    <label class="checkbox__label" for="star">Star</label>
+    <input class="checkbox__box" type="checkbox" id="frame" />
+    <label class="checkbox__label" for="frame">Frame</label>
+  </div>
+
+  <div class="checkbox">
+    <input class="checkbox__box" type="checkbox" id="instance" />
+    <label class="checkbox__label" for="instance">Instance</label>
   </div>
 
   <div class="checkbox">
@@ -82,8 +67,8 @@
   </div>
 
   <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="ellipse" />
-    <label class="checkbox__label" for="ellipse">Ellipse</label>
+    <input class="checkbox__box" type="checkbox" id="page" />
+    <label class="checkbox__label" for="page">Page</label>
   </div>
 
   <div class="checkbox">
@@ -97,8 +82,23 @@
   </div>
 
   <div class="checkbox">
+    <input class="checkbox__box" type="checkbox" id="slice" />
+    <label class="checkbox__label" for="slice">Slice</label>
+  </div>
+
+  <div class="checkbox">
+    <input class="checkbox__box" type="checkbox" id="star" />
+    <label class="checkbox__label" for="star">Star</label>
+  </div>
+
+  <div class="checkbox">
     <input class="checkbox__box" type="checkbox" id="text" />
     <label class="checkbox__label" for="text">Text</label>
+  </div>
+
+  <div class="checkbox">
+    <input class="checkbox__box" type="checkbox" id="vector" />
+    <label class="checkbox__label" for="vector">Vector</label>
   </div>
 </div>
 
@@ -124,22 +124,32 @@
 
   <div class="checkbox">
     <input type="checkbox" class="checkbox__box" id="gradient_diamond" />
-    <label class="checkbox__label" for="gradient_diamond"
-      >Diamond Gradient</label
-    >
+    <label class="checkbox__label" for="gradient_diamond">
+      Diamond Gradient
+    </label>
   </div>
 
   <div class="checkbox">
     <input type="checkbox" class="checkbox__box" id="gradient_angular" />
-    <label class="checkbox__label" for="gradient_angular"
-      >Angular Gradient</label
-    >
+    <label class="checkbox__label" for="gradient_angular">
+      Angular Gradient
+    </label>
   </div>
 
   <div class="checkbox">
     <input type="checkbox" class="checkbox__box" id="image" />
     <label class="checkbox__label" for="image">Image</label>
   </div>
+</div>
+
+<div id="colors">
+  <div class="section-title">
+    Exclude Colors
+  </div>
+
+  <div class="icon icon--plus icon--button"></div>
+
+  <ul id="excluded-colors"></ul>
 </div>
 
 <section class="actions">
