@@ -10,6 +10,8 @@ export const invert = async () => {
     return figma.closePlugin('Select at least 1 element');
   }
 
+  figma.ui.close();
+
   const { parts, elements, patterns }: Settings = await getSettings();
 
   const runInvert = async (selections: readonly SceneNode[]) => {
