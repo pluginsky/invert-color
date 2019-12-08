@@ -19,45 +19,50 @@ export const invert = async () => {
       if (elements.includes(selected.type.toLowerCase()) && parts.length) {
         for (const part of parts) {
           if (part in selected) {
-            if (typeof selected[part] === 'symbol') {
+            if (
+              typeof selected[part] === 'symbol' ||
+              selected[part] === undefined
+            ) {
               continue;
             }
 
             const temporary = clone(selected[part]);
 
-            if (
-              temporary[0] &&
-              (part === 'effects' ||
-                patterns.includes(temporary[0].type.toLowerCase()))
-            ) {
-              switch (temporary[0].type) {
-                case 'SOLID':
-                case 'DROP_SHADOW':
-                case 'INNER_SHADOW': {
-                  invertColor(temporary[0].color);
+            for (let i in temporary) {
+              if (
+                temporary[i] &&
+                (part === 'effects' ||
+                  patterns.includes(temporary[i].type.toLowerCase()))
+              ) {
+                switch (temporary[i].type) {
+                  case 'SOLID':
+                  case 'DROP_SHADOW':
+                  case 'INNER_SHADOW': {
+                    invertColor(temporary[i].color);
 
-                  selected[part] = temporary;
+                    selected[part] = temporary;
 
-                  break;
-                }
-
-                case 'GRADIENT_LINEAR':
-                case 'GRADIENT_RADIAL':
-                case 'GRADIENT_DIAMOND':
-                case 'GRADIENT_ANGULAR': {
-                  for (const stop of temporary[0].gradientStops) {
-                    invertColor(stop.color);
+                    break;
                   }
 
-                  selected[part] = temporary;
+                  case 'GRADIENT_LINEAR':
+                  case 'GRADIENT_RADIAL':
+                  case 'GRADIENT_DIAMOND':
+                  case 'GRADIENT_ANGULAR': {
+                    for (const stop of temporary[i].gradientStops) {
+                      invertColor(stop.color);
+                    }
 
-                  break;
-                }
+                    selected[part] = temporary;
 
-                case 'IMAGE': {
-                  selected[part] = await invertImage(temporary[0]);
+                    break;
+                  }
 
-                  break;
+                  case 'IMAGE': {
+                    selected[part] = await invertImage(temporary[i]);
+
+                    break;
+                  }
                 }
               }
             }

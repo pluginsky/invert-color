@@ -1,7 +1,7 @@
 # Invert Color
 
 ## About
-Simply invert backgrounds, fills, strokes & effects colors in Figma
+Simply invert fills, strokes & effects colors in Figma
 
 ## License
 This project is licensed under the MIT License © 2019-present Jakub Biesiada
