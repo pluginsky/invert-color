@@ -28,17 +28,17 @@ export const invert = async () => {
 
             const temporary = clone(selected[part]);
 
-            for (let i in temporary) {
+            for (let level in temporary) {
               if (
-                temporary[i] &&
+                temporary[level] &&
                 (part === 'effects' ||
-                  patterns.includes(temporary[i].type.toLowerCase()))
+                  patterns.includes(temporary[level].type.toLowerCase()))
               ) {
-                switch (temporary[i].type) {
+                switch (temporary[level].type) {
                   case 'SOLID':
                   case 'DROP_SHADOW':
                   case 'INNER_SHADOW': {
-                    invertColor(temporary[i].color);
+                    invertColor(temporary[level].color);
 
                     selected[part] = temporary;
 
@@ -49,7 +49,7 @@ export const invert = async () => {
                   case 'GRADIENT_RADIAL':
                   case 'GRADIENT_DIAMOND':
                   case 'GRADIENT_ANGULAR': {
-                    for (const stop of temporary[i].gradientStops) {
+                    for (const stop of temporary[level].gradientStops) {
                       invertColor(stop.color);
                     }
 
@@ -59,7 +59,7 @@ export const invert = async () => {
                   }
 
                   case 'IMAGE': {
-                    selected[part] = await invertImage(temporary[i]);
+                    selected[part] = await invertImage(temporary[level]);
 
                     break;
                   }
