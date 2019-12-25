@@ -1,6 +1,6 @@
 import { Settings } from '../types/settings';
 
-export const getSettings = async () => {
+export const getSettings = async (): Promise<Settings> => {
   return await figma.clientStorage.getAsync('invert-color-settings');
 };
 

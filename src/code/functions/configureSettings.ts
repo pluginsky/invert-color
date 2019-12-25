@@ -1,6 +1,8 @@
 import { getSettings, setSettings } from './storeSettings';
 import { invert } from './invert';
 
+import { Settings } from '../types/settings';
+
 export const configureSettings = () => {
   figma.showUI(__html__, { height: 440 });
 
@@ -19,8 +21,6 @@ export const configureSettings = () => {
     if (type === 'get-settings') {
       const settings = await getSettings();
 
-      console.log(settings);
-
       figma.ui.postMessage({
         type: 'get-settings',
         settings
@@ -36,13 +36,15 @@ export const configureSettings = () => {
     } else if (type === 'filter') {
       const settings = await getSettings();
 
-      const z = {};
+      const optionsSections = {} as Settings;
 
-      Object.entries(settings).forEach((section: any) => {
-        z[section[0]] = section[1].filter(aa => excluded.includes(aa));
+      Object.entries(settings).forEach(([sectionName, sectionOptions]) => {
+        optionsSections[sectionName] = sectionOptions.filter(sectionOption =>
+          excluded.includes(sectionOption)
+        );
       });
 
-      setSettings(z as any);
+      setSettings(optionsSections);
     }
 
     if (type === 'cancel') {

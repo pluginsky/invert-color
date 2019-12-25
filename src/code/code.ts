@@ -13,6 +13,8 @@ switch (figma.command) {
         configureSettings();
       }
     })();
+
+    break;
   }
 
   case 'configure': {
