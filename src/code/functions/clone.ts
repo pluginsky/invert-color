@@ -1,3 +1,3 @@
-export const clone = (value: symbol | readonly Paint[] | readonly Effect[]) => {
-  return JSON.parse(JSON.stringify(value));
+export const clone = (node: symbol | readonly Paint[] | readonly Effect[]) => {
+  return JSON.parse(JSON.stringify(node));
 };

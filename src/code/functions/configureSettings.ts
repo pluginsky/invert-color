@@ -8,12 +8,8 @@ export const configureSettings = () => {
 
   figma.ui.onmessage = async (
     message: MessageEvent & {
-      settings: {
-        parts: string[];
-        elements: string[];
-        patterns: string[];
-      };
-      excluded: any;
+      settings: Settings;
+      excluded: string[];
     }
   ) => {
     const { type, settings, excluded } = message;

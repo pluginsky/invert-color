@@ -3,7 +3,7 @@ export const getOptions = () => {
     '#parts input[type="checkbox"]:checked'
   );
 
-  const parts = [];
+  const parts: string[] = [];
 
   partsOptions.forEach(option => parts.push(option.id));
 
@@ -11,7 +11,7 @@ export const getOptions = () => {
     '#elements input[type="checkbox"]:checked'
   );
 
-  const elements = [];
+  const elements: string[] = [];
 
   elementsOptions.forEach(option => elements.push(option.id));
 
@@ -19,7 +19,7 @@ export const getOptions = () => {
     '#patterns input[type="checkbox"]:checked'
   );
 
-  const patterns = [];
+  const patterns: string[] = [];
 
   patternsOptions.forEach(option => patterns.push(option.id));
 

@@ -2,13 +2,14 @@ import { setSettings } from './storeSettings';
 import { options } from '../../constants/options';
 
 import { clone } from './clone';
+import { Settings } from '../types/settings';
 
 export const configureFromElements = () => {
   if (!figma.currentPage.selection.length) {
     return figma.closePlugin('Select at least 1 element');
   }
 
-  let settings = {
+  let settings: Settings = {
     elements: [],
     parts: [],
     patterns: []

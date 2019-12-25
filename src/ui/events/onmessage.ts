@@ -1,27 +1,27 @@
 import { invertImage } from '../functions/invertImage';
 
+import { Settings } from '../../code/types/settings';
+
 onmessage = (event: MessageEvent) => {
   if (event.data.pluginMessage.type === 'get-settings') {
-    const { settings } = event.data.pluginMessage;
+    const { settings }: { settings: Settings } = event.data.pluginMessage;
 
     if (settings) {
       const { parts, elements, patterns } = settings;
 
-      const data = [...parts, ...elements, ...patterns];
+      const options = [...parts, ...elements, ...patterns];
 
-      data.forEach(element => {
-        const el = document.getElementById(element) as HTMLInputElement;
+      options.forEach(option => {
+        const checkbox = document.getElementById(option) as HTMLInputElement;
 
-        if (el) {
-          el.checked = true;
+        if (checkbox) {
+          checkbox.checked = true;
         } else {
-          const z = data.filter(elem => elem !== element);
-
           parent.postMessage(
             {
               pluginMessage: {
                 type: 'filter',
-                excluded: z
+                excluded: options.filter(element => element !== option)
               }
             },
             '*'

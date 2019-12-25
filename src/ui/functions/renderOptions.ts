@@ -20,7 +20,7 @@ export const renderOptions = (optionsSections: { [key: string]: string[] }) => {
         }
       }
 
-      html += section({ sectionName, options });
+      html += section(sectionName, options);
     });
   } else {
     optionsWrapper.classList.add('options-not-found');
