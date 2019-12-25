@@ -1,74 +1,34 @@
-import { getOptions } from './functions/getOptions';
-import { invertImage } from './functions/invertImage';
+import { renderOptions } from './functions/renderOptions';
+
+import { options } from '../constants/options';
 
 import './figma-ui/main.min.css';
 import './ui.css';
 
 import './figma-ui/scripts.min.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  parent.postMessage(
-    {
-      pluginMessage: {
-        type: 'get-settings'
-      }
-    },
-    '*'
-  );
-});
+import './events/onload';
+import './events/onsave';
+import './events/onsaveinvert';
+import './events/onmessage';
+import './events/oncancel';
 
-document.getElementById('save').onclick = () => {
-  parent.postMessage(
-    {
-      pluginMessage: {
-        type: 'save',
-        settings: getOptions()
-      }
-    },
-    '*'
-  );
-};
+iconInput.init();
 
-document.getElementById('save-invert').onclick = () => {
-  parent.postMessage(
-    {
-      pluginMessage: {
-        type: 'save-invert',
-        settings: getOptions()
-      }
-    },
-    '*'
-  );
-};
+renderOptions(options);
 
-onmessage = (event: MessageEvent) => {
-  if (event.data.pluginMessage.type === 'get-settings') {
-    const { settings } = event.data.pluginMessage;
+document.querySelector('#filter').addEventListener('change', e => {
+  let optionsSections = {};
 
-    if (settings) {
-      const { parts, elements, patterns } = settings;
+  Object.entries(options).forEach(([sectionName, sectionOptions]) => {
+    const filteredOptions = sectionOptions.filter(sectionOption =>
+      sectionOption.includes((e.target as HTMLInputElement).value)
+    );
 
-      const data = [...parts, ...elements, ...patterns];
-
-      data.forEach(element => {
-        const el = document.getElementById(element) as HTMLInputElement;
-
-        el.checked = true;
-      });
-    } else {
-      const elements = document.querySelectorAll(
-        '.options .checkbox__box'
-      ) as NodeListOf<HTMLInputElement>;
-
-      elements.forEach(element => {
-        element.checked = true;
-      });
+    if (filteredOptions.length > 0) {
+      optionsSections[sectionName] = filteredOptions;
     }
-  } else {
-    invertImage(event);
-  }
-};
+  });
 
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-};
+  renderOptions(optionsSections);
+});

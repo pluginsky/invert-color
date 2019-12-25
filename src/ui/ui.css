@@ -1,5 +1,13 @@
+#search-form {
+  margin-bottom: 10px;
+}
+
 .section-title {
   height: 24px;
+}
+
+.options .section-title {
+  user-select: none;
 }
 
 .checkbox {
@@ -11,12 +19,12 @@
   padding: 0;
 }
 
-.options:not(:last-of-type) {
+.options {
   margin: 0 0 10px;
 }
 
 .actions {
-  margin: 15px 10px;
+  margin: 10px 10px 15px;
   float: right;
 }
 

@@ -3,6 +3,8 @@ import { getSettings } from './storeSettings';
 import { invertColor } from './invertColor';
 import { invertImage } from './invertImage';
 
+// import { toRgb } from '../helpers/toRgb';
+
 import { Settings } from '../types/settings';
 
 export const invert = async () => {
@@ -12,7 +14,12 @@ export const invert = async () => {
 
   figma.ui.close();
 
-  const { parts, elements, patterns }: Settings = await getSettings();
+  const {
+    parts,
+    elements,
+    patterns,
+    colors = []
+  }: Settings = await getSettings();
 
   const runInvert = async (selections: readonly SceneNode[]) => {
     for (const selected of selections) {
@@ -28,17 +35,19 @@ export const invert = async () => {
 
             const temporary = clone(selected[part]);
 
-            for (let level in temporary) {
+            for (let level of temporary) {
               if (
-                temporary[level] &&
+                level &&
                 (part === 'effects' ||
-                  patterns.includes(temporary[level].type.toLowerCase()))
+                  patterns.includes(level.type.toLowerCase()))
               ) {
-                switch (temporary[level].type) {
+                switch (level.type) {
                   case 'SOLID':
                   case 'DROP_SHADOW':
                   case 'INNER_SHADOW': {
-                    invertColor(temporary[level].color);
+                    // if (!colors.includes(toRgb(level.color))) {
+                    invertColor(level.color);
+                    // }
 
                     selected[part] = temporary;
 
@@ -49,8 +58,10 @@ export const invert = async () => {
                   case 'GRADIENT_RADIAL':
                   case 'GRADIENT_DIAMOND':
                   case 'GRADIENT_ANGULAR': {
-                    for (const stop of temporary[level].gradientStops) {
+                    for (const stop of level.gradientStops) {
+                      // if (!colors.includes(toRgb(stop.color))) {
                       invertColor(stop.color);
+                      // }
                     }
 
                     selected[part] = temporary;
@@ -59,7 +70,7 @@ export const invert = async () => {
                   }
 
                   case 'IMAGE': {
-                    selected[part] = await invertImage(temporary[level]);
+                    selected[part] = await invertImage(level);
 
                     break;
                   }

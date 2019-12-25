@@ -1,145 +1,26 @@
-<div class="options" id="parts">
-  <div class="section-title">
-    Parts
+<div id="search-form" class="input-icon">
+  <div class="input-icon__icon">
+    <div class="icon icon--search icon--black-3"></div>
   </div>
 
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="fills" />
-    <label class="checkbox__label" for="fills">Fills</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="strokes" />
-    <label class="checkbox__label" for="strokes">Strokes</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="effects" />
-    <label class="checkbox__label" for="effects">Effects</label>
-  </div>
+  <input
+    type="input"
+    class="input-icon__input"
+    id="filter"
+    placeholder="e.g: fills, polygon"
+  />
 </div>
 
-<div class="options" id="elements">
+<section class=""></section>
+
+<div id="colors">
   <div class="section-title">
-    Elements
+    Exclude Colors
   </div>
 
-  <div class="checkbox">
-    <input type="checkbox" class="checkbox__box" id="boolean_operation" />
-    <label class="checkbox__label" for="boolean_operation">
-      Boolean Operation
-    </label>
-  </div>
+  <div class="icon icon--plus icon--button"></div>
 
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="component" />
-    <label class="checkbox__label" for="component">Component</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="document" />
-    <label class="checkbox__label" for="document">Document</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="ellipse" />
-    <label class="checkbox__label" for="ellipse">Ellipse</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="frame" />
-    <label class="checkbox__label" for="frame">Frame</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="group" />
-    <label class="checkbox__label" for="group">Group</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="instance" />
-    <label class="checkbox__label" for="instance">Instance</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="line" />
-    <label class="checkbox__label" for="line">Line</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="page" />
-    <label class="checkbox__label" for="page">Page</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="polygon" />
-    <label class="checkbox__label" for="polygon">Polygon</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="rectangle" />
-    <label class="checkbox__label" for="rectangle">Rectangle</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="slice" />
-    <label class="checkbox__label" for="slice">Slice</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="star" />
-    <label class="checkbox__label" for="star">Star</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="text" />
-    <label class="checkbox__label" for="text">Text</label>
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="vector" />
-    <label class="checkbox__label" for="vector">Vector</label>
-  </div>
-</div>
-
-<div class="options" id="patterns">
-  <div class="section-title">
-    Patterns
-  </div>
-
-  <div class="checkbox">
-    <input class="checkbox__box" type="checkbox" id="solid" />
-    <label class="checkbox__label" for="solid">Solid</label>
-  </div>
-
-  <div class="checkbox">
-    <input type="checkbox" class="checkbox__box" id="gradient_linear" />
-    <label class="checkbox__label" for="gradient_linear">Linear Gradient</label>
-  </div>
-
-  <div class="checkbox">
-    <input type="checkbox" class="checkbox__box" id="gradient_radial" />
-    <label class="checkbox__label" for="gradient_radial">Radial Gradient</label>
-  </div>
-
-  <div class="checkbox">
-    <input type="checkbox" class="checkbox__box" id="gradient_diamond" />
-    <label class="checkbox__label" for="gradient_diamond">
-      Diamond Gradient
-    </label>
-  </div>
-
-  <div class="checkbox">
-    <input type="checkbox" class="checkbox__box" id="gradient_angular" />
-    <label class="checkbox__label" for="gradient_angular">
-      Angular Gradient
-    </label>
-  </div>
-
-  <div class="checkbox">
-    <input type="checkbox" class="checkbox__box" id="image" />
-    <label class="checkbox__label" for="image">Image</label>
-  </div>
+  <ul id="excluded-colors"></ul>
 </div>
 
 <section class="actions">
