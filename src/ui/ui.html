@@ -1,30 +1,34 @@
-<div id="search-form" class="input-icon">
-  <div class="input-icon__icon">
-    <div class="icon icon--search icon--black-3"></div>
+<main id="plugin-container">
+  <div id="search-form" class="input-icon">
+    <div class="input-icon__icon">
+      <div class="icon icon--search icon--black-3"></div>
+    </div>
+
+    <input
+      type="input"
+      class="input-icon__input"
+      id="filter"
+      placeholder="e.g: fills, polygon"
+    />
   </div>
 
-  <input
-    type="input"
-    class="input-icon__input"
-    id="filter"
-    placeholder="e.g: fills, polygon"
-  />
-</div>
+  <section id="plugin-options"></section>
 
-<section class=""></section>
+  <div id="colors">
+    <div class="section-title">
+      Exclude Colors
+    </div>
 
-<div id="colors">
-  <div class="section-title">
-    Exclude Colors
+    <div class="icon icon--plus icon--button"></div>
+
+    <ul id="excluded-colors"></ul>
   </div>
 
-  <div class="icon icon--plus icon--button"></div>
-
-  <ul id="excluded-colors"></ul>
-</div>
-
-<section class="actions">
-  <button class="button button--secondary" id="cancel">Cancel</button>
-  <button class="button button--primary" id="save">Save</button>
-  <button class="button button--primary" id="save-invert">Save & Invert</button>
-</section>
+  <section class="actions">
+    <button class="button button--secondary" id="cancel">Cancel</button>
+    <button class="button button--primary" id="save">Save</button>
+    <button class="button button--primary" id="save-invert">
+      Save & Invert
+    </button>
+  </section>
+</main>

@@ -11,12 +11,15 @@ export const configureSettings = () => {
         elements: string[];
         patterns: string[];
       };
+      excluded: any;
     }
   ) => {
-    const { type, settings } = message;
+    const { type, settings, excluded } = message;
 
     if (type === 'get-settings') {
       const settings = await getSettings();
+
+      console.log(settings);
 
       figma.ui.postMessage({
         type: 'get-settings',
@@ -30,6 +33,16 @@ export const configureSettings = () => {
       setSettings(settings);
 
       invert();
+    } else if (type === 'filter') {
+      const settings = await getSettings();
+
+      const z = {};
+
+      Object.entries(settings).forEach((section: any) => {
+        z[section[0]] = section[1].filter(aa => excluded.includes(aa));
+      });
+
+      setSettings(z as any);
     }
 
     if (type === 'cancel') {

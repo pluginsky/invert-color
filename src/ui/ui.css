@@ -1,5 +1,23 @@
+#plugin-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
 #search-form {
   margin-bottom: 10px;
+}
+
+#plugin-options {
+  flex: 1;
+}
+
+.options-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100px;
 }
 
 .section-title {
@@ -25,7 +43,7 @@
 
 .actions {
   margin: 10px 10px 15px;
-  float: right;
+  align-self: flex-end;
 }
 
 #cancel {

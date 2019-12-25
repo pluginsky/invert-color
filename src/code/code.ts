@@ -1,6 +1,8 @@
 import { invert } from './functions/invert';
-import { configureSettings } from './functions/configureSettings';
 import { getSettings } from './functions/storeSettings';
+import { configureSettings } from './functions/configureSettings';
+import { configureFromElements } from './functions/configureFromElements';
+import { excludeColors } from './functions/excludeColors';
 
 switch (figma.command) {
   case 'invert': {
@@ -15,11 +17,19 @@ switch (figma.command) {
 
   case 'configure': {
     configureSettings();
+
+    break;
   }
 
   case 'configure-from-elements': {
+    configureFromElements();
+
+    break;
   }
 
   case 'exclude-colors': {
+    excludeColors();
+
+    break;
   }
 }
