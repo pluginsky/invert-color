@@ -1,4 +1,4 @@
-// Figma Plugin API version 1, update 9
+// Figma Plugin API version 1, update 10
 
 declare global {
   // Global variable with Figma's plugin API.
@@ -594,7 +594,7 @@ declare global {
   }
 
   interface ReactionMixin {
-    readonly reactions: ReadonlyArray<Reaction>; // PROPOSED API ONLY
+    readonly reactions: ReadonlyArray<Reaction>;
   }
 
   interface DefaultShapeMixin
@@ -625,12 +625,12 @@ declare global {
     verticalPadding: number; // applicable only if layoutMode != "NONE"
     itemSpacing: number; // applicable only if layoutMode != "NONE"
 
-    overflowDirection: OverflowDirection; // PROPOSED API ONLY
-    numberOfFixedChildren: number; // PROPOSED API ONLY
+    overflowDirection: OverflowDirection;
+    numberOfFixedChildren: number;
 
-    readonly overlayPositionType: OverlayPositionType; // PROPOSED API ONLY
-    readonly overlayBackground: OverlayBackground; // PROPOSED API ONLY
-    readonly overlayBackgroundInteraction: OverlayBackgroundInteraction; // PROPOSED API ONLY
+    readonly overlayPositionType: OverlayPositionType;
+    readonly overlayBackground: OverlayBackground;
+    readonly overlayBackgroundInteraction: OverlayBackgroundInteraction;
   }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -666,7 +666,7 @@ declare global {
       | GroupNode
       | ComponentNode
       | InstanceNode
-      | null; // PROPOSED API ONLY
+      | null;
   }
 
   interface FrameNode extends DefaultFrameMixin {
