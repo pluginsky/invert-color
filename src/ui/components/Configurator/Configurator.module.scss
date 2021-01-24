@@ -1,0 +1,15 @@
+.configurator {
+  margin-top: var(--size-xxsmall);
+  margin-bottom: var(--size-xsmall);
+}
+
+.sectionTitle {
+  height: unset;
+  padding-bottom: var(--size-xxxsmall);
+  text-transform: capitalize;
+}
+
+.option {
+  height: var(--size-small);
+  text-transform: capitalize;
+}
