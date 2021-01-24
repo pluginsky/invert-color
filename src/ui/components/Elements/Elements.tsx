@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
 import { options } from '../../../shared/constants/options';
+import { useSearch } from '../../store';
 
 import styles from './Elements.module.scss';
 
 export const Elements = () => {
-  const [searchValue, setSearchValue] = useState('');
+  // const [searchValue, setSearchValue] = useState('');
+
+  const { searchValue, setSearchValue } = useSearch();
 
   return (
     <>

@@ -6,9 +6,12 @@
   "license": "MIT",
   "main": "code.js",
   "scripts": {
+    "release": "rimraf dist/* && npm run prettier && npm run lint && npm run build",
     "build": "webpack",
     "watch": "webpack --watch",
+    "lint": "eslint 'src/**/*.{tsx,ts}' --fix",
     "prettier": "prettier --write 'src/**/*.{html,scss,css,tsx,ts}'",
+    "commit": "git-cz",
     "test": "jest --coverage"
   },
   "repository": {
@@ -20,7 +23,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-figma-ui": "^1.0.1",
-    "react-sweet-state": "^2.5.1",
     "zustand": "^3.3.1"
   },
   "devDependencies": {
@@ -29,7 +31,18 @@
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "css-loader": "^3.5.3",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-inline-source-plugin": "^0.0.10",
     "html-webpack-plugin": "^3.2.0",
@@ -52,6 +65,11 @@
       "^.+\\.ts?$": "ts-jest"
     }
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -60,6 +78,9 @@
   "lint-staged": {
     "src/**/*.{html,scss,css,tsx,ts}": [
       "npm run prettier"
+    ],
+    "src/**/*.{tsx,ts}": [
+      "npm run lint"
     ]
   }
 }

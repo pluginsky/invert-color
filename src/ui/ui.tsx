@@ -24,11 +24,11 @@ export const App = () => {
 
   return (
     <main className={styles.pluginWrapper}>
-      <Tabs
+      {/* <Tabs
         items={tabs}
         active={activeTab}
         onChange={(tab) => setActiveTab(tab)}
-      />
+      /> */}
 
       <section className={styles.tabsContent}>
         {activeTab === 'colors' ? <Colors /> : <Elements />}
