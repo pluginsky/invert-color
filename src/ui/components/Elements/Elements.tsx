@@ -27,9 +27,11 @@ export const Elements = () => {
         />
       </div>
 
-      {Object.entries(options).map(([title, optionGroup]) => (
-        <Configurator title={title} options={optionGroup} key={title} />
-      ))}
+      {Object.entries(options)
+        // .filter(([_title, optionGroup]) => optionGroup.includes(searchValue))
+        .map(([title, optionGroup]) => (
+          <Configurator title={title} options={optionGroup} key={title} />
+        ))}
     </>
   );
 };

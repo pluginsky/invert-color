@@ -1,14 +1,16 @@
 import create from 'zustand';
 
+export type Selected = {
+  readonly parts: string[];
+  readonly nodes: string[];
+  readonly paints: string[];
+};
+
 type State = {
-  readonly selected: {
-    readonly parts: string[];
-    readonly nodes: string[];
-    readonly paints: string[];
-  };
+  readonly selected: Selected;
   addToSelected: (item: string, group: any) => void;
   removeFromSelected: (item: string, group: any) => void;
-  setSelected: (selected: any) => void;
+  setSelected: (selected: Selected) => void;
 };
 
 export const useStore = create<State>((set) => ({

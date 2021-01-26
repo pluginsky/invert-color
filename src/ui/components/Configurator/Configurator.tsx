@@ -30,6 +30,8 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
   const handleTitleClick = useCallback(() => {
     // const x = options.length > selected;
 
+    // console.log('tick');
+
     if (checkCounter.current % 2 === 0) {
       filteredOptions.map((option) => addToSelected(option, title));
     } else {
@@ -58,12 +60,12 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
           id={option}
           key={option}
           containerProps={{ className: styles.option }}
-          checked={selected[title].includes(option)}
+          checked={selected?.[title].includes(option)}
           // TODO onchange
           onChange={null}
           // TODO refactor
           onClick={() => {
-            if (selected[title].includes(option)) {
+            if (selected?.[title].includes(option)) {
               removeFromSelected(option, title);
             } else {
               addToSelected(option, title);

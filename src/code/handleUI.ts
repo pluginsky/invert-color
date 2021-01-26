@@ -26,7 +26,7 @@ const handleUIMessage = async (message: ExtendedMessage) => {
 
   switch (message.type) {
     case 'save':
-      console.log(message.data);
+      // console.log(message.data);
 
       await save(message.data);
 
@@ -64,14 +64,20 @@ const handleUIMessage = async (message: ExtendedMessage) => {
   }
 };
 
-export const handleUI = async () => {
+export const handleUI = () => {
   figma.showUI(__html__, { height: 440 });
 
-  console.log(await StoreService.getState(StorageKey.Settings));
+  // console.log(await StoreService.getState(StorageKey.Settings));
 
   figma.ui.postMessage({
     type: 'get-settings',
-    data: await StoreService.getState(StorageKey.Settings),
+    data: async () => {
+      try {
+        return await StoreService.getState(StorageKey.Settings);
+      } catch (err) {
+        return undefined;
+      }
+    },
   });
 
   figma.ui.onmessage = (message) => {

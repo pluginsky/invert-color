@@ -7,12 +7,13 @@ import { useStore } from '../../store';
 import styles from './Actions.module.scss';
 
 type PostMessageCallback = (type: ActionType, data?: any) => void;
-// type PostMessageCallback = (type: ActionType) => void;
 
 export const Actions = () => {
   const { selected } = useStore();
 
   const postMessage = useCallback<PostMessageCallback>((type, selected) => {
+    alert(selected);
+
     parent.postMessage({ pluginMessage: { type, data: selected } }, '*');
   }, []);
 
