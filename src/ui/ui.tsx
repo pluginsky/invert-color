@@ -4,6 +4,8 @@ import { Tabs } from './components/Tabs/Tabs';
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
 import { Colors } from './components/Colors/Colors';
+import { options } from '../shared/constants/options';
+import { useStore } from './store';
 import type { TabId, Tab } from './types/Tab';
 
 import styles from './ui.module.scss';
@@ -22,13 +24,35 @@ export const tabs = [
 export const App = () => {
   const [activeTab, setActiveTab] = useState<TabId>('elements');
 
+  const { setSelected } = useStore();
+
+  const handleGetSettings = (data: any) => {
+    if (!data) {
+      return setSelected(options);
+    }
+
+    setSelected(data.selected);
+  };
+
+  onmessage = (event: MessageEvent<any>) => {
+    switch (event.data.pluginMessage.type) {
+      case 'get-settings':
+        handleGetSettings(event.data.pluginMessage.data);
+
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <main className={styles.pluginWrapper}>
-      {/* <Tabs
+      <Tabs
         items={tabs}
         active={activeTab}
         onChange={(tab) => setActiveTab(tab)}
-      /> */}
+      />
 
       <section className={styles.tabsContent}>
         {activeTab === 'colors' ? <Colors /> : <Elements />}

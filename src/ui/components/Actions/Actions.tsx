@@ -2,14 +2,18 @@ import React, { useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
 import { ActionType } from '../../../shared/types/ActionType';
+import { useStore } from '../../store';
 
 import styles from './Actions.module.scss';
 
-type PostMessageCallback = (type: ActionType) => void;
+type PostMessageCallback = (type: ActionType, data?: any) => void;
+// type PostMessageCallback = (type: ActionType) => void;
 
 export const Actions = () => {
-  const postMessage = useCallback<PostMessageCallback>((type) => {
-    parent.postMessage({ pluginMessage: { type } }, '*');
+  const { selected } = useStore();
+
+  const postMessage = useCallback<PostMessageCallback>((type, selected) => {
+    parent.postMessage({ pluginMessage: { type, data: selected } }, '*');
   }, []);
 
   return (
@@ -18,13 +22,20 @@ export const Actions = () => {
         Cancel
       </Button>
 
+      {/* TODO add run without saving/run once */}
       <div className={styles.messageActions}>
-        <Button tint="primary" onClick={() => postMessage('save')}>
+        <Button
+          tint="primary"
+          onClick={() => postMessage('save', { selected })}
+        >
           Save
         </Button>
 
-        <Button tint="primary" onClick={() => postMessage('save-invert')}>
-          Save & Invert
+        <Button
+          tint="primary"
+          onClick={() => postMessage('save-invert', { selected })}
+        >
+          Save + Invert
         </Button>
       </div>
     </div>

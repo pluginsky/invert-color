@@ -1,25 +1,36 @@
 import { save } from './actions/save';
 import { invert } from './actions/invert';
 import { excludeColors } from './actions/excludeColors';
+import { StoreService } from './services/StoreService';
+import { StorageKey } from './enums/StorageKey';
 
-const checkIsAtLeastElementSelectedOrClosePlugin = () => {
-  if (!figma.currentPage.selection.length) {
-    return figma.closePlugin('Select at least 1 element');
-  }
-};
+// const checkIsAtLeastElementSelectedOrClosePlugin = () => {
+//   if (!figma.currentPage.selection.length) {
+//     return figma.closePlugin('Select at least 1 element');
+//   }
+// };
 
 const hideUI = () => {
   figma.ui.close();
 };
 
-const handleUIMessage = async (message: MessageEvent) => {
+interface ExtendedMessage extends MessageEvent {
+  readonly settings: any;
+  readonly excluded: string[];
+}
+
+const handleUIMessage = async (message: ExtendedMessage) => {
   // checkIsAtLeastElementSelectedOrClosePlugin();
 
   hideUI();
 
   switch (message.type) {
     case 'save':
+      console.log(message.data);
+
       await save(message.data);
+
+      figma.closePlugin();
 
       break;
 
@@ -40,6 +51,11 @@ const handleUIMessage = async (message: MessageEvent) => {
 
       break;
 
+    case 'get-settings':
+      // figma.ui.postMessage({ pluginMessage: { type: 'get-settings' } });
+
+      break;
+
     case 'cancel':
       return figma.closePlugin();
 
@@ -48,8 +64,15 @@ const handleUIMessage = async (message: MessageEvent) => {
   }
 };
 
-export const handleUI = () => {
+export const handleUI = async () => {
   figma.showUI(__html__, { height: 440 });
+
+  console.log(await StoreService.getState(StorageKey.Settings));
+
+  figma.ui.postMessage({
+    type: 'get-settings',
+    data: await StoreService.getState(StorageKey.Settings),
+  });
 
   figma.ui.onmessage = (message) => {
     handleUIMessage(message);

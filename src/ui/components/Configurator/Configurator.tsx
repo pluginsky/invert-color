@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from 'react';
+import React, { memo, useCallback, useRef, useState, useEffect } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useStore, useSearch } from '../../store';
@@ -23,43 +23,56 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
 
   const checkCounter = useRef(0);
 
+  const [filteredOptions, setFilteredOptions] = useState(options);
+
   // TODO refactor
   // TODO toggle only visible (after filter)
   const handleTitleClick = useCallback(() => {
+    // const x = options.length > selected;
+
     if (checkCounter.current % 2 === 0) {
-      options.map((option) => addToSelected(option));
+      filteredOptions.map((option) => addToSelected(option, title));
     } else {
-      options.map((option) => removeFromSelected(option));
+      filteredOptions.map((option) => removeFromSelected(option, title));
     }
 
     checkCounter.current += 1;
-  }, [addToSelected, options, removeFromSelected]);
+  }, [addToSelected, filteredOptions, removeFromSelected, title]);
+
+  useEffect(() => {
+    // TODO refactor
+    setFilteredOptions(
+      options.filter((option) => option.includes(searchValue))
+    );
+  }, [options, searchValue]);
 
   return (
     <div className={styles.configurator}>
+      {/* TODO add visible checkbox */}
       <SectionTitle className={styles.sectionTitle} onClick={handleTitleClick}>
         {title}
       </SectionTitle>
 
-      {options
-        .filter((option) => option.includes(searchValue))
-        .map((option) => (
-          <Checkbox
-            id={option}
-            containerProps={{ className: styles.option }}
-            checked={selected.includes(option)}
-            // TODO refactor
-            onClick={() => {
-              if (selected.includes(option)) {
-                removeFromSelected(option);
-              } else {
-                addToSelected(option);
-              }
-            }}
-          >
-            {prepareOptionName(option)}
-          </Checkbox>
-        ))}
+      {filteredOptions.map((option) => (
+        <Checkbox
+          id={option}
+          key={option}
+          containerProps={{ className: styles.option }}
+          checked={selected[title].includes(option)}
+          // TODO onchange
+          onChange={null}
+          // TODO refactor
+          onClick={() => {
+            if (selected[title].includes(option)) {
+              removeFromSelected(option, title);
+            } else {
+              addToSelected(option, title);
+            }
+          }}
+        >
+          {prepareOptionName(option)}
+        </Checkbox>
+      ))}
     </div>
   );
 });
