@@ -23,6 +23,8 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
 
   const checkCounter = useRef(0);
 
+  // alert(options.length + ' ' + selected[title].length);
+
   const [filteredOptions, setFilteredOptions] = useState(options);
 
   // TODO refactor
@@ -32,14 +34,31 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
 
     // console.log('tick');
 
-    if (checkCounter.current % 2 === 0) {
+    if (options.length > selected[title].length) {
       filteredOptions.map((option) => addToSelected(option, title));
+
+      return (checkCounter.current = 1);
     } else {
       filteredOptions.map((option) => removeFromSelected(option, title));
+
+      return (checkCounter.current = 0);
     }
 
-    checkCounter.current += 1;
-  }, [addToSelected, filteredOptions, removeFromSelected, title]);
+    // if (checkCounter.current % 2 === 0) {
+    //   filteredOptions.map((option) => addToSelected(option, title));
+    // } else {
+    //   filteredOptions.map((option) => removeFromSelected(option, title));
+    // }
+
+    // checkCounter.current += 1;
+  }, [
+    addToSelected,
+    filteredOptions,
+    options.length,
+    removeFromSelected,
+    selected,
+    title,
+  ]);
 
   useEffect(() => {
     // TODO refactor
