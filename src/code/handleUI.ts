@@ -1,5 +1,5 @@
 import { save } from './actions/save';
-import { invert } from './actions/invert';
+// import { invert } from './actions/invert';
 import { excludeColors } from './actions/excludeColors';
 import { StoreService } from './services/StoreService';
 import { StorageKey } from './enums/StorageKey';
@@ -25,19 +25,23 @@ const handleUIMessage = async (message: ExtendedMessage) => {
       break;
 
     case 'invert':
-      invert();
+      // invert(message.data);
 
       break;
 
     case 'save-invert':
       await save(message.data);
 
-      invert();
+      // invert(message.data);
+
+      figma.closePlugin();
 
       break;
 
     case 'exclude-colors':
       excludeColors();
+
+      figma.closePlugin();
 
       break;
 
@@ -57,7 +61,7 @@ export const handleUI = async () => {
     data: await StoreService.getState(StorageKey.Settings),
   });
 
-  figma.ui.onmessage = (message) => {
+  figma.ui.onmessage = (message: any) => {
     handleUIMessage(message);
   };
 };
