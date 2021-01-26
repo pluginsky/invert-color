@@ -1,9 +1,11 @@
 import create from 'zustand';
 
-export const useSearch = create<{
+type State = {
   readonly searchValue: string;
   setSearchValue: (newValue: string) => void;
-}>((set) => ({
+};
+
+export const useSearch = create<State>((set) => ({
   searchValue: '',
   setSearchValue: (newValue) => set(() => ({ searchValue: newValue })),
 }));

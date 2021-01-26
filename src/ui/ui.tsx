@@ -3,7 +3,8 @@ import React from 'react';
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
 import { options } from '../shared/constants/options';
-import { Selected, useOptions } from './hooks/useOptions';
+import { useOptions } from './hooks/useOptions';
+import type { Selected } from './types/Selected';
 
 import styles from './ui.module.scss';
 
