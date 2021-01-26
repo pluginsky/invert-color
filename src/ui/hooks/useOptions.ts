@@ -13,7 +13,7 @@ type State = {
   setSelected: (selected: Selected) => void;
 };
 
-export const useStore = create<State>((set) => ({
+export const useOptions = create<State>((set) => ({
   selected: {
     parts: [],
     nodes: [],
@@ -40,12 +40,4 @@ export const useStore = create<State>((set) => ({
     }));
   },
   setSelected: (selected) => set(() => ({ selected })),
-}));
-
-export const useSearch = create<{
-  searchValue: string;
-  setSearchValue: (newValue: string) => void;
-}>((set) => ({
-  searchValue: '',
-  setSearchValue: (newValue) => set(() => ({ searchValue: newValue })),
 }));

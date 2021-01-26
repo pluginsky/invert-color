@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
 import { ActionType } from '../../../shared/types/ActionType';
-import { useStore } from '../../store';
+import { useOptions } from '../../hooks/useOptions';
 
 import styles from './Actions.module.scss';
 
 type PostMessageCallback = (type: ActionType, data?: any) => void;
 
 export const Actions = () => {
-  const { selected } = useStore();
+  const { selected } = useOptions();
 
   const postMessage = useCallback<PostMessageCallback>((type, selected) => {
     alert(selected);
@@ -23,7 +23,6 @@ export const Actions = () => {
         Cancel
       </Button>
 
-      {/* TODO add run without saving/run once */}
       <div className={styles.messageActions}>
         <Button
           tint="primary"
