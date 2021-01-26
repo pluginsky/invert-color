@@ -12,8 +12,6 @@ export const Actions = () => {
   const { selected } = useOptions();
 
   const postMessage = useCallback<PostMessageCallback>((type, selected) => {
-    alert(selected);
-
     parent.postMessage({ pluginMessage: { type, data: selected } }, '*');
   }, []);
 
