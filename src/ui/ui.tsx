@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Tabs } from './components/Tabs/Tabs';
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
-import { Colors } from './components/Colors/Colors';
 import { options } from '../shared/constants/options';
-import { Selected, useStore } from './store';
-import type { TabId, Tab } from './types/Tab';
+import { useOptions } from './hooks/useOptions';
+import type { Selected } from './types/Selected';
 
 import styles from './ui.module.scss';
-
-export const tabs = [
-  {
-    name: 'Elements',
-    id: 'elements',
-  },
-  {
-    name: 'Excluded Colors',
-    id: 'colors',
-  },
-] as Tab[];
 
 type Data = {
   readonly selected?: Selected;
 };
 
-export const App = () => {
-  const [activeTab, setActiveTab] = useState<TabId>('elements');
+type FigmaEventMessage = {
+  readonly type: any;
+  readonly data: Data;
+};
 
-  const { setSelected } = useStore();
+type FigmaEvent = MessageEvent<{ readonly pluginMessage: FigmaEventMessage }>;
+
+export const App = () => {
+  const { setSelected } = useOptions();
 
   const handleGetSettings = (data?: Data) => {
     if (!data?.selected) {
@@ -38,9 +30,7 @@ export const App = () => {
     setSelected(data.selected);
   };
 
-  onmessage = (
-    event: MessageEvent<{ pluginMessage: { type: any; data: Data } }>
-  ) => {
+  onmessage = (event: FigmaEvent) => {
     switch (event.data.pluginMessage.type) {
       case 'get-settings':
         handleGetSettings(event.data.pluginMessage.data);
@@ -54,14 +44,8 @@ export const App = () => {
 
   return (
     <main className={styles.pluginWrapper}>
-      <Tabs
-        items={tabs}
-        active={activeTab}
-        onChange={(tab) => setActiveTab(tab)}
-      />
-
       <section className={styles.tabsContent}>
-        {activeTab === 'colors' ? <Colors /> : <Elements />}
+        <Elements />
       </section>
 
       <Actions />

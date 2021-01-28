@@ -1,7 +1,8 @@
 import React, { memo, useCallback, useRef, useState, useEffect } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
-import { useStore, useSearch } from '../../store';
+import { useOptions } from '../../hooks/useOptions';
+import { useSearch } from '../../hooks/useSearch';
 
 import styles from './Configurator.module.scss';
 
@@ -15,7 +16,7 @@ const prepareOptionName = (option: string) => {
 };
 
 export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
-  const { selected, addToSelected, removeFromSelected } = useStore(
+  const { selected, addToSelected, removeFromSelected } = useOptions(
     (state) => state
   );
 
@@ -27,8 +28,6 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
 
   const [filteredOptions, setFilteredOptions] = useState(options);
 
-  // TODO refactor
-  // TODO toggle only visible (after filter)
   const handleTitleClick = useCallback(() => {
     // const x = options.length > selected;
 
@@ -61,7 +60,6 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
   ]);
 
   useEffect(() => {
-    // TODO refactor
     setFilteredOptions(
       options.filter((option) => option.includes(searchValue))
     );
@@ -69,7 +67,6 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
 
   return (
     <div className={styles.configurator}>
-      {/* TODO add visible checkbox */}
       <SectionTitle className={styles.sectionTitle} onClick={handleTitleClick}>
         {title}
       </SectionTitle>
@@ -80,9 +77,6 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
           key={option}
           containerProps={{ className: styles.option }}
           checked={selected?.[title].includes(option)}
-          // TODO onchange
-          onChange={null}
-          // TODO refactor
           onClick={() => {
             if (selected?.[title].includes(option)) {
               removeFromSelected(option, title);

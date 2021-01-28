@@ -3,4 +3,5 @@ export type ActionType =
   | 'invert'
   | 'save-invert'
   | 'exclude-colors'
+  | 'get-settings'
   | 'cancel';
