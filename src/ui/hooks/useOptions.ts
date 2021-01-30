@@ -2,10 +2,12 @@ import create from 'zustand';
 
 import type { Selected } from '../types/Selected';
 
+type Group = keyof Selected;
+
 type State = {
   readonly selected: Selected;
-  addToSelected: (item: string, group: any) => void;
-  removeFromSelected: (item: string, group: any) => void;
+  addToSelected: (item: string, group: Group) => void;
+  removeFromSelected: (item: string, group: Group) => void;
   setSelected: (selected: Selected) => void;
 };
 

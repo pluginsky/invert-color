@@ -6,12 +6,14 @@ import { useOptions } from '../../hooks/useOptions';
 
 import styles from './Actions.module.scss';
 
+// TODO any
 type PostMessageCallback = (type: ActionType, data?: any) => void;
 
 export const Actions = () => {
   const { selected } = useOptions();
 
   const postMessage = useCallback<PostMessageCallback>((type, selected) => {
+    // TODO parent -> window
     parent.postMessage({ pluginMessage: { type, data: selected } }, '*');
   }, []);
 

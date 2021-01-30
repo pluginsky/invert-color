@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
@@ -8,37 +8,27 @@ import type { Selected } from './types/Selected';
 
 import styles from './ui.module.scss';
 
-type Data = {
-  readonly selected?: Selected;
-};
-
-type FigmaEventMessage = {
-  readonly type: any;
-  readonly data: Data;
-};
-
-type FigmaEvent = MessageEvent<{ readonly pluginMessage: FigmaEventMessage }>;
+type HandleGetSettingsCallback = (data?: Selected) => void;
 
 export const App = () => {
   const { setSelected } = useOptions();
 
-  const handleGetSettings = (data?: Data) => {
-    if (!data?.selected) {
-      return setSelected(options);
-    }
+  const handleGetSettings = useCallback<HandleGetSettingsCallback>(
+    (data) => {
+      if (!data) {
+        return setSelected(options);
+      }
 
-    setSelected(data.selected);
-  };
+      setSelected(data);
+    },
+    [setSelected]
+  );
 
-  onmessage = (event: FigmaEvent) => {
-    switch (event.data.pluginMessage.type) {
-      case 'get-settings':
-        handleGetSettings(event.data.pluginMessage.data);
+  onmessage = (event: MessageEvent) => {
+    const { type, data } = event.data.pluginMessage;
 
-        break;
-
-      default:
-        break;
+    if (type === 'get-settings') {
+      handleGetSettings(data);
     }
   };
 

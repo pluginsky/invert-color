@@ -12,29 +12,21 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       { test: /\.tsx?$/, loader: "ts-loader", exclude: /node_modules/ },
-      { test: /\.scss$/, use: ["style-loader", {
-        loader: "css-loader",
-        options: {
-          modules: true,
-        },
-      }, "sass-loader"] },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          "sass-loader",
+        ],
+      },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
       { test: /\.(png|jpg|gif|webp|svg|zip)$/, loader: "url-loader" },
-    //   {
-    //     test: /\.(css|scss)$/,
-    //     use: [
-    //       'style-loader',
-    //       {
-    //         loader: 'css-loader',
-    //         options: {
-    //           modules: true,
-    //           importLoaders: 1,
-    //           localIdentName: '[name]__[local]__[hash:base64:5]'
-    //         }
-    //       }
-    //     ],
-    //     include: /\.module\.css$/
-    // },
     ],
   },
   resolve: { extensions: [".tsx", ".ts", ".jsx", ".js"] },

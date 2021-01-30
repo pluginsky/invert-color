@@ -18,7 +18,7 @@
     },
     {
       "name": "Configure From Elements",
-      "command": "get-config-from-elements"
+      "command": "configure-from-elements"
     },
     {
       "name": "Exclude Colors",

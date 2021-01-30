@@ -1,3 +1,3 @@
-import { handleCommands } from './handleCommand';
+import { pluginCommands } from './pluginCommands';
 
-handleCommands();
+pluginCommands();

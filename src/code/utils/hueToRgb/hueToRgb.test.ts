@@ -2,6 +2,6 @@ import { hueToRgb } from './hueToRgb';
 
 describe('hueToRgb', () => {
   it.skip('should', () => {
-    // expect(hueToRgb())
+    expect(hueToRgb(255)).toBe(true);
   });
 });
