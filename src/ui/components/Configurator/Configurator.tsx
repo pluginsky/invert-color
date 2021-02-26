@@ -26,6 +26,7 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
 
   const [filteredOptions, setFilteredOptions] = useState(options);
 
+  // TODO
   const handleTitleClick = useCallback(() => {
     if (options.length > selected[title].length) {
       filteredOptions.map((option) => addToSelected(option, title));
@@ -45,6 +46,15 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
     title,
   ]);
 
+  // TODO
+  const handleClick = (option) => {
+    if (selected?.[title].includes(option)) {
+      removeFromSelected(option, title);
+    } else {
+      addToSelected(option, title);
+    }
+  };
+
   useEffect(() => {
     setFilteredOptions(
       options.filter((option) => option.includes(searchValue))
@@ -63,13 +73,7 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
           key={option}
           containerProps={{ className: styles.option }}
           checked={selected?.[title].includes(option)}
-          onClick={() => {
-            if (selected?.[title].includes(option)) {
-              removeFromSelected(option, title);
-            } else {
-              addToSelected(option, title);
-            }
-          }}
+          onClick={() => handleClick(option)} // TODO from event?
         >
           {prepareOptionName(option)}
         </Checkbox>

@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-import type { Selected } from '../types/Selected';
+import type { Selected } from '../../shared/types/Selected';
 
 type Group = keyof Selected;
 

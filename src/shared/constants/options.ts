@@ -31,4 +31,4 @@ export const options = {
   parts,
   nodes,
   paints,
-};
+} as const;

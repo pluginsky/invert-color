@@ -19,21 +19,23 @@ const handleUIMessage = async (message: ExtendedMessage) => {
   // console.log('test');
 
   switch (message.type) {
-    case 'save':
+    case 'save': {
       await save(message.data.selected);
 
       figma.closePlugin();
 
       break;
+    }
 
-    case 'invert':
+    case 'invert': {
       requireSelection();
 
       invert(message.data.selected);
 
       break;
+    }
 
-    case 'save-invert':
+    case 'save-invert': {
       await save(message.data.selected);
 
       console.log(message);
@@ -45,6 +47,7 @@ const handleUIMessage = async (message: ExtendedMessage) => {
       figma.closePlugin();
 
       break;
+    }
 
     case 'cancel':
       return figma.closePlugin();
@@ -59,16 +62,36 @@ type DefaultOptions = {
   readonly configuration?: any;
 };
 
-export const uiActions = async (params?: DefaultOptions) => {
+export const uiActions = async (params: DefaultOptions = {}) => {
   // console.log(configuration);
 
+  // const { colors = [], configuration } = params;
   // const { colors = [], configuration = {} } = params;
 
   figma.showUI(__html__, { height: 440 });
 
+  // try {
+  //   await StoreService.getState(StorageKey.Settings);
+  // } catch (err) {
+  //   console.log('aaa', err.message);
+  // }
+
+  // console.log(configuration);
+
+  // let data = (await StoreService.getState(StorageKey.Settings)) || {};
+
+  // console.log(configuration, 'aaa');
+
+  // if (configuration) {
+  //   data = { ...data, ...configuration };
+  // }
+
+  // console.log(data, 'aaa');
+
   // TODO
   figma.ui.postMessage({
     type: 'get-settings',
+    // data,
     data: await StoreService.getState(StorageKey.Settings),
   });
 

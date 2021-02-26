@@ -1,9 +1,11 @@
 import { options } from '../../shared/constants/options';
 import { clone } from '../utils/clone/clone';
 
+// import { Selected } from '../../ui/types/Selected';
+
 export const configureFromElements = () => {
   // TODO
-  const settings: Settings = {
+  const settings: Selected = {
     nodes: [],
     parts: [],
     paints: [],
@@ -36,6 +38,8 @@ export const configureFromElements = () => {
       });
     });
   });
+
+  console.log(settings);
 
   return settings;
 };

@@ -4,7 +4,7 @@ import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
 import { options } from '../shared/constants/options';
 import { useOptions } from './hooks/useOptions';
-import type { Selected } from './types/Selected';
+import type { Selected } from '../shared/types/Selected';
 
 import styles from './ui.module.scss';
 
@@ -24,8 +24,11 @@ export const App = () => {
     [setSelected]
   );
 
+  // TODO update types
   onmessage = (event: MessageEvent) => {
     const { type, data } = event.data.pluginMessage;
+
+    console.log(type);
 
     if (type === 'get-settings') {
       handleGetSettings(data);

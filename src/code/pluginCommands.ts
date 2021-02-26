@@ -6,9 +6,10 @@ import { invert } from './actions/invert';
 import { configureFromElements } from './actions/configureFromElements';
 import { excludeColors } from './actions/excludeColors';
 
+// TODO repalce strings with enum
 export const pluginCommands = async () => {
   switch (figma.command) {
-    case 'invert':
+    case 'invert': {
       requireSelection();
 
       const settings = await StoreService.getState(StorageKey.Settings);
@@ -22,13 +23,15 @@ export const pluginCommands = async () => {
       uiActions();
 
       break;
+    }
 
-    case 'configure':
+    case 'configure': {
       uiActions();
 
       break;
+    }
 
-    case 'configure-from-elements':
+    case 'configure-from-elements': {
       requireSelection();
 
       const configuration = configureFromElements();
@@ -36,8 +39,9 @@ export const pluginCommands = async () => {
       uiActions({ configuration });
 
       break;
+    }
 
-    case 'exclude-colors':
+    case 'exclude-colors': {
       requireSelection();
 
       const colors = await excludeColors();
@@ -45,6 +49,7 @@ export const pluginCommands = async () => {
       uiActions({ colors });
 
       break;
+    }
 
     default:
       break;
