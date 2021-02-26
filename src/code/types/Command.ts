@@ -1,5 +1,1 @@
-export type Command =
-  | 'invert'
-  | 'configure'
-  | 'configure-from-elements'
-  | 'exclude-colors';
+export type Command = 'invert' | 'configure' | 'configure-from-elements';

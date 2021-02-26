@@ -58,15 +58,14 @@ const handleUIMessage = async (message: ExtendedMessage) => {
 };
 
 type DefaultOptions = {
-  readonly colors?: any;
   readonly configuration?: any;
 };
 
 export const uiActions = async (params: DefaultOptions = {}) => {
   // console.log(configuration);
 
-  // const { colors = [], configuration } = params;
-  // const { colors = [], configuration = {} } = params;
+  // const { configuration } = params;
+  // const { configuration = {} } = params;
 
   figma.showUI(__html__, { height: 440 });
 

@@ -81,12 +81,7 @@ import { hueToRgb } from '../utils/hueToRgb/hueToRgb';
 //   // })
 // };
 
-export const invert = async ({
-  parts,
-  nodes: elements,
-  paints: patterns,
-  colors = [],
-}) => {
+export const invert = async ({ parts, nodes: elements, paints: patterns }) => {
   console.log(parts, elements, patterns);
 
   const runInvert = async (selections: readonly SceneNode[]) => {
@@ -116,9 +111,7 @@ export const invert = async ({
                   case 'DROP_SHADOW':
                   case 'INNER_SHADOW': {
                     // console.log(hueToRgb(level.color), level.color);
-                    if (!colors.includes(hueToRgb(level.color))) {
-                      invertColor(level.color);
-                    }
+                    invertColor(level.color);
 
                     selected[part] = temporary;
 
@@ -130,9 +123,7 @@ export const invert = async ({
                   case 'GRADIENT_DIAMOND':
                   case 'GRADIENT_ANGULAR': {
                     for (const stop of level.gradientStops) {
-                      if (!colors.includes(hueToRgb(stop.color))) {
-                        invertColor(stop.color);
-                      }
+                      invertColor(stop.color);
                     }
 
                     selected[part] = temporary;

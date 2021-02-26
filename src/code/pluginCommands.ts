@@ -4,7 +4,6 @@ import { StoreService } from './services/StoreService';
 import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 import { configureFromElements } from './actions/configureFromElements';
-import { excludeColors } from './actions/excludeColors';
 
 // TODO repalce strings with enum
 export const pluginCommands = async () => {
@@ -37,16 +36,6 @@ export const pluginCommands = async () => {
       const configuration = configureFromElements();
 
       uiActions({ configuration });
-
-      break;
-    }
-
-    case 'exclude-colors': {
-      requireSelection();
-
-      const colors = await excludeColors();
-
-      uiActions({ colors });
 
       break;
     }
