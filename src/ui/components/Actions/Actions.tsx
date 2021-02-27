@@ -1,22 +1,19 @@
 import React, { useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
-import { ActionType } from '../../../shared/types/ActionType';
 import { useOptions } from '../../hooks/useOptions';
-// import type { Selected } from '../../types/Selected';
 
 import styles from './Actions.module.scss';
 
-// TODO any
-// type PostMessageCallback = (type: 'save', { selected }: {selected:Selected}) => void;
-type PostMessageCallback = (type: ActionType, data?: any) => void;
+// TODO add better type check
+type PostMessageCallback = (type: string, data?: any) => void;
 
 export const Actions = () => {
   const { selected } = useOptions();
 
-  const postMessage = useCallback<PostMessageCallback>((type, selected) => {
+  const postMessage = useCallback<PostMessageCallback>((type, data) => {
     // eslint-disable-next-line no-restricted-globals
-    parent.postMessage({ pluginMessage: { type, data: selected } }, '*');
+    parent.postMessage({ pluginMessage: { type, data } }, '*');
   }, []);
 
   return (

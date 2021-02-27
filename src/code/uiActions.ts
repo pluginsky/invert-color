@@ -38,7 +38,7 @@ const handleUIMessage = async (message: ExtendedMessage) => {
     case 'save-invert': {
       await save(message.data.selected);
 
-      console.log(message);
+      // console.log(message);
 
       requireSelection();
 
@@ -62,10 +62,10 @@ type DefaultOptions = {
 };
 
 export const uiActions = async (params: DefaultOptions = {}) => {
-  // console.log(configuration);
-
-  // const { configuration } = params;
+  const { configuration } = params;
   // const { configuration = {} } = params;
+
+  console.log(configuration);
 
   figma.showUI(__html__, { height: 440 });
 
@@ -77,21 +77,21 @@ export const uiActions = async (params: DefaultOptions = {}) => {
 
   // console.log(configuration);
 
-  // let data = (await StoreService.getState(StorageKey.Settings)) || {};
+  let data = (await StoreService.getState(StorageKey.Settings)) || {};
 
   // console.log(configuration, 'aaa');
 
-  // if (configuration) {
-  //   data = { ...data, ...configuration };
-  // }
+  if (configuration) {
+    data = { ...data, ...configuration };
+  }
 
   // console.log(data, 'aaa');
 
   // TODO
   figma.ui.postMessage({
     type: 'get-settings',
-    // data,
-    data: await StoreService.getState(StorageKey.Settings),
+    data,
+    // data: await StoreService.getState(StorageKey.Settings),
   });
 
   figma.ui.onmessage = (message: ExtendedMessage) => {

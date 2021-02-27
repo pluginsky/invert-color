@@ -1,0 +1,23 @@
+// TODO
+.messageScreen {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  text-align: center;
+  padding: var(--size-xsmall);
+  padding-bottom: var(--size-medium);
+}
+
+// TODO
+.contentWrapper {
+  width: 100%;
+}
+
+.title {
+  font-size: var(--font-size-xlarge);
+}
+
+.message {
+  font-size: var(--font-size-small);
+}

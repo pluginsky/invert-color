@@ -9,7 +9,11 @@ import { configureFromElements } from './actions/configureFromElements';
 export const pluginCommands = async () => {
   switch (figma.command) {
     case 'invert': {
-      requireSelection();
+      // TODO
+      // requireSelection();
+      if (!figma.currentPage.selection.length) {
+        return figma.closePlugin('Select at least 1 element');
+      }
 
       const settings = await StoreService.getState(StorageKey.Settings);
 
@@ -31,7 +35,11 @@ export const pluginCommands = async () => {
     }
 
     case 'configure-from-elements': {
-      requireSelection();
+      // TODO
+      // requireSelection();
+      if (!figma.currentPage.selection.length) {
+        return figma.closePlugin('Select at least 1 element');
+      }
 
       const configuration = configureFromElements();
 

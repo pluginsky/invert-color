@@ -28,8 +28,6 @@ export const App = () => {
   onmessage = (event: MessageEvent) => {
     const { type, data } = event.data.pluginMessage;
 
-    console.log(type);
-
     if (type === 'get-settings') {
       handleGetSettings(data);
     }
