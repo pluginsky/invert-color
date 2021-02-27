@@ -6,6 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "module": "ES2020",
     "moduleResolution": "Node",
-    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
+    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
