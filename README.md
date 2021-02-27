@@ -43,6 +43,8 @@ When making changes go to Menu > Plugins > "Run Last Plugin" (Or hit ⌥⌘P for
 
 ## Build with
 
+<!-- TODO link packages -->
+
 - React
 - TypeScript
 - Zustand

@@ -1,12 +1,10 @@
 import { options } from '../../shared/constants/options';
 import { clone } from '../utils/clone/clone';
-import { Selected } from '../../shared/types/Selected';
-
-// import { Selected } from '../../ui/types/Selected';
+import { Options } from '../../shared/types/Options';
 
 export const configureFromElements = () => {
   // TODO
-  const settings: Selected = {
+  const settings: Options = {
     nodes: [],
     parts: [],
     paints: [],

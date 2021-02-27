@@ -1,14 +1,14 @@
 import create from 'zustand';
 
-import type { Selected } from '../../shared/types/Selected';
+import type { Options } from '../../shared/types/Options';
 
-type Group = keyof Selected;
+type Group = keyof Options;
 
 type State = {
-  readonly selected: Selected;
+  readonly selected: Options;
   addToSelected: (item: string, group: Group) => void;
   removeFromSelected: (item: string, group: Group) => void;
-  setSelected: (selected: Selected) => void;
+  setSelected: (selected: Options) => void;
 };
 
 export const useOptions = create<State>((set) => ({

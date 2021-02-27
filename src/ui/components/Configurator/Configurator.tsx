@@ -3,14 +3,14 @@ import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
 import { prepareOptionName } from '../../helpers/prepareOptionName';
-import { Selected } from '../../../shared/types/Selected';
+import { Options } from '../../../shared/types/Options';
 
 import styles from './Configurator.module.scss';
 
 type HandleClickCallback = (option: string) => void;
 
 type ConfiguratorProps = {
-  readonly title: keyof Selected;
+  readonly title: keyof Options;
   readonly options: string[];
 };
 

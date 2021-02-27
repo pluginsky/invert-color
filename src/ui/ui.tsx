@@ -4,11 +4,11 @@ import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
 import { options } from '../shared/constants/options';
 import { useOptions } from './hooks/useOptions';
-import type { Selected } from '../shared/types/Selected';
+import type { Options } from '../shared/types/Options';
 
 import styles from './ui.module.scss';
 
-type HandleGetSettingsCallback = (data?: Selected) => void;
+type HandleGetSettingsCallback = (data?: Options) => void;
 
 export const App = () => {
   const { setSelected } = useOptions();
