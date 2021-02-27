@@ -3,11 +3,23 @@
 [![Figma downloads](https://img.shields.io/endpoint?style=flat-square&url=https://figma-plugin-badges.vercel.app/api/installs/738840049488759901)](https://www.figma.com/community/plugin/738840049488759901/Invert-Color)
 [![Figma likes](https://img.shields.io/endpoint?style=flat-square&url=https://figma-plugin-badges.vercel.app/api/likes/738840049488759901)](https://www.figma.com/community/plugin/738840049488759901/Invert-Color)
 
-![Plugin UI](./ui.png)
-
 ## About
 
 Simply invert fills, strokes & effects colors in Figma
+
+### Features
+
+- Invert fills, strokes and effects colors of components including images! <face wow>, <magic>
+- Select which parts, nodes and paints should be inverted; filter options; toggle one, group or *all* **SOON** options with single click!
+- Save configuration in storage to use it later *or run configuration once* **SOON**
+- Set configuration based on existing components (get type of node, parts and paints)
+- Exclude colors (set them manually or get from components) **SOON**
+
+### Commands
+
+- Invert
+- Configure Settings
+- Configure From Elements
 
 ## How to run locally
 

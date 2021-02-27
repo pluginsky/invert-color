@@ -1,5 +1,6 @@
 import { options } from '../../shared/constants/options';
 import { clone } from '../utils/clone/clone';
+import { Selected } from '../../shared/types/Selected';
 
 // import { Selected } from '../../ui/types/Selected';
 
@@ -10,12 +11,6 @@ export const configureFromElements = () => {
     parts: [],
     paints: [],
   };
-
-  // const acc = (x, y) => {
-  //   if (options[x].includes(y.type.toLowerCase())) {
-  //     settings[x].push(y.type.toLowerCase());
-  //   }
-  // };
 
   // TODO? include layers
   figma.currentPage.selection.forEach((selected) => {
@@ -55,7 +50,7 @@ export const configureFromElements = () => {
     });
   });
 
-  console.log(settings);
+  // console.log(settings);
 
   return settings;
 };

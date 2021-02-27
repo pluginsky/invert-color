@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
@@ -6,6 +6,8 @@ import { prepareOptionName } from '../../helpers/prepareOptionName';
 import { Selected } from '../../../shared/types/Selected';
 
 import styles from './Configurator.module.scss';
+
+type HandleClickCallback = (option: string) => void;
 
 type ConfiguratorProps = {
   readonly title: keyof Selected;
@@ -17,20 +19,15 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
     (state) => state
   );
 
-  // TODO not working on filter
   const handleTitleClick = useCallback(() => {
-    // console.log(options.length, selected[title]);
+    const selectedAvailable = selected[title].filter((item) =>
+      options.includes(item)
+    );
 
-    // TODO
-    const x = selected[title].filter((z) => options.includes(z));
-
-    // TODO
-    if (options.length > x.length) {
+    if (options.length > selectedAvailable.length) {
       // TODO refactor
       return options.map((option) => {
-        // console.log(selected?.[title], options);
-        // TODO refactor
-        if (!x.includes(option)) {
+        if (!selectedAvailable.includes(option)) {
           return addToSelected(option, title);
         }
 
@@ -42,9 +39,8 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
   }, [addToSelected, options, removeFromSelected, selected, title]);
 
   // TODO merge with handleTitleClick?
-  const handleClick = useCallback(
-    (option: string) => {
-      // TODO update types (callback)
+  const handleClick = useCallback<HandleClickCallback>(
+    (option) => {
       if (selected?.[title].includes(option)) {
         return removeFromSelected(option, title);
       }
@@ -66,9 +62,9 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
           key={option}
           containerProps={{ className: styles.option }}
           checked={selected?.[title].includes(option)}
-          onClick={() => handleClick(option)} // TODO from event?
-          // onChange={(e) => handleClick(option)} // TODO
-          readOnly // TODO
+          // TODO replace with onChange
+          onClick={() => handleClick(option)}
+          readOnly
         >
           {prepareOptionName(option)}
         </Checkbox>

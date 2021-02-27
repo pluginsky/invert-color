@@ -13,6 +13,15 @@ module.exports = {
     browser: true,
     node: true,
   },
+  // globals: {
+  //   figma: true,
+  //   __html__: true,
+  //   Paint: true,
+  //   Effect: true,
+  //   ImagePaint: true,
+  //   RGBA: true,
+  //   SceneNode: true,
+  // },
   parserOptions: {
     ecmaVersion: 6,
     sourceType: "module",
@@ -20,5 +29,9 @@ module.exports = {
       module: true,
     },
   },
-  rules: { "no-unused-vars": "off" },
+  rules: {
+    "no-unused-vars": "off",
+    // "react/jsx-uses-react": "off",
+    // "react/react-in-jsx-scope": "off",
+  },
 };

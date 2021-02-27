@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';

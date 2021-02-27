@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
@@ -24,7 +24,7 @@ export const App = () => {
     [setSelected]
   );
 
-  // TODO update types
+  // TODO improve types
   onmessage = (event: MessageEvent) => {
     const { type, data } = event.data.pluginMessage;
 
