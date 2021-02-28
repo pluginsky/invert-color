@@ -41,11 +41,13 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
   // TODO merge with handleTitleClick?
   const handleClick = useCallback<HandleClickCallback>(
     (option) => {
-      if (selected?.[title].includes(option)) {
-        return removeFromSelected(option, title);
+      if (!selected?.[title].includes(option)) {
+        return addToSelected(option, title);
+        // return removeFromSelected(option, title);
       }
 
-      return addToSelected(option, title);
+      // return addToSelected(option, title);
+      return removeFromSelected(option, title);
     },
     [addToSelected, removeFromSelected, selected, title]
   );

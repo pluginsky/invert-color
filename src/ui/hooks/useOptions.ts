@@ -4,9 +4,6 @@ import type { Options } from '../../shared/types/Options';
 
 type Group = keyof Options;
 
-// TODO
-// Options[Group][number];
-
 type State = {
   readonly selected: Options;
   addToSelected: (item: string, group: Group) => void;
