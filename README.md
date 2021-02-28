@@ -2,6 +2,7 @@
 
 [![Figma downloads](https://img.shields.io/endpoint?style=flat-square&url=https://figma-plugin-badges.vercel.app/api/installs/738840049488759901)](https://www.figma.com/community/plugin/738840049488759901/Invert-Color)
 [![Figma likes](https://img.shields.io/endpoint?style=flat-square&url=https://figma-plugin-badges.vercel.app/api/likes/738840049488759901)](https://www.figma.com/community/plugin/738840049488759901/Invert-Color)
+[![Travis](https://img.shields.io/travis/pluginsky/invert-color/master?style=flat-square)](https://travis-ci.org/pluginsky/invert-color)
 
 ## About
 
