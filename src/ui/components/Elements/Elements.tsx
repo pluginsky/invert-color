@@ -3,7 +3,7 @@ import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
 import { options } from '../../../shared/constants/options';
-import { prepareOptionName } from '../../helpers/prepareOptionName';
+import { prepareOptionName } from '../../utils/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
 import { Options } from '../../../shared/types/Options';
 

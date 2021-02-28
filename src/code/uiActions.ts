@@ -3,14 +3,15 @@ import { StoreService } from './services/StoreService';
 import { StorageKey } from './enums/StorageKey';
 import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
+import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
 
 // TODO
-interface ExtendedMessage extends MessageEvent {
-  readonly settings: any; // TODO any
-  readonly excluded: string[];
-}
+// interface ExtendedMessage extends MessageEvent {
+//   readonly settings: any; // TODO any
+//   readonly excluded: string[];
+// }
 
-const handleUIMessage = async (message: ExtendedMessage) => {
+const handleUIMessage = async (message: PluginMessage) => {
   figma.ui.close();
 
   switch (message.type) {
@@ -72,7 +73,8 @@ export const uiActions = async (params: DefaultOptions = {}) => {
     data,
   });
 
-  figma.ui.onmessage = (message: ExtendedMessage) => {
+  // TODO
+  figma.ui.onmessage = (message: PluginMessage) => {
     handleUIMessage(message);
   };
 };

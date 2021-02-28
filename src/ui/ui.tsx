@@ -10,7 +10,7 @@ import styles from './ui.module.scss';
 
 type HandleGetSettingsCallback = (data?: Options) => void;
 
-type PluginMessage = {
+export type PluginMessage = {
   readonly type: 'get-settings';
   readonly data?: Options;
 };

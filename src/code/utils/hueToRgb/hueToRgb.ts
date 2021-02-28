@@ -1,3 +1,4 @@
+// TODO types
 export const hueToRgb = (tones: object) => {
   const rgb = [];
 

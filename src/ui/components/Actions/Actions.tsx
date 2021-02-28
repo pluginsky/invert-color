@@ -6,12 +6,13 @@ import { useOptions } from '../../hooks/useOptions';
 
 import styles from './Actions.module.scss';
 
-type PostMessageCallback = (
-  pluginMessage:
-    | { readonly type: 'cancel' }
-    | { readonly type: 'save'; data: { selected: Options } }
-    | { readonly type: 'save-invert'; data: { selected: Options } }
-) => void;
+// TODO
+type PluginMessage =
+  | { readonly type: 'cancel' }
+  | { readonly type: 'save'; data: { selected: Options } }
+  | { readonly type: 'save-invert'; data: { selected: Options } };
+
+type PostMessageCallback = (pluginMessage: PluginMessage) => void;
 
 export const Actions = () => {
   const { selected } = useOptions();

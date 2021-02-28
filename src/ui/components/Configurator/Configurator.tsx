@@ -2,7 +2,7 @@ import { memo, useCallback } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
-import { prepareOptionName } from '../../helpers/prepareOptionName';
+import { prepareOptionName } from '../../utils/prepareOptionName';
 import { Options } from '../../../shared/types/Options';
 
 import styles from './Configurator.module.scss';

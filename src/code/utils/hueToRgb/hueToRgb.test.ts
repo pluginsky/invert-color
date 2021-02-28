@@ -9,4 +9,10 @@ describe('hueToRgb', () => {
   });
 
   // TODO fix rgb not rgba
+
+  // TODO
+  // it('should ', () => {
+  //   // TODO
+  //   expect(hueToRgb({ r: 0.4, g: 0.2, b: 0.3 })).toBe('102, 51, 77');
+  // });
 });
