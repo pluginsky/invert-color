@@ -43,11 +43,7 @@ const handleUIMessage = async (message: PluginMessage) => {
   }
 };
 
-type DefaultOptions = {
-  readonly configuration?: any; // TODO any
-};
-
-export const uiActions = async (params: DefaultOptions = {}) => {
+export const uiActions = async (params: any = {}) => {
   const { configuration } = params;
 
   figma.showUI(__html__, { height: 440 });
