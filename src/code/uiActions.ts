@@ -5,12 +5,6 @@ import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
 
-// TODO
-// interface ExtendedMessage extends MessageEvent {
-//   readonly settings: any; // TODO any
-//   readonly excluded: string[];
-// }
-
 const handleUIMessage = async (message: PluginMessage) => {
   figma.ui.close();
 

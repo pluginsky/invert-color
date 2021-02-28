@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
-import { Options } from '../../../shared/types/Options';
+import type { Options } from '../../../shared/types/Options';
 import { useOptions } from '../../hooks/useOptions';
 
 import styles from './Actions.module.scss';

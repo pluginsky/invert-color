@@ -1,4 +1,4 @@
-import { Options } from './Options';
+import type { Options } from './Options';
 
 // TODO export?
 // export type PluginMessage = {

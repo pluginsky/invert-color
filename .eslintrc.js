@@ -30,7 +30,9 @@ module.exports = {
     },
   },
   rules: {
+    "no-undef": "off", // TODO
     "no-unused-vars": "off",
+    "@typescript-eslint/consistent-type-imports": "error",
     // "react/jsx-uses-react": "off",
     // "react/react-in-jsx-scope": "off",
   },

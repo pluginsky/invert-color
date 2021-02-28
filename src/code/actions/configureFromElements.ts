@@ -1,6 +1,6 @@
 import { options } from '../../shared/constants/options';
 import { clone } from '../utils/clone/clone';
-import { Options } from '../../shared/types/Options';
+import type { Options } from '../../shared/types/Options';
 
 export const configureFromElements = () => {
   // TODO
