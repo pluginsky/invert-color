@@ -19,6 +19,10 @@
     {
       "name": "Configure From Elements",
       "command": "configure-from-elements"
+    },
+    {
+      "name": "Exclude Colors",
+      "command": "exclude-colors"
     }
   ]
 }

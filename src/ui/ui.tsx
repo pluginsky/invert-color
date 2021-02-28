@@ -1,7 +1,9 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
+import { Tabs } from './components/Tabs/Tabs';
+import { Colors } from './components/Colors/Colors';
 import { options } from '../shared/constants/options';
 import { useOptions } from './hooks/useOptions';
 import type { Options } from '../shared/types/Options';
@@ -20,7 +22,20 @@ type ExtendedMessageEvent = MessageEvent<{
   readonly pluginMessage: PluginMessage;
 }>;
 
+export const tabs = [
+  {
+    name: 'Elements',
+    id: 'elements',
+  },
+  {
+    name: 'Excluded Colors',
+    id: 'colors',
+  },
+];
+
 export const App = () => {
+  const [activeTab, setActiveTab] = useState<any>('elements'); // TODO
+
   const { setSelected } = useOptions();
 
   const handleGetSettings = useCallback<HandleGetSettingsCallback>(
@@ -44,8 +59,14 @@ export const App = () => {
 
   return (
     <main className={styles.pluginWrapper}>
+      <Tabs
+        items={tabs}
+        active={activeTab}
+        onChange={(tab) => setActiveTab(tab)}
+      />
+
       <section className={styles.tabsContent}>
-        <Elements />
+        {activeTab === 'colors' ? <Colors /> : <Elements />}
       </section>
 
       <Actions />
