@@ -7,11 +7,12 @@ import { Options } from '../../../shared/types/Options';
 
 import styles from './Configurator.module.scss';
 
+// TODO
 type HandleClickCallback = (option: string) => void;
 
 type ConfiguratorProps = {
   readonly title: keyof Options;
-  readonly options: string[];
+  readonly options: string[]; // TODO
 };
 
 export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {

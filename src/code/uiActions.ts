@@ -4,6 +4,7 @@ import { StorageKey } from './enums/StorageKey';
 import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 
+// TODO
 interface ExtendedMessage extends MessageEvent {
   readonly settings: any; // TODO any
   readonly excluded: string[];

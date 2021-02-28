@@ -9,8 +9,8 @@ type Group = keyof Options;
 
 type State = {
   readonly selected: Options;
-  addToSelected: (item: string, group: Group) => void;
-  removeFromSelected: (item: string, group: Group) => void;
+  addToSelected: (item: string, group: Group) => void; // TODO
+  removeFromSelected: (item: string, group: Group) => void; // TODO
   setSelected: (selected: Options) => void;
 };
 
@@ -29,6 +29,7 @@ export const useOptions = create<State>((set) => ({
     }));
   },
   removeFromSelected: (item, group) => {
+    // TODO
     const selectedItemsFilter = (selectedItem: string) => {
       return selectedItem !== item;
     };

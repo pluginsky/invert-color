@@ -15,6 +15,7 @@ type PluginMessage = {
   readonly data?: Options;
 };
 
+// TODO move to shared
 type ExtendedMessageEvent = MessageEvent<{
   readonly pluginMessage: PluginMessage;
 }>;
