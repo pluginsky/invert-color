@@ -1,0 +1,15 @@
+.toolbar {
+  display: flex;
+  margin: var(--size-xxsmall) 0 var(--size-xsmall);
+  gap: var(--size-xxsmall);
+}
+
+.search {
+  flex: 1;
+}
+
+.fullLayout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
