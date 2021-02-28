@@ -47,6 +47,6 @@ export const pluginCommands = async () => {
     }
 
     default:
-      break;
+      return figma.closePlugin();
   }
 };

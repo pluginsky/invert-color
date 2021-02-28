@@ -38,10 +38,8 @@ const handleUIMessage = async (message: PluginMessage) => {
     }
 
     case 'cancel':
-      return figma.closePlugin();
-
     default:
-      break;
+      return figma.closePlugin();
   }
 };
 
