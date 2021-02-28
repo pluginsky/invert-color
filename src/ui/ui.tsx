@@ -10,6 +10,15 @@ import styles from './ui.module.scss';
 
 type HandleGetSettingsCallback = (data?: Options) => void;
 
+type PluginMessage = {
+  readonly type: 'get-settings';
+  readonly data?: Options;
+};
+
+type ExtendedMessageEvent = MessageEvent<{
+  readonly pluginMessage: PluginMessage;
+}>;
+
 export const App = () => {
   const { setSelected } = useOptions();
 
@@ -24,12 +33,11 @@ export const App = () => {
     [setSelected]
   );
 
-  // TODO improve types
-  onmessage = (event: MessageEvent) => {
-    const { type, data } = event.data.pluginMessage;
+  onmessage = (event: ExtendedMessageEvent) => {
+    const message = event.data.pluginMessage;
 
-    if (type === 'get-settings') {
-      handleGetSettings(data);
+    if (message.type === 'get-settings') {
+      handleGetSettings(message.data);
     }
   };
 

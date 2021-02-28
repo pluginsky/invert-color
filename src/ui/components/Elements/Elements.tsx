@@ -5,18 +5,23 @@ import { Configurator } from '../Configurator/Configurator';
 import { options } from '../../../shared/constants/options';
 import { prepareOptionName } from '../../helpers/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
+import { Options } from '../../../shared/types/Options';
 
 import styles from './Elements.module.scss';
 
 // TODO
-type Entries = [string, string[]];
+// keyof Options
+// TODO
+type Entries = [keyof Options, string[]];
 
-const configuratorsEntries = Object.entries(options);
+const configuratorsEntries = Object.entries(options) as Entries[];
 
 export const Elements = () => {
   const [searchValue, setSearchValue] = useState('');
 
-  const [configurators, setConfigurators] = useState(configuratorsEntries);
+  const [configurators, setConfigurators] = useState<Entries[]>(
+    configuratorsEntries
+  );
 
   useEffect(() => {
     const mapPattern = ([title, optionGroup]: Entries): Entries => [
@@ -34,7 +39,6 @@ export const Elements = () => {
   }, [searchValue]);
 
   return (
-    // TODO
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
         <Input
@@ -48,11 +52,7 @@ export const Elements = () => {
 
       {configurators.length > 0 ? (
         configurators.map(([title, optionGroup]) => (
-          <Configurator
-            title={title as any} // TODO
-            options={optionGroup}
-            key={title}
-          />
+          <Configurator title={title} options={optionGroup} key={title} />
         ))
       ) : (
         <MessageScreen
