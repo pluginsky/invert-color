@@ -9,7 +9,7 @@ Simply invert fills, strokes & effects colors in Figma
 
 ### Features
 
-- Invert fills, strokes and effects colors of components including images! <face wow>, <magic>
+- Invert fills, strokes and effects colors of components including images! 🤩
 - Select which parts, nodes and paints should be inverted; filter options; toggle one, group or *all* **SOON** options with single click!
 - Save configuration in storage to use it later *or run configuration once* **SOON**
 - Set configuration based on existing components (get type of node, parts and paints)
@@ -27,7 +27,7 @@ Simply invert fills, strokes & effects colors in Figma
 
 - Node.js
 - Yarn
-- Figma Desktop
+- [Figma Desktop](https://www.figma.com/downloads/)
 
 Clone the repo and run:
 
@@ -43,12 +43,10 @@ When making changes go to Menu > Plugins > "Run Last Plugin" (Or hit ⌥⌘P for
 
 ## Build with
 
-<!-- TODO link packages -->
-
-- React
-- TypeScript
-- Zustand
-- webpack
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Zustand](https://zustand.surge.sh/)
+- [webpack](https://webpack.js.org/)
 
 ## License
 
