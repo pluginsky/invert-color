@@ -1,9 +1,9 @@
+import { Checkbox, SectionTitle } from 'react-figma-ui';
 import { memo, useCallback } from 'react';
-import { SectionTitle, Checkbox } from 'react-figma-ui';
 
-import { useOptions } from '../../hooks/useOptions';
-import { prepareOptionName } from '../../utils/prepareOptionName';
 import type { Options } from '../../../shared/types/Options';
+import { prepareOptionName } from '../../utils/prepareOptionName';
+import { useOptions } from '../../hooks/useOptions';
 
 import styles from './Configurator.module.scss';
 
