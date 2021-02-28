@@ -7,6 +7,7 @@ import { Colors } from './components/Colors/Colors';
 import { options } from '../shared/constants/options';
 import { useOptions } from './hooks/useOptions';
 import type { Options } from '../shared/types/Options';
+import type { Tab, TabId } from './types/Tab';
 
 import styles from './ui.module.scss';
 
@@ -31,10 +32,10 @@ export const tabs = [
     name: 'Excluded Colors',
     id: 'colors',
   },
-];
+] as Tab[];
 
 export const App = () => {
-  const [activeTab, setActiveTab] = useState<any>('elements'); // TODO
+  const [activeTab, setActiveTab] = useState<TabId>('elements'); // TODO
 
   const { setSelected } = useOptions();
 
