@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { SectionTitle } from 'react-figma-ui';
-// import clsx from 'clsx';
+import clsx from 'clsx';
 
 // import type { TabId, Tab } from '../../types/Tab';
 
@@ -17,7 +17,7 @@ export const Tabs = memo<any>(({ items, active, onChange }) => {
     <nav className={styles.tabs}>
       {items.map(({ name, id }) => (
         <SectionTitle
-          // className={clsx(styles.tab, id === active && styles.tabActive)}
+          className={clsx(styles.tab, id === active && styles.tabActive)}
           onClick={() => onChange(id)}
           key={id}
         >
