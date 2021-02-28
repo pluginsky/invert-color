@@ -82,7 +82,7 @@ import { hueToRgb } from '../utils/hueToRgb/hueToRgb';
 // };
 
 export const invert = async ({ parts, nodes: elements, paints: patterns }) => {
-  console.log(parts, elements, patterns);
+  // console.log(parts, elements, patterns);
 
   const runInvert = async (selections: readonly SceneNode[]) => {
     for (const selected of selections) {
@@ -98,7 +98,7 @@ export const invert = async ({ parts, nodes: elements, paints: patterns }) => {
 
             const temporary = clone(selected[part]);
 
-            console.log({ x: selected[part], temporary });
+            // console.log({ x: selected[part], temporary });
 
             for (let level of temporary) {
               if (

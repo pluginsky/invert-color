@@ -6,6 +6,7 @@ export class StoreService {
     return await figma.clientStorage.getAsync(storageKey);
   }
 
+  // TODO any
   static async setState(storageKey: StorageKey, data: any) {
     return await figma.clientStorage.setAsync(storageKey, data);
   }

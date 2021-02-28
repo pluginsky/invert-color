@@ -4,19 +4,13 @@ import { StorageKey } from './enums/StorageKey';
 import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 
-// const hideUI = () => {
-//   figma.ui.close();
-// };
-
 interface ExtendedMessage extends MessageEvent {
-  readonly settings: any;
+  readonly settings: any; // TODO any
   readonly excluded: string[];
 }
 
 const handleUIMessage = async (message: ExtendedMessage) => {
   figma.ui.close();
-
-  // console.log('test');
 
   switch (message.type) {
     case 'save': {
@@ -38,8 +32,6 @@ const handleUIMessage = async (message: ExtendedMessage) => {
     case 'save-invert': {
       await save(message.data.selected);
 
-      // console.log(message);
-
       requireSelection();
 
       invert(message.data.selected);
@@ -58,40 +50,25 @@ const handleUIMessage = async (message: ExtendedMessage) => {
 };
 
 type DefaultOptions = {
-  readonly configuration?: any;
+  readonly configuration?: any; // TODO any
 };
 
 export const uiActions = async (params: DefaultOptions = {}) => {
   const { configuration } = params;
-  // const { configuration = {} } = params;
-
-  console.log(configuration);
 
   figma.showUI(__html__, { height: 440 });
 
-  // try {
-  //   await StoreService.getState(StorageKey.Settings);
-  // } catch (err) {
-  //   console.log('aaa', err.message);
-  // }
-
-  // console.log(configuration);
-
+  // TODO
   let data = (await StoreService.getState(StorageKey.Settings)) || {};
-
-  // console.log(configuration, 'aaa');
 
   if (configuration) {
     data = { ...data, ...configuration };
   }
 
-  // console.log(data, 'aaa');
-
   // TODO
   figma.ui.postMessage({
     type: 'get-settings',
     data,
-    // data: await StoreService.getState(StorageKey.Settings),
   });
 
   figma.ui.onmessage = (message: ExtendedMessage) => {

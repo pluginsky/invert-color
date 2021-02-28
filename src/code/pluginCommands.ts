@@ -17,8 +17,6 @@ export const pluginCommands = async () => {
 
       const settings = await StoreService.getState(StorageKey.Settings);
 
-      // console.log(settings);
-
       if (settings) {
         return invert(settings);
       }
