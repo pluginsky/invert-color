@@ -67,6 +67,7 @@ export const App = () => {
       />
 
       <section className={styles.tabsContent}>
+        {/* TODO lazy? */}
         {activeTab === 'colors' ? <Colors /> : <Elements />}
       </section>
 
