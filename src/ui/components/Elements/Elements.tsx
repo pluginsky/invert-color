@@ -51,16 +51,18 @@ export const Elements = () => {
         />
       </div>
 
-      {configurators.length > 0 ? (
-        configurators.map(([title, optionGroup]) => (
-          <Configurator title={title} options={optionGroup} key={title} />
-        ))
-      ) : (
-        <MessageScreen
-          title="No results"
-          message="Parts, Nodes and Paints not found"
-        />
-      )}
+      <div className={styles.elementsContent}>
+        {configurators.length > 0 ? (
+          configurators.map(([title, optionGroup]) => (
+            <Configurator title={title} options={optionGroup} key={title} />
+          ))
+        ) : (
+          <MessageScreen
+            title="No results"
+            message="Parts, Nodes and Paints not found"
+          />
+        )}
+      </div>
     </div>
   );
 };
