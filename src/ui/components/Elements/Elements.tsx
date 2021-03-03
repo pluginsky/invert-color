@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Input } from 'react-figma-ui';
+import { Input, IconButton } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
 import { options } from '../../../shared/constants/options';
@@ -42,6 +42,11 @@ export const Elements = () => {
   return (
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
+        <IconButton
+          iconProps={{ iconName: 'blend' }}
+          disabled={configurators.length === 0}
+        />
+
         <Input
           value={searchValue}
           placeholder="Search..."
