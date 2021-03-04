@@ -18,6 +18,8 @@ export const Actions = () => {
   const { selected } = useOptions();
 
   const postMessage = useCallback<PostMessageCallback>((pluginMessage) => {
+    window.confirm('Configuration will be destroyed');
+
     // eslint-disable-next-line no-restricted-globals
     parent.postMessage({ pluginMessage }, '*');
   }, []);
