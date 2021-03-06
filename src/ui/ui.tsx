@@ -5,20 +5,11 @@ import { Elements } from './components/Elements/Elements';
 import { options } from '../shared/constants/options';
 import { useOptions } from './hooks/useOptions';
 import type { Options } from '../shared/types/Options';
+import type { ExtendedMessageEvent } from '../shared/types/ExtendedMessageEvent';
 
 import styles from './ui.module.scss';
 
 type HandleGetSettingsCallback = (data?: Options) => void;
-
-export type PluginMessage = {
-  readonly type: 'get-settings';
-  readonly data?: Options;
-};
-
-// TODO move to shared
-type ExtendedMessageEvent = MessageEvent<{
-  readonly pluginMessage: PluginMessage;
-}>;
 
 export const App = () => {
   const { setSelected } = useOptions();
@@ -45,6 +36,7 @@ export const App = () => {
   return (
     <main className={styles.pluginWrapper}>
       <section className={styles.tabsContent}>
+        {/* TODO lazy? */}
         <Elements />
       </section>
 

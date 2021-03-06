@@ -1,16 +1,10 @@
 import { useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
-import type { Options } from '../../../shared/types/Options';
+import type { PluginMessage } from '../../../shared/types/ExtendedMessageEvent';
 import { useOptions } from '../../hooks/useOptions';
 
 import styles from './Actions.module.scss';
-
-// TODO
-type PluginMessage =
-  | { readonly type: 'cancel' }
-  | { readonly type: 'save'; data: { selected: Options } }
-  | { readonly type: 'save-invert'; data: { selected: Options } };
 
 type PostMessageCallback = (pluginMessage: PluginMessage) => void;
 

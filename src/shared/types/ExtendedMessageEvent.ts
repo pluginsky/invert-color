@@ -1,24 +1,32 @@
 import type { Options } from './Options';
 
-// TODO export?
-// export type PluginMessage = {
-//   readonly type: 'get-settings';
-//   readonly data?: Options;
-// };
+type GetSettingsMessage = {
+  readonly type: 'get-settings';
+  readonly data?: Options;
+};
 
-// TODO move to shared
+type CancelMessage = { readonly type: 'cancel' };
+
+type SaveData = {
+  readonly selected: Options;
+};
+
+type SaveMessage = {
+  readonly type: 'save';
+  readonly data: SaveData;
+};
+
+type SaveInvertMessage = {
+  readonly type: 'save-invert';
+  readonly data: SaveData;
+};
+
+export type PluginMessage =
+  | GetSettingsMessage
+  | CancelMessage
+  | SaveMessage
+  | SaveInvertMessage;
+
 export type ExtendedMessageEvent = MessageEvent<{
   readonly pluginMessage: PluginMessage;
 }>;
-
-// TODO
-// type Data = {
-//   readonly selected: Options;
-// };
-
-// TODO
-export type PluginMessage =
-  | { readonly type: 'cancel' }
-  | { readonly type: 'save'; data: { selected: Options } }
-  | { readonly type: 'save-invert'; data: { selected: Options } }
-  | { readonly type: 'invert'; data: { selected: Options } }; // TODO
