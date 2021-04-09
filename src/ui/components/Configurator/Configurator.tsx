@@ -24,30 +24,26 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
       options.includes(item)
     );
 
-    if (options.length > selectedAvailable.length) {
-      // TODO refactor
-      return options.map((option) => {
-        if (!selectedAvailable.includes(option)) {
-          return addToSelected(option, title);
+    return options.map((option) => {
+      if (options.length > selectedAvailable.length) {
+        if (selectedAvailable.includes(option)) {
+          return removeFromSelected(option, title);
         }
 
         return options;
-      });
-    }
-
-    return options.map((option) => removeFromSelected(option, title));
-  }, [addToSelected, options, removeFromSelected, selected, title]);
-
-  // TODO merge with handleTitleClick?
-  const handleClick = useCallback<HandleClickCallback>(
-    (option) => {
-      if (!selected?.[title].includes(option)) {
-        return addToSelected(option, title);
-        // return removeFromSelected(option, title);
       }
 
-      // return addToSelected(option, title);
-      return removeFromSelected(option, title);
+      return addToSelected(option, title);
+    });
+  }, [addToSelected, options, removeFromSelected, selected, title]);
+
+  const handleClick = useCallback<HandleClickCallback>(
+    (option) => {
+      if (selected?.[title].includes(option)) {
+        return removeFromSelected(option, title);
+      }
+
+      return addToSelected(option, title);
     },
     [addToSelected, removeFromSelected, selected, title]
   );
@@ -65,6 +61,7 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
           containerProps={{ className: styles.option }}
           checked={selected?.[title].includes(option)}
           // TODO replace with onChange
+          onChange={console.log}
           onClick={() => handleClick(option)}
           readOnly
         >
