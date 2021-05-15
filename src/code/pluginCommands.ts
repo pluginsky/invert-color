@@ -1,7 +1,6 @@
 import { StorageKey } from './enums/StorageKey';
 import { uiActions } from './uiActions';
 import { StoreService } from './services/StoreService';
-import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 import { configureFromElements } from './actions/configureFromElements';
 
@@ -9,8 +8,7 @@ import { configureFromElements } from './actions/configureFromElements';
 export const pluginCommands = async () => {
   switch (figma.command) {
     case 'invert': {
-      // TODO
-      // requireSelection();
+      // TODO requireSelection();
       if (!figma.currentPage.selection.length) {
         return figma.closePlugin('Select at least 1 element');
       }
@@ -33,8 +31,7 @@ export const pluginCommands = async () => {
     }
 
     case 'configure-from-elements': {
-      // TODO
-      // requireSelection();
+      // TODO requireSelection();
       if (!figma.currentPage.selection.length) {
         return figma.closePlugin('Select at least 1 element');
       }

@@ -4,6 +4,7 @@ import { StorageKey } from './enums/StorageKey';
 import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
+import type { Options } from '../shared/types/Options';
 
 const handleUIMessage = async (message: PluginMessage) => {
   figma.ui.close();
@@ -46,7 +47,7 @@ const handleUIMessage = async (message: PluginMessage) => {
 };
 
 type DefaultOptions = {
-  readonly configuration?: any; // TODO any
+  readonly configuration?: Options;
 };
 
 export const uiActions = async (params: DefaultOptions = {}) => {
@@ -54,22 +55,22 @@ export const uiActions = async (params: DefaultOptions = {}) => {
 
   figma.showUI(__html__, { height: 440 });
 
-  // TODO
+  // TODO update
   let data = (await StoreService.getState(StorageKey.Settings)) || {};
 
   if (configuration) {
     data = { ...data, ...configuration };
   }
 
-  // TODO
+  // TODO update types
   figma.ui.postMessage({
     type: 'get-settings',
     data: {
-      // options,
+      // TODO replace with options
+      selected: data || undefined, // TODO
     },
   });
 
-  // TODO
   figma.ui.onmessage = (message: PluginMessage) => {
     handleUIMessage(message);
   };

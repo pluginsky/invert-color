@@ -19,14 +19,7 @@ export const App = () => {
   const { setSelected } = useOptions();
 
   const handleGetSettings = useCallback<HandleGetSettingsCallback>(
-    (data) => {
-      // TODO if check needed?
-      // if (!data) {
-      //   return setSelected(options);
-      // }
-      // setSelected(data);
-      // setSelected(data || options);
-    },
+    (data) => setSelected(data ?? options),
     [setSelected]
   );
 
@@ -34,7 +27,8 @@ export const App = () => {
     const message = event.data.pluginMessage;
 
     if (message.type === 'get-settings') {
-      // handleGetSettings(message.data); // TODO
+      // console.log(message.data.selected); // TODO
+      handleGetSettings(message.data.selected);
     }
   };
 

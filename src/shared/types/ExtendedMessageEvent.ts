@@ -1,7 +1,7 @@
 import type { Options } from './Options';
 
 type MessageData = {
-  readonly selected: Options;
+  readonly selected?: Options;
 };
 
 export type PluginMessage =
