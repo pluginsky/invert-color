@@ -14,7 +14,6 @@ type ConfiguratorProps = {
   readonly options: string[];
 };
 
-// TODO move to constants?
 const SECTION_TITLES: Record<Group, string> = {
   parts: 'Parts',
   nodes: 'Nodes',

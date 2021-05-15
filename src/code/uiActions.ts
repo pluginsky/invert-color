@@ -64,7 +64,9 @@ export const uiActions = async (params: DefaultOptions = {}) => {
   // TODO
   figma.ui.postMessage({
     type: 'get-settings',
-    data,
+    data: {
+      // options,
+    },
   });
 
   // TODO
