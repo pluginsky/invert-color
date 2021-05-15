@@ -1,24 +1,14 @@
 import type { Options } from './Options';
 
-// TODO export?
-// export type PluginMessage = {
-//   readonly type: 'get-settings';
-//   readonly data?: Options;
-// };
+type MessageData = {
+  readonly selected: Options;
+};
 
-// TODO move to shared
-export type ExtendedMessageEvent = MessageEvent<{
-  readonly pluginMessage: PluginMessage;
-}>;
-
-// TODO
-// type Data = {
-//   readonly selected: Options;
-// };
-
-// TODO
 export type PluginMessage =
   | { readonly type: 'cancel' }
-  | { readonly type: 'save'; data: { selected: Options } }
-  | { readonly type: 'save-invert'; data: { selected: Options } }
-  | { readonly type: 'invert'; data: { selected: Options } }; // TODO
+  | { readonly type: 'save'; data: MessageData }
+  | { readonly type: 'save-invert'; data: MessageData }
+  | { readonly type: 'invert'; data: MessageData }
+  | { readonly type: 'get-settings'; data?: MessageData };
+
+// export type ActionType = PluginMessage['type'];

@@ -3,57 +3,62 @@ import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
 import { prepareOptionName } from '../../utils/prepareOptionName';
-import type { Options } from '../../../shared/types/Options';
+import type { Group } from '../../../shared/types/Options';
 
 import styles from './Configurator.module.scss';
 
 type HandleClickCallback = (option: string) => void;
 
 type ConfiguratorProps = {
-  readonly title: keyof Options;
+  readonly group: Group;
   readonly options: string[];
 };
 
-export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
+// TODO move to constants?
+const SECTION_TITLES: Record<Group, string> = {
+  parts: 'Parts',
+  nodes: 'Nodes',
+  paints: 'Paints',
+};
+
+export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
   const { selected, addToSelected, removeFromSelected } = useOptions(
     (state) => state
   );
 
   const handleTitleClick = useCallback(() => {
-    const selectedAvailable = selected[title].filter((item) =>
+    const selectedAvailable = selected[group].filter((item) =>
       options.includes(item)
     );
 
     if (options.length > selectedAvailable.length) {
-      // TODO refactor
       return options.map((option) => {
-        if (!selectedAvailable.includes(option)) {
-          return addToSelected(option, title);
+        if (selectedAvailable.includes(option)) {
+          return options;
         }
 
-        return options;
+        return addToSelected(option, group);
       });
     }
 
-    return options.map((option) => removeFromSelected(option, title));
-  }, [addToSelected, options, removeFromSelected, selected, title]);
+    return options.map((option) => removeFromSelected(option, group));
+  }, [addToSelected, options, removeFromSelected, selected, group]);
 
-  // TODO merge with handleTitleClick?
   const handleClick = useCallback<HandleClickCallback>(
     (option) => {
-      if (selected?.[title].includes(option)) {
-        return removeFromSelected(option, title);
+      if (selected?.[group].includes(option)) {
+        return removeFromSelected(option, group);
       }
 
-      return addToSelected(option, title);
+      return addToSelected(option, group);
     },
-    [addToSelected, removeFromSelected, selected, title]
+    [addToSelected, removeFromSelected, selected, group]
   );
 
   return (
     <div className={styles.configurator}>
       <SectionTitle className={styles.sectionTitle} onClick={handleTitleClick}>
-        {title}
+        {SECTION_TITLES[group]}
       </SectionTitle>
 
       {options.map((option) => (
@@ -61,8 +66,7 @@ export const Configurator = memo<ConfiguratorProps>(({ title, options }) => {
           id={option}
           key={option}
           containerProps={{ className: styles.option }}
-          checked={selected?.[title].includes(option)}
-          // TODO replace with onChange
+          checked={selected?.[group].includes(option)}
           onClick={() => handleClick(option)}
           readOnly
         >

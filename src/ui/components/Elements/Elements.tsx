@@ -5,27 +5,25 @@ import { Configurator } from '../Configurator/Configurator';
 import { options } from '../../../shared/constants/options';
 import { prepareOptionName } from '../../utils/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
-import type { Options } from '../../../shared/types/Options';
+import type { Group } from '../../../shared/types/Options';
 
 import styles from './Elements.module.scss';
 
-// TODO
-// keyof Options
-// TODO
-type Entries = [keyof Options, string[]];
+type OptionsEntries = [Group, string[]];
 
-const configuratorsEntries = Object.entries(options) as Entries[];
+const configuratorsEntries = Object.entries(options) as OptionsEntries[];
 
 export const Elements = () => {
   const [searchValue, setSearchValue] = useState('');
 
-  const [configurators, setConfigurators] = useState<Entries[]>(
-    configuratorsEntries
-  );
+  const [configurators, setConfigurators] = useState(configuratorsEntries);
 
   useEffect(() => {
-    const mapPattern = ([title, optionGroup]: Entries): Entries => [
-      title,
+    const mapPattern = ([
+      group,
+      optionGroup,
+    ]: OptionsEntries): OptionsEntries => [
+      group,
       optionGroup.filter((item) =>
         prepareOptionName(item).includes(searchValue)
       ),
@@ -51,8 +49,8 @@ export const Elements = () => {
       </div>
 
       {configurators.length > 0 ? (
-        configurators.map(([title, optionGroup]) => (
-          <Configurator title={title} options={optionGroup} key={title} />
+        configurators.map(([group, optionGroup]) => (
+          <Configurator group={group} options={optionGroup} key={group} />
         ))
       ) : (
         <MessageScreen

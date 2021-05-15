@@ -5,17 +5,12 @@ import { Elements } from './components/Elements/Elements';
 import { options } from '../shared/constants/options';
 import { useOptions } from './hooks/useOptions';
 import type { Options } from '../shared/types/Options';
+import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
 
 import styles from './ui.module.scss';
 
 type HandleGetSettingsCallback = (data?: Options) => void;
 
-export type PluginMessage = {
-  readonly type: 'get-settings';
-  readonly data?: Options;
-};
-
-// TODO move to shared
 type ExtendedMessageEvent = MessageEvent<{
   readonly pluginMessage: PluginMessage;
 }>;
@@ -25,11 +20,12 @@ export const App = () => {
 
   const handleGetSettings = useCallback<HandleGetSettingsCallback>(
     (data) => {
-      if (!data) {
-        return setSelected(options);
-      }
-
-      setSelected(data);
+      // TODO if check needed?
+      // if (!data) {
+      //   return setSelected(options);
+      // }
+      // setSelected(data);
+      // setSelected(data || options);
     },
     [setSelected]
   );
@@ -38,7 +34,7 @@ export const App = () => {
     const message = event.data.pluginMessage;
 
     if (message.type === 'get-settings') {
-      handleGetSettings(message.data);
+      // handleGetSettings(message.data); // TODO
     }
   };
 

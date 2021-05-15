@@ -1,11 +1,6 @@
 import create from 'zustand';
 
-import type { Options } from '../../shared/types/Options';
-
-type Group = keyof Options;
-
-// TODO
-// Options[Group][number];
+import type { Group, Options } from '../../shared/types/Options';
 
 type State = {
   readonly selected: Options;
