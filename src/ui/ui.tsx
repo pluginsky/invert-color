@@ -27,7 +27,6 @@ export const App = () => {
     const message = event.data.pluginMessage;
 
     if (message.type === 'get-settings') {
-      // console.log(message.data.selected); // TODO
       handleGetSettings(message.data.selected);
     }
   };

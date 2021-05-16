@@ -21,9 +21,7 @@ const SECTION_TITLES: Record<Group, string> = {
 };
 
 export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
-  const { selected, addToSelected, removeFromSelected } = useOptions(
-    (state) => state
-  );
+  const { selected, addToSelected, removeFromSelected } = useOptions();
 
   const handleTitleClick = useCallback(() => {
     const selectedAvailable = selected[group].filter((item) =>
