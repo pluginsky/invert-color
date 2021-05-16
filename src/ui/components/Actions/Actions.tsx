@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
-
 import type { PluginMessage } from '../../../shared/types/ExtendedMessageEvent';
 
 import styles from './Actions.module.scss';

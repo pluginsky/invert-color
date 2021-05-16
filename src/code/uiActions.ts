@@ -55,19 +55,24 @@ export const uiActions = async (params: DefaultOptions = {}) => {
 
   figma.showUI(__html__, { height: 440 });
 
-  // TODO update
-  let data = (await StoreService.getState(StorageKey.Settings)) || {};
+  let data = (await StoreService.getState(StorageKey.Settings)) || undefined;
 
   if (configuration) {
-    data = { ...data, ...configuration };
+    data = {
+      ...((await StoreService.getState(StorageKey.Settings)) || {}),
+      ...configuration,
+    };
   }
 
-  // TODO update types
-  figma.ui.postMessage({
+  (
+    figma.ui.postMessage as (
+      pluginMessage: PluginMessage,
+      options?: UIPostMessageOptions
+    ) => void
+  )({
     type: 'get-settings',
     data: {
-      // TODO replace with options
-      selected: data || undefined, // TODO
+      selected: data || undefined,
     },
   });
 

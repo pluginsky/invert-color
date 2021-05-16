@@ -3,12 +3,11 @@ import { uiActions } from './uiActions';
 import { StoreService } from './services/StoreService';
 import { invert } from './actions/invert';
 import { configureFromElements } from './actions/configureFromElements';
+import type { Command } from './types/Command';
 
-// TODO repalce strings with enum
 export const pluginCommands = async () => {
-  switch (figma.command) {
+  switch (figma.command as Command) {
     case 'invert': {
-      // TODO requireSelection();
       if (!figma.currentPage.selection.length) {
         return figma.closePlugin('Select at least 1 element');
       }
@@ -31,7 +30,6 @@ export const pluginCommands = async () => {
     }
 
     case 'configure-from-elements': {
-      // TODO requireSelection();
       if (!figma.currentPage.selection.length) {
         return figma.closePlugin('Select at least 1 element');
       }
