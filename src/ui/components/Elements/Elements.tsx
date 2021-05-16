@@ -19,19 +19,14 @@ export const Elements = () => {
   const [configurators, setConfigurators] = useState(configuratorsEntries);
 
   useEffect(() => {
-    const mapPattern = ([
+    const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
       group,
-      optionGroup,
-    ]: OptionsEntries): OptionsEntries => [
-      group,
-      optionGroup.filter((item) =>
-        prepareOptionName(item).includes(searchValue)
-      ),
+      options.filter((item) => prepareOptionName(item).includes(searchValue)),
     ];
 
     const filteredConfigurators = configuratorsEntries
       .map(mapPattern)
-      .filter(([, optionGroup]) => optionGroup.length > 0);
+      .filter(([, options]) => options.length > 0);
 
     setConfigurators(filteredConfigurators);
   }, [searchValue]);
@@ -49,8 +44,8 @@ export const Elements = () => {
       </div>
 
       {configurators.length > 0 ? (
-        configurators.map(([group, optionGroup]) => (
-          <Configurator group={group} options={optionGroup} key={group} />
+        configurators.map(([group, options]) => (
+          <Configurator group={group} options={options} key={group} />
         ))
       ) : (
         <MessageScreen
