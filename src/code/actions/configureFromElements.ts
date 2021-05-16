@@ -3,7 +3,6 @@ import { clone } from '../utils/clone/clone';
 import type { Options } from '../../shared/types/Options';
 
 export const configureFromElements = () => {
-  // TODO
   const settings: Options = {
     nodes: [],
     parts: [],
@@ -13,7 +12,6 @@ export const configureFromElements = () => {
   // TODO? include layers
   figma.currentPage.selection.forEach((selected) => {
     if (availableOptions.nodes.includes(selected.type.toLowerCase())) {
-      // TODO
       if (settings.nodes.includes(selected.type.toLowerCase())) {
         return;
       }
@@ -22,12 +20,7 @@ export const configureFromElements = () => {
     }
 
     availableOptions.parts.forEach((part) => {
-      if (!selected[part]) {
-        return;
-      }
-
-      // TODO
-      if (settings.parts.includes(part.toLowerCase())) {
+      if (!selected[part] || settings.parts.includes(part.toLowerCase())) {
         return;
       }
 
@@ -35,8 +28,8 @@ export const configureFromElements = () => {
 
       const temporary = clone(selected[part]);
 
-      temporary.forEach((level) => {
-        // TODO
+      // TODO any
+      temporary.forEach((level: any) => {
         if (availableOptions.paints.includes(level.type.toLowerCase())) {
           if (settings.paints.includes(level.type.toLowerCase())) {
             return;
@@ -47,8 +40,6 @@ export const configureFromElements = () => {
       });
     });
   });
-
-  // console.log(settings);
 
   return settings;
 };

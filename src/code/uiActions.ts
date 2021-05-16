@@ -55,13 +55,14 @@ export const uiActions = async (params: DefaultOptions = {}) => {
 
   figma.showUI(__html__, { height: 440 });
 
-  let data = (await StoreService.getState(StorageKey.Settings)) || undefined;
+  const storedOptions = await StoreService.getState<Options>(
+    StorageKey.Settings
+  );
+
+  let data = storedOptions || undefined;
 
   if (configuration) {
-    data = {
-      ...((await StoreService.getState(StorageKey.Settings)) || {}),
-      ...configuration,
-    };
+    data = { ...storedOptions, ...configuration };
   }
 
   (

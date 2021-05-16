@@ -4,6 +4,7 @@ import { StoreService } from './services/StoreService';
 import { invert } from './actions/invert';
 import { configureFromElements } from './actions/configureFromElements';
 import type { Command } from './types/Command';
+import type { Options } from '../shared/types/Options';
 
 export const pluginCommands = async () => {
   switch (figma.command as Command) {
@@ -12,7 +13,9 @@ export const pluginCommands = async () => {
         return figma.closePlugin('Select at least 1 element');
       }
 
-      const settings = await StoreService.getState(StorageKey.Settings);
+      const settings = await StoreService.getState<Options>(
+        StorageKey.Settings
+      );
 
       if (settings) {
         return invert(settings);

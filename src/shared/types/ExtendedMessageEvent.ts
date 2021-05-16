@@ -10,5 +10,3 @@ export type PluginMessage =
   | { readonly type: 'save-invert'; data: MessageData }
   | { readonly type: 'invert'; data: MessageData }
   | { readonly type: 'get-settings'; data?: MessageData };
-
-// export type ActionType = PluginMessage['type'];
