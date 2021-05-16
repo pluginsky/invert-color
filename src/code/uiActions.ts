@@ -1,7 +1,6 @@
 import { save } from './actions/save';
 import { StoreService } from './services/StoreService';
 import { StorageKey } from './enums/StorageKey';
-import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
 import type { Options } from '../shared/types/Options';
@@ -19,7 +18,9 @@ const handleUIMessage = async (message: PluginMessage) => {
     }
 
     case 'invert': {
-      requireSelection();
+      if (!figma.currentPage.selection.length) {
+        return figma.closePlugin('Select at least 1 element');
+      }
 
       invert(message.data.selected);
 
@@ -29,7 +30,9 @@ const handleUIMessage = async (message: PluginMessage) => {
     case 'save-invert': {
       await save(message.data.selected);
 
-      requireSelection();
+      if (!figma.currentPage.selection.length) {
+        return figma.closePlugin('Select at least 1 element');
+      }
 
       invert(message.data.selected);
 
@@ -59,10 +62,10 @@ export const uiActions = async (params: DefaultOptions = {}) => {
     StorageKey.Settings
   );
 
-  let data = storedOptions || undefined;
+  let selected = storedOptions || undefined;
 
   if (configuration) {
-    data = { ...storedOptions, ...configuration };
+    selected = { ...storedOptions, ...configuration };
   }
 
   (
@@ -72,9 +75,7 @@ export const uiActions = async (params: DefaultOptions = {}) => {
     ) => void
   )({
     type: 'get-settings',
-    data: {
-      selected: data || undefined,
-    },
+    data: { selected },
   });
 
   figma.ui.onmessage = (message: PluginMessage) => {
