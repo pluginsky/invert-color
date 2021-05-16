@@ -1,4 +1,4 @@
-import { options } from '../../shared/constants/options';
+import { availableOptions } from '../../shared/constants/availableOptions';
 import { clone } from '../utils/clone/clone';
 import type { Options } from '../../shared/types/Options';
 
@@ -12,7 +12,7 @@ export const configureFromElements = () => {
 
   // TODO? include layers
   figma.currentPage.selection.forEach((selected) => {
-    if (options.nodes.includes(selected.type.toLowerCase())) {
+    if (availableOptions.nodes.includes(selected.type.toLowerCase())) {
       // TODO
       if (settings.nodes.includes(selected.type.toLowerCase())) {
         return;
@@ -21,7 +21,7 @@ export const configureFromElements = () => {
       settings.nodes.push(selected.type.toLowerCase());
     }
 
-    options.parts.forEach((part) => {
+    availableOptions.parts.forEach((part) => {
       if (!selected[part]) {
         return;
       }
@@ -37,7 +37,7 @@ export const configureFromElements = () => {
 
       temporary.forEach((level) => {
         // TODO
-        if (options.paints.includes(level.type.toLowerCase())) {
+        if (availableOptions.paints.includes(level.type.toLowerCase())) {
           if (settings.paints.includes(level.type.toLowerCase())) {
             return;
           }

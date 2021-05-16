@@ -23,10 +23,9 @@ const SECTION_TITLES: Record<Group, string> = {
 };
 
 export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
-  const { selected, addToSelected, removeFromSelected } = useOptions(
-    (state) => state
-  );
+  const { selected, addToSelected, removeFromSelected } = useOptions();
 
+  // TODO merge with handleClick
   const handleTitleClick = useCallback(() => {
     const selectedAvailable = selected[group].filter((item) =>
       options.includes(item)
@@ -45,6 +44,7 @@ export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
     return options.map((option) => removeFromSelected(option, group));
   }, [addToSelected, options, removeFromSelected, selected, group]);
 
+  // TODO merge with handleTitleClick
   const handleClick = useCallback<HandleClickCallback>(
     (option) => {
       if (selected?.[group].includes(option)) {
@@ -68,9 +68,11 @@ export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
           key={option}
           containerProps={{ className: styles.option }}
           checked={selected?.[group].includes(option)}
+          // TODO onChange
           onClick={() => handleClick(option)}
           readOnly
         >
+          {/* TODO prepare dictionary for options names (key: value) like SECTION_TITLES */}
           {prepareOptionName(option)}
         </Checkbox>
       ))}

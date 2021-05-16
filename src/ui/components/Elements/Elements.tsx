@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
-import { options } from '../../../shared/constants/options';
+import { availableOptions } from '../../../shared/constants/availableOptions';
 import { prepareOptionName } from '../../utils/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
 import type { Group } from '../../../shared/types/Options';
@@ -13,7 +13,9 @@ import styles from './Elements.module.scss';
 type OptionsEntries = [Group, string[]];
 
 // TODO update
-const configuratorsEntries = Object.entries(options) as OptionsEntries[];
+const configuratorsEntries = Object.entries(
+  availableOptions
+) as OptionsEntries[];
 
 export const Elements = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -21,19 +23,14 @@ export const Elements = () => {
   const [configurators, setConfigurators] = useState(configuratorsEntries);
 
   useEffect(() => {
-    const mapPattern = ([
+    const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
       group,
-      optionGroup,
-    ]: OptionsEntries): OptionsEntries => [
-      group,
-      optionGroup.filter((item) =>
-        prepareOptionName(item).includes(searchValue)
-      ),
+      options.filter((item) => prepareOptionName(item).includes(searchValue)),
     ];
 
     const filteredConfigurators = configuratorsEntries
       .map(mapPattern)
-      .filter(([, optionGroup]) => optionGroup.length > 0);
+      .filter(([, options]) => options.length > 0);
 
     setConfigurators(filteredConfigurators);
   }, [searchValue]);
@@ -54,8 +51,8 @@ export const Elements = () => {
       {/* TODO? move configurators.length > 0 to const */}
       {configurators.length > 0 ? (
         // TODO? rename group to groupName
-        configurators.map(([group, optionGroup]) => (
-          <Configurator group={group} options={optionGroup} key={group} />
+        configurators.map(([group, options]) => (
+          <Configurator group={group} options={options} key={group} />
         ))
       ) : (
         <MessageScreen

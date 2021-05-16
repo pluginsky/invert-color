@@ -2,8 +2,8 @@ const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-module.exports = (env, argv) => ({
-  mode: argv.mode === "production" ? "production" : "development",
+module.exports = (_env, argv) => ({
+  mode: argv.mode || "development",
   devtool: argv.mode === "production" ? false : "inline-source-map",
   entry: {
     ui: "./src/ui/index.tsx",
@@ -39,6 +39,7 @@ module.exports = (env, argv) => ({
       template: "./src/ui/ui.html",
       filename: "ui.html",
       chunks: ["ui"],
+      inject: "body",
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/.(js)$/]),
   ],
