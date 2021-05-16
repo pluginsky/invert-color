@@ -1,4 +1,6 @@
 // TODO improve types
-export const clone = (node: symbol | readonly Paint[] | readonly Effect[]) => {
+export const clone = <T extends symbol | readonly Paint[] | readonly Effect[]>(
+  node: T
+): T => {
   return JSON.parse(JSON.stringify(node));
 };
