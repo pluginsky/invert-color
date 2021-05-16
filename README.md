@@ -23,6 +23,41 @@ Simply invert fills, strokes & effects colors in Figma
 - Configure Settings
 - Configure From Elements
 
+### All Supported Poperties
+
+#### Parts
+
+- [x] Fills
+- [x] Strokes
+- [x] Effects
+
+#### Nodes
+
+- [x] Boolean Operation
+- [x] Component
+- [x] Document
+- [x] Ellipse
+- [x] Frame
+- [x] Group
+- [x] Instance
+- [x] Line
+- [x] Page
+- [x] Polygon
+- [x] Rectangle
+- [x] Slice
+- [x] Star
+- [x] Text
+- [x] Vector
+
+#### Paints
+
+- [x] Solid
+- [x] Gradient Linear
+- [x] Gradient Radial
+- [x] Gradient Diamond
+- [x] Gradient Angular
+- [x] Image
+
 ## How to run locally
 
 ### Prerequisites
