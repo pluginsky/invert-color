@@ -5,6 +5,7 @@ import { Configurator } from '../Configurator/Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
 import { prepareOptionName } from '../../utils/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
+import { useSearch } from '../../hooks/useSearch';
 import type { Group } from '../../types/Group';
 
 import styles from './Elements.module.scss';
@@ -16,7 +17,7 @@ const configuratorsEntries = Object.entries(
 ) as OptionsEntries[];
 
 export const Elements = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const { searchValue, setSearchValue } = useSearch();
 
   const [configurators, setConfigurators] = useState(configuratorsEntries);
 
