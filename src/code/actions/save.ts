@@ -1,7 +1,7 @@
 import { StoreService } from '../services/StoreService';
 import { StorageKey } from '../enums/StorageKey';
+import type { Options } from '../../shared/types/Options';
 
-// TODO any
-export const save = async (data: any) => {
+export const save = async (data: Options) => {
   await StoreService.setState(StorageKey.Settings, data);
 };
