@@ -37,10 +37,12 @@ export const Elements = () => {
     // TODO classnames
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
-        <IconButton
-          iconProps={{ iconName: 'blend' }}
-          disabled={configurators.length === 0}
-        />
+        {/* <IconButton
+          iconProps={{ iconName: 'check' }}
+          // disabled={configurators.length === 0}
+          disabled // TODO
+          // selected // TODO
+        /> */}
 
         <Input
           value={searchValue}
