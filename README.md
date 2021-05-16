@@ -12,8 +12,8 @@ Simply invert fills, strokes & effects colors in Figma
 ### Features
 
 - Invert fills, strokes and effects colors of components including images! 🤩
-- Select which parts, nodes and paints should be inverted; filter options; toggle one, group or *all* **SOON** options with single click!
-- Save configuration in storage to use it later *or run configuration once* **SOON**
+- Select which parts, nodes and paints should be inverted; filter options; toggle one, group or _all_ **SOON** options with single click!
+- Save configuration in storage to use it later _or run configuration once_ **SOON**
 - Set configuration based on existing components (get type of node, parts and paints)
 - Exclude colors (set them manually or get from components) **SOON**
 
