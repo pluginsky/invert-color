@@ -2,9 +2,7 @@ import type { Options } from '../../shared/types/Options';
 import { clone } from '../utils/clone/clone';
 import { invertColor } from '../utils/invertColor/invertColor';
 import { invertImage } from '../utils/invertImage/invertImage';
-// import { hueToRgb } from '../utils/hueToRgb/hueToRgb';
 
-// TODO refactor
 export const invert = async ({
   parts,
   nodes: elements,

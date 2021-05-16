@@ -2,8 +2,8 @@ import { memo, useCallback } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
+import type { Group } from '../../types/Group';
 import { prepareOptionName } from '../../utils/prepareOptionName';
-import type { Group } from '../../../shared/types/Options';
 
 import styles from './Configurator.module.scss';
 

@@ -5,7 +5,7 @@ import { Configurator } from '../Configurator/Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
 import { prepareOptionName } from '../../utils/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
-import type { Group } from '../../../shared/types/Options';
+import type { Group } from '../../types/Group';
 
 import styles from './Elements.module.scss';
 

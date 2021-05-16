@@ -1,6 +1,7 @@
 import create from 'zustand';
 
-import type { Group, Options } from '../../shared/types/Options';
+import type { Options } from '../../shared/types/Options';
+import type { Group } from '../types/Group';
 
 type State = {
   readonly selected: Options;
