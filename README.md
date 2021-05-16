@@ -27,7 +27,7 @@ Simply invert fills, strokes & effects colors in Figma
 - Configure Settings
 - Configure From Elements
 
-### All Supported Poperties
+### All Supported Properties
 
 #### Parts
 
