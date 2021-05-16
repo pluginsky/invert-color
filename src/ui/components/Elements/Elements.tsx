@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Input } from 'react-figma-ui';
+import {
+  Input,
+  // Onboarding
+} from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
@@ -37,24 +40,33 @@ export const Elements = () => {
   return (
     // TODO classnames
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
-      {/* <Onboarding iconProps={{ iconName: "minus" }}>
-        Select Parts, Nodes and Paints to invert. You can use search field to filter options. By clicking on group heading e.g.: Paints you can toggle all visible items for group.
+      {/* TODO move inline texts */}
+      {/* <Onboarding iconProps={{ iconName: 'minus' }}>
+        Select Parts, Nodes and Paints to invert. You can use search field to
+        filter options. By clicking on group heading e.g.: Paints you can toggle
+        all visible items for group.
       </Onboarding> */}
 
       {/* TODO */}
-      {/* <Onboarding iconProps={{ iconName: "close" }}>
+      {/* TODO move inline texts */}
+      {/* <Onboarding iconProps={{ iconName: 'close' }}>
         Select Parts, Nodes and Paints to invert.
-      </Onboarding>
+      </Onboarding> */}
 
-      <Onboarding iconProps={{ iconName: "close" }}>
-        You can use search field to filter options. By clicking on group heading e.g.: Paints you can toggle all visible items for group.
-      </Onboarding>
+      {/* TODO move inline texts */}
+      {/* <Onboarding iconProps={{ iconName: 'close' }}>
+        You can use search field to filter options. By clicking on group heading
+        e.g.: Paints you can toggle all visible items for group.
+      </Onboarding> */}
 
-      <Onboarding iconProps={{ iconName: "close" }}>
-        By clicking on group heading e.g.: Paints you can toggle all visible items for group.
-      </Onboarding>
+      {/* TODO move inline texts */}
+      {/* <Onboarding iconProps={{ iconName: 'close' }}>
+        By clicking on group heading e.g.: Paints you can toggle all visible
+        items for group.
+      </Onboarding> */}
 
-      <Onboarding iconProps={{ iconName: "close" }}>
+      {/* TODO move inline texts */}
+      {/* <Onboarding iconProps={{ iconName: 'close' }}>
         Cancel, Save, Save & Invert
       </Onboarding> */}
 
