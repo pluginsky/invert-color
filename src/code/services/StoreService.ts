@@ -1,13 +1,11 @@
-import type { Options } from '../../shared/types/Options';
 import type { StorageKey } from '../enums/StorageKey';
 
-// TODO typeof StorageKey
 export class StoreService {
-  static async getState(storageKey: StorageKey): Promise<Options | undefined> {
+  static async getState<T>(storageKey: StorageKey): Promise<T | undefined> {
     return await figma.clientStorage.getAsync(storageKey);
   }
 
-  static async setState(storageKey: StorageKey, data: Options) {
+  static async setState<T>(storageKey: StorageKey, data: T) {
     return await figma.clientStorage.setAsync(storageKey, data);
   }
 }
