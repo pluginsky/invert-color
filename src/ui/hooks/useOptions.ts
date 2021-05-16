@@ -2,6 +2,7 @@ import create from 'zustand';
 
 import type { Group, Options } from '../../shared/types/Options';
 
+// TODO item Options[Group]
 type State = {
   readonly selected: Options;
   addToSelected: (item: string, group: Group) => void;
@@ -24,6 +25,7 @@ export const useOptions = create<State>((set) => ({
     }));
   },
   removeFromSelected: (item, group) => {
+    // TODO strict types for selectedItem
     const selectedItemsFilter = (selectedItem: string) => {
       return selectedItem !== item;
     };

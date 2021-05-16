@@ -7,8 +7,10 @@ import type { Group } from '../../../shared/types/Options';
 
 import styles from './Configurator.module.scss';
 
+// TODO strict types for option
 type HandleClickCallback = (option: string) => void;
 
+// TODO strict types for options
 type ConfiguratorProps = {
   readonly group: Group;
   readonly options: string[];

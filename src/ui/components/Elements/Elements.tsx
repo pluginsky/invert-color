@@ -9,8 +9,10 @@ import type { Group } from '../../../shared/types/Options';
 
 import styles from './Elements.module.scss';
 
+// TODO strict types Options[Group]
 type OptionsEntries = [Group, string[]];
 
+// TODO update
 const configuratorsEntries = Object.entries(options) as OptionsEntries[];
 
 export const Elements = () => {
@@ -37,6 +39,7 @@ export const Elements = () => {
   }, [searchValue]);
 
   return (
+    // TODO? move configurators.length > 0 to const
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
         <Input
@@ -48,7 +51,9 @@ export const Elements = () => {
         />
       </div>
 
+      {/* TODO? move configurators.length > 0 to const */}
       {configurators.length > 0 ? (
+        // TODO? rename group to groupName
         configurators.map(([group, optionGroup]) => (
           <Configurator group={group} options={optionGroup} key={group} />
         ))
