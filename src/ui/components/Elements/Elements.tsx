@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Input } from 'react-figma-ui';
+import { Input, IconButton } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
@@ -38,6 +38,13 @@ export const Elements = () => {
     // TODO classnames
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
+        {/* <IconButton
+          iconProps={{ iconName: 'check' }}
+          // disabled={configurators.length === 0}
+          disabled // TODO
+          // selected // TODO
+        /> */}
+
         <Input
           value={searchValue}
           placeholder="Search..."
