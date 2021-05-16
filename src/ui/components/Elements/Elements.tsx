@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
-import { options } from '../../../shared/constants/options';
+import { availableOptions } from '../../../shared/constants/availableOptions';
 import { prepareOptionName } from '../../utils/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
 import type { Group } from '../../../shared/types/Options';
@@ -11,7 +11,9 @@ import styles from './Elements.module.scss';
 
 type OptionsEntries = [Group, string[]];
 
-const configuratorsEntries = Object.entries(options) as OptionsEntries[];
+const configuratorsEntries = Object.entries(
+  availableOptions
+) as OptionsEntries[];
 
 export const Elements = () => {
   const [searchValue, setSearchValue] = useState('');

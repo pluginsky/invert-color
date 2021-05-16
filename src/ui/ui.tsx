@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
-import { options } from '../shared/constants/options';
+import { availableOptions } from '../shared/constants/availableOptions';
 import { useOptions } from './hooks/useOptions';
 import type { Options } from '../shared/types/Options';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
@@ -19,7 +19,7 @@ export const App = () => {
   const { setSelected } = useOptions();
 
   const handleGetSettings = useCallback<HandleGetSettingsCallback>(
-    (data) => setSelected(data ?? options),
+    (data) => setSelected(data ?? availableOptions),
     [setSelected]
   );
 
