@@ -1,7 +1,17 @@
 .toolbar {
   display: flex;
-  margin: var(--size-xxsmall) 0 var(--size-xsmall);
+  background-color: var(--white);
+  padding: var(--size-xxsmall);
+  // margin-bottom: var(--size-xxsmall); // TODO
   gap: var(--size-xxsmall);
+  border-bottom: 1px solid var(--silver);
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+
+.elementsContent {
+  padding: 0 var(--size-xxsmall);
 }
 
 .search {

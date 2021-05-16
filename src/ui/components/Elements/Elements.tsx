@@ -34,6 +34,7 @@ export const Elements = () => {
   }, [searchValue]);
 
   return (
+    // TODO classnames
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
         <IconButton
@@ -50,16 +51,18 @@ export const Elements = () => {
         />
       </div>
 
-      {configurators.length > 0 ? (
-        configurators.map(([group, options]) => (
-          <Configurator group={group} options={options} key={group} />
-        ))
-      ) : (
-        <MessageScreen
-          title="No results"
-          message="Parts, Nodes and Paints not found"
-        />
-      )}
+      <div className={styles.elementsContent}>
+        {configurators.length > 0 ? (
+          configurators.map(([group, options]) => (
+            <Configurator group={group} options={options} key={group} />
+          ))
+        ) : (
+          <MessageScreen
+            title="No results"
+            message="Parts, Nodes and Paints not found"
+          />
+        )}
+      </div>
     </div>
   );
 };
