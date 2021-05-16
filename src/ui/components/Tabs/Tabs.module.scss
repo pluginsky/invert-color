@@ -1,0 +1,17 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  min-height: var(--size-large);
+  padding: 0 var(--size-xxsmall);
+  border-bottom: 1px solid var(--silver);
+  gap: var(--size-xxsmall); // TODO --size-xxxsmall?
+}
+
+.tab {
+  color: var(--black3);
+  width: unset;
+}
+
+.tabActive {
+  color: var(--black8);
+}
