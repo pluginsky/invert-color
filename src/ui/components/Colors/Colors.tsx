@@ -2,7 +2,9 @@ import { IconButton, Type } from 'react-figma-ui';
 
 import styles from './Colors.module.scss';
 
-const colors = ['FFFFFF', 'FF0000'];
+const colors = [
+  // 'FFFFFF', 'FF0000'
+];
 
 export const Colors = () => {
   return (
@@ -22,6 +24,8 @@ export const Colors = () => {
             </div>
 
             <div>
+              {/* TODO toggle (activate) */}
+
               <IconButton
                 onClick={() => null}
                 iconProps={{
@@ -33,6 +37,8 @@ export const Colors = () => {
           </li>
         ))}
       </ul>
+
+      {/* TODO add fallback screen */}
     </>
   );
 };
