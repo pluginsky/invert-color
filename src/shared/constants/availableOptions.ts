@@ -27,7 +27,7 @@ const paints = [
   'image',
 ];
 
-export const options = {
+export const availableOptions = {
   parts,
   nodes,
   paints,

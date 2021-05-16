@@ -13,15 +13,6 @@ module.exports = {
     browser: true,
     node: true,
   },
-  // globals: {
-  //   figma: true,
-  //   __html__: true,
-  //   Paint: true,
-  //   Effect: true,
-  //   ImagePaint: true,
-  //   RGBA: true,
-  //   SceneNode: true,
-  // },
   parserOptions: {
     ecmaVersion: 6,
     sourceType: "module",
@@ -30,10 +21,8 @@ module.exports = {
     },
   },
   rules: {
-    "no-undef": "off", // TODO
+    "no-undef": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/consistent-type-imports": "error",
-    // "react/jsx-uses-react": "off",
-    // "react/react-in-jsx-scope": "off",
   },
 };

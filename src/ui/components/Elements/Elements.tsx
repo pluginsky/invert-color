@@ -2,44 +2,39 @@ import { useState, useEffect } from 'react';
 import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
-import { options } from '../../../shared/constants/options';
+import { availableOptions } from '../../../shared/constants/availableOptions';
 import { prepareOptionName } from '../../utils/prepareOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
-import type { Options } from '../../../shared/types/Options';
-import { useSearch } from '../../hooks/useSearch';
+import type { Group } from '../../types/Group';
 
 import styles from './Elements.module.scss';
 
-// TODO
-// keyof Options
-// TODO
-type Entries = [keyof Options, string[]];
+type OptionsEntries = [Group, string[]];
 
-const configuratorsEntries = Object.entries(options) as Entries[];
+const configuratorsEntries = Object.entries(
+  availableOptions
+) as OptionsEntries[];
 
 export const Elements = () => {
-  const { searchValue, setSearchValue } = useSearch();
+  const [searchValue, setSearchValue] = useState('');
 
-  const [configurators, setConfigurators] = useState<Entries[]>(
-    configuratorsEntries
-  );
+  const [configurators, setConfigurators] = useState(configuratorsEntries);
 
   useEffect(() => {
-    const mapPattern = ([title, optionGroup]: Entries): Entries => [
-      title,
-      optionGroup.filter((item) =>
-        prepareOptionName(item).includes(searchValue)
-      ),
+    const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
+      group,
+      options.filter((item) => prepareOptionName(item).includes(searchValue)),
     ];
 
     const filteredConfigurators = configuratorsEntries
       .map(mapPattern)
-      .filter(([, optionGroup]) => optionGroup.length > 0);
+      .filter(([, options]) => options.length > 0);
 
     setConfigurators(filteredConfigurators);
   }, [searchValue]);
 
   return (
+    // TODO classnames
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
         <Input
@@ -53,8 +48,8 @@ export const Elements = () => {
 
       <div className={styles.elementsContent}>
         {configurators.length > 0 ? (
-          configurators.map(([title, optionGroup]) => (
-            <Configurator title={title} options={optionGroup} key={title} />
+          configurators.map(([group, options]) => (
+            <Configurator group={group} options={options} key={group} />
           ))
         ) : (
           <MessageScreen
