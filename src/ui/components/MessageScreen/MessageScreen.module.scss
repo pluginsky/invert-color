@@ -12,7 +12,10 @@
   width: 100%;
 }
 
+.title {
+  font-size: var(--font-size-xlarge);
+}
+
 .message {
-  margin-top: var(--size-xxsmall);
-  color: var(--black3-opaque);
+  font-size: var(--font-size-small);
 }

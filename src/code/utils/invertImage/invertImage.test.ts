@@ -1,4 +1,4 @@
-import { invertImage } from './invertImage';
+// import { invertImage } from './invertImage';
 
 describe('invertImage', () => {
   it.skip('should', () => {

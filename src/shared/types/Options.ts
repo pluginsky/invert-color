@@ -1,3 +1,4 @@
-import type { options } from '../constants/options';
+import type { availableOptions } from '../constants/availableOptions';
 
-export type Options = typeof options;
+export type Options = typeof availableOptions;
+export type Group = keyof Options;

@@ -4,6 +4,7 @@ import { StorageKey } from './enums/StorageKey';
 import { requireSelection } from './utils/requireSelection';
 import { invert } from './actions/invert';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
+import type { Options } from '../shared/types/Options';
 
 const handleUIMessage = async (message: PluginMessage) => {
   figma.ui.close();
@@ -38,30 +39,43 @@ const handleUIMessage = async (message: PluginMessage) => {
     }
 
     case 'cancel':
-    default:
       return figma.closePlugin();
+
+    default:
+      break;
   }
 };
 
-export const uiActions = async (params: any = {}) => {
+type DefaultOptions = {
+  readonly configuration?: Options;
+};
+
+export const uiActions = async (params: DefaultOptions = {}) => {
   const { configuration } = params;
 
   figma.showUI(__html__, { height: 440 });
 
-  // TODO
-  let data = (await StoreService.getState(StorageKey.Settings)) || {};
+  let data = (await StoreService.getState(StorageKey.Settings)) || undefined;
 
   if (configuration) {
-    data = { ...data, ...configuration };
+    data = {
+      ...((await StoreService.getState(StorageKey.Settings)) || {}),
+      ...configuration,
+    };
   }
 
-  // TODO
-  figma.ui.postMessage({
+  (
+    figma.ui.postMessage as (
+      pluginMessage: PluginMessage,
+      options?: UIPostMessageOptions
+    ) => void
+  )({
     type: 'get-settings',
-    data,
+    data: {
+      selected: data || undefined,
+    },
   });
 
-  // TODO
   figma.ui.onmessage = (message: PluginMessage) => {
     handleUIMessage(message);
   };
