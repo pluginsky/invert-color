@@ -2944,7 +2944,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-figma-plugin-ds@1.0.1:
+figma-plugin-ds@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/figma-plugin-ds/-/figma-plugin-ds-1.0.1.tgz#bcaf2f96c4533be80ef439232e1f7cd037cc3c80"
   integrity sha512-j1/mcHeYx8IRzdLbNyqo9PQXqtI3ujN/RfjuXFS7OintJojuXG2GuaL8COzqAH66ZPXx4aFHMkqRjbBaudBCpA==
@@ -5974,13 +5974,13 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
-react-figma-ui@^1.1.0-beta.4:
-  version "1.1.0-beta.4"
-  resolved "https://registry.yarnpkg.com/react-figma-ui/-/react-figma-ui-1.1.0-beta.4.tgz#894f6e5e2be8d719e4a3f69987fef88efbd61b39"
-  integrity sha512-9oLtsGG3LtRt4N3F7WRnieVNKGDN26cn6N6KfVSXKBKWAtdCjHZG6jHNrNDpdG2XKeiWeXRUQLR/UUzVG7ykAg==
+react-figma-ui@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-figma-ui/-/react-figma-ui-1.1.0.tgz#9867d8509d2c355c339db14d3d2da52e61f9bf3c"
+  integrity sha512-jBw/0gofyATksM/ZuygeXKhdhfbrADagXVeK6sJh4N+SvJf5yfLep1h56E+7otrVn51JckPNnpca65jA4x6n4Q==
   dependencies:
     clsx "^1.1.1"
-    figma-plugin-ds "1.0.1"
+    figma-plugin-ds "^1.0.1"
 
 react-is@^16.8.1:
   version "16.13.1"
