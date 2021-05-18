@@ -8,6 +8,7 @@ import type { Options } from '../shared/types/Options';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
 
 import styles from './ui.module.scss';
+import { mergeStoredOptions } from './utils/mergeStoredOptions';
 
 type HandleGetSettingsCallback = (data?: Options) => void;
 
@@ -27,7 +28,10 @@ export const App = () => {
     const message = event.data.pluginMessage;
 
     if (message.type === 'get-settings') {
-      handleGetSettings(message.data.selected);
+      handleGetSettings(
+        // TODO
+        mergeStoredOptions(message.data.selected as Record<string, string[]>)
+      );
     }
   };
 
