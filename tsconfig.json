@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "jsx": "react-jsx",
-    "lib": ["dom", "ES2019"],
+    "lib": ["DOM", "ES2019"],
     "allowSyntheticDefaultImports": true,
     "module": "ES2020",
     "moduleResolution": "Node",
