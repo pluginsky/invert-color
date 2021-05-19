@@ -9,6 +9,7 @@ import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
 
 import styles from './ui.module.scss';
 import { mergeStoredOptions } from './utils/mergeStoredOptions';
+import { invertImage } from './utils/invertImage';
 
 type HandleGetSettingsCallback = (data?: Options) => void;
 
@@ -27,11 +28,17 @@ export const App = () => {
   onmessage = (event: ExtendedMessageEvent) => {
     const message = event.data.pluginMessage;
 
+    console.log(event.data);
+
+    // TODO switch
     if (message.type === 'get-settings') {
       handleGetSettings(
         // TODO
         mergeStoredOptions(message.data.selected as Record<string, string[]>)
       );
+      // TODO
+    } else if ((message as any).type === 'invert-image') {
+      invertImage((message as any).data.bytes);
     }
   };
 

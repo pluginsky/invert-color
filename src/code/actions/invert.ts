@@ -9,6 +9,8 @@ export const invert = async ({
   paints: patterns,
 }: Options) => {
   const runInvert = async (selections: readonly SceneNode[]) => {
+    console.log({ selections });
+
     for (const selection of selections) {
       if (elements.includes(selection.type.toLowerCase()) && parts.length) {
         for (const part of parts) {
@@ -22,7 +24,10 @@ export const invert = async ({
 
             const temporary = clone(selection[part]);
 
+            console.log({ temporary });
+
             for (let level of temporary) {
+              console.log(level);
               if (
                 level &&
                 (part === 'effects' ||
