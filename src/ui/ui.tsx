@@ -28,7 +28,7 @@ export const App = () => {
   onmessage = (event: ExtendedMessageEvent) => {
     const message = event.data.pluginMessage;
 
-    console.log(event.data);
+    // console.log(event.data);
 
     // TODO switch
     if (message.type === 'get-settings') {
