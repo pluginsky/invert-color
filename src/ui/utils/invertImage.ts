@@ -5,6 +5,8 @@ import { decodeImage } from './decodeImage';
 export const invertImage = async (bytes: any) => {
   // const bytes = event.data.pluginMessage;
 
+  // console.log(bytes);
+
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 

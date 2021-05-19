@@ -34,7 +34,7 @@ const handleUIMessage = async (message: PluginMessage) => {
         return figma.closePlugin('Select at least 1 element');
       }
 
-      invert(message.data.selected);
+      await invert(message.data.selected);
 
       figma.closePlugin();
 
