@@ -6,7 +6,7 @@ const mapOptions = (options: string[], group: string) => {
   // let x = availableOptions[q];
   let updatedOptions = [];
 
-  console.log(availableOptions[group]);
+  // console.log(availableOptions[group]);
 
   // TODO save order?
   options.forEach((option) => {
@@ -16,6 +16,18 @@ const mapOptions = (options: string[], group: string) => {
   });
 
   return updatedOptions;
+};
+
+const mapGroup = (group: string) => {
+  if (group === 'elements') {
+    return 'nodes';
+  }
+
+  if (group === 'patterns') {
+    return 'paints';
+  }
+
+  return group;
 };
 
 export const mergeStoredOptions = (selected: Record<string, string[]>) => {
@@ -32,20 +44,11 @@ export const mergeStoredOptions = (selected: Record<string, string[]>) => {
         group
       )
     ) {
+      const optionsGroup = mapGroup(group);
+
       updatedOptions = {
         ...updatedOptions,
-        [group === 'elements'
-          ? 'nodes'
-          : group === 'patterns'
-          ? 'paints'
-          : group]: mapOptions(
-          options,
-          group === 'elements'
-            ? 'nodes'
-            : group === 'patterns'
-            ? 'paints'
-            : group
-        ), // TODO
+        [optionsGroup]: mapOptions(options, optionsGroup), // TODO
       };
     }
   });
