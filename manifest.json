@@ -15,10 +15,6 @@
     {
       "name": "Configure Settings",
       "command": "configure"
-    },
-    {
-      "name": "Configure From Elements",
-      "command": "configure-from-elements"
     }
   ]
 }

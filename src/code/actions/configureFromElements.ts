@@ -2,15 +2,23 @@ import { availableOptions } from '../../shared/constants/availableOptions';
 import { clone } from '../utils/clone/clone';
 import type { Options } from '../../shared/types/Options';
 
-export const configureFromElements = () => {
+export const configureFromElements = (selections?: readonly SceneNode[]) => {
   const settings: Options = {
     nodes: [],
     parts: [],
     paints: [],
   };
 
+  let z = selections || figma.currentPage.selection;
+
   // TODO? include layers
-  figma.currentPage.selection.forEach((selected) => {
+  z.map(async (selected) => {
+    // console.log(
+    //   selected.type,
+    //   availableOptions.nodes.includes(selected.type.toLowerCase()),
+    //   settings.nodes.includes(selected.type.toLowerCase())
+    // );
+
     if (availableOptions.nodes.includes(selected.type.toLowerCase())) {
       if (settings.nodes.includes(selected.type.toLowerCase())) {
         return;
@@ -20,6 +28,8 @@ export const configureFromElements = () => {
     }
 
     availableOptions.parts.forEach((part) => {
+      // console.log(part);
+
       if (!selected[part] || settings.parts.includes(part.toLowerCase())) {
         return;
       }
@@ -30,16 +40,28 @@ export const configureFromElements = () => {
 
       // TODO any
       temporary.forEach((level: any) => {
-        if (availableOptions.paints.includes(level.type.toLowerCase())) {
-          if (settings.paints.includes(level.type.toLowerCase())) {
+        const levelType = level.type.toLowerCase();
+
+        // console.log(levelType);
+
+        if (availableOptions.paints.includes(levelType)) {
+          if (settings.paints.includes(levelType)) {
             return;
           }
 
-          settings.paints.push(level.type.toLowerCase());
+          settings.paints.push(levelType);
         }
       });
     });
+
+    if ('children' in selected) {
+      // console.log(selected['children'], 'test');
+
+      configureFromElements(selected['children']);
+    }
   });
+
+  // console.log(settings);
 
   return settings;
 };

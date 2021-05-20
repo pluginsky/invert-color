@@ -6,12 +6,15 @@ export const invertImage = async (node: ImagePaint) => {
 
   figma.showUI(__html__, { visible: false });
 
-  figma.ui.postMessage(bytes);
+  figma.ui.postMessage({ type: 'invert-image', data: { bytes } });
 
   const newBytes: Uint8Array = await new Promise((resolve) => {
-    figma.ui.onmessage = (message: MessageEvent & { bytes: Uint8Array }) => {
+    figma.ui.onmessage = (
+      message: MessageEvent & { data: { bytes: Uint8Array } }
+    ) => {
+      // console.log({ message });
       if (message.type === 'invert-image') {
-        resolve(message.bytes);
+        resolve(message.data.bytes);
       }
     };
   });
