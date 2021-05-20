@@ -9,7 +9,7 @@ export const invert = async ({
   paints: patterns,
 }: Options) => {
   const runInvert = async (selections: readonly SceneNode[]) => {
-    console.log({ selections });
+    // console.log({ selections });
 
     for (const selection of selections) {
       if (elements.includes(selection.type.toLowerCase()) && parts.length) {

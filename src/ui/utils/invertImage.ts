@@ -2,6 +2,7 @@ import { encodeImage } from './encodeImage';
 import { decodeImage } from './decodeImage';
 
 // TODO rewrite to custom hook
+// TODO remove any
 export const invertImage = async (bytes: any) => {
   // const bytes = event.data.pluginMessage;
 

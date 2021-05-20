@@ -25,18 +25,21 @@ export const App = () => {
     [setSelected]
   );
 
+  // TODO? check plugin ID in onmessage
+  // TODO display loader until get settings from core
+
   onmessage = (event: ExtendedMessageEvent) => {
     const message = event.data.pluginMessage;
 
-    // console.log(event.data);
+    // console.log(event.data, 'aaa');
 
-    // TODO switch
+    // TODO replace with switch
     if (message.type === 'get-settings') {
       handleGetSettings(
-        // TODO
+        // TODO remove as
         mergeStoredOptions(message.data.selected as Record<string, string[]>)
       );
-      // TODO
+      // TODO remove as any
     } else if ((message as any).type === 'invert-image') {
       invertImage((message as any).data.bytes);
     }
