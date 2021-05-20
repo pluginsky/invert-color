@@ -24,10 +24,10 @@ export const invert = async ({
 
             const temporary = clone(selection[part]);
 
-            console.log({ temporary });
+            // console.log({ temporary });
 
             for (let level of temporary) {
-              console.log(level);
+              // console.log(level);
               if (
                 level &&
                 (part === 'effects' ||

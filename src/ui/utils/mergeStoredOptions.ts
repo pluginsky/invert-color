@@ -53,7 +53,7 @@ export const mergeStoredOptions = (selected: Record<string, string[]>) => {
     }
   });
 
-  console.log(updatedOptions);
+  // console.log(updatedOptions);
 
   return updatedOptions;
 };

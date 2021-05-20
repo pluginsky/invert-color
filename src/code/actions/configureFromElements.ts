@@ -13,11 +13,11 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
 
   // TODO? include layers
   z.map(async (selected) => {
-    console.log(
-      selected.type,
-      availableOptions.nodes.includes(selected.type.toLowerCase()),
-      settings.nodes.includes(selected.type.toLowerCase())
-    );
+    // console.log(
+    //   selected.type,
+    //   availableOptions.nodes.includes(selected.type.toLowerCase()),
+    //   settings.nodes.includes(selected.type.toLowerCase())
+    // );
 
     if (availableOptions.nodes.includes(selected.type.toLowerCase())) {
       if (settings.nodes.includes(selected.type.toLowerCase())) {
@@ -28,7 +28,7 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
     }
 
     availableOptions.parts.forEach((part) => {
-      console.log(part);
+      // console.log(part);
 
       if (!selected[part] || settings.parts.includes(part.toLowerCase())) {
         return;
@@ -42,7 +42,7 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
       temporary.forEach((level: any) => {
         const levelType = level.type.toLowerCase();
 
-        console.log(levelType);
+        // console.log(levelType);
 
         if (availableOptions.paints.includes(levelType)) {
           if (settings.paints.includes(levelType)) {
@@ -55,13 +55,13 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
     });
 
     if ('children' in selected) {
-      console.log(selected['children'], 'www');
+      // console.log(selected['children'], 'test');
 
       configureFromElements(selected['children']);
     }
   });
 
-  console.log(settings);
+  // console.log(settings);
 
   return settings;
 };
