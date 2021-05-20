@@ -36,8 +36,6 @@ const handleUIMessage = async (message: PluginMessage) => {
 
       invert(message.data.selected);
 
-      // figma.closePlugin();
-
       break;
     }
 
