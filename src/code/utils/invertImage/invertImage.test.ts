@@ -1,3 +1,3 @@
 describe('invertImage', () => {
-  it.todo('write tests', () => {});
+  it.skip.todo('write tests', () => {});
 });
