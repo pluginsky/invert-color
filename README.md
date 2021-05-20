@@ -5,6 +5,10 @@
 [![GitHub license](https://img.shields.io/github/license/pluginsky/invert-color?style=flat-square)](https://github.com/pluginsky/invert-color)
 [![Travis](https://img.shields.io/travis/pluginsky/invert-color/master?style=flat-square)](https://travis-ci.org/pluginsky/invert-color)
 
+<p align="center">
+  <img width="420" src="https://raw.githubusercontent.com/pluginsky/invert-color/main/assets/preview.jpg" alt="TODO">
+</p>
+
 ## About
 
 Simply invert fills, strokes & effects colors in Figma
