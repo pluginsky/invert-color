@@ -49,6 +49,7 @@ export const App = () => {
     }
   };
 
+  // TODO update position
   if (isLoading) {
     return <Icon iconName="spinner" spin />;
   }
