@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Icon } from 'react-figma-ui';
+import { Icon, Type } from 'react-figma-ui';
 
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
@@ -51,7 +51,27 @@ export const App = () => {
 
   // TODO update position
   if (isLoading) {
-    return <Icon iconName="spinner" spin />;
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Icon iconName="spinner" colorName="blue" spin />
+          {/* <Type>Loading...</Type> */}
+        </div>
+      </div>
+    );
   }
 
   return (

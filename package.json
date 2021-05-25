@@ -7,7 +7,6 @@
   "main": "code.js",
   "scripts": {
     "release": "npm run prettier && npm run lint && npm run build",
-    "//clean TODO": "rimraf dist/*",
     "prebuild": "rimraf dist/*",
     "build": "webpack --mode production",
     "watch": "webpack --watch",

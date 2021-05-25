@@ -2,7 +2,7 @@ import { invertColor } from './invertColor';
 
 describe('invertColor', () => {
   // TODO it.each
-  it('should invert RGBA color', () => {
+  it.each([])('should invert RGBA color', () => {
     const colorInRgba = {
       r: 1,
       g: 0.234,

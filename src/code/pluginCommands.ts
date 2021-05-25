@@ -45,8 +45,7 @@ export const pluginCommands = async () => {
     }
 
     default:
-      // figma.closePlugin();
-      // TODO add error message
+      // TODO update error message
       figma.closePlugin('Unknown command'); // TODO display plugin name
 
       break;

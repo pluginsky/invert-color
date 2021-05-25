@@ -9,6 +9,7 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
     paints: [],
   };
 
+  // TODO
   let z = selections || figma.currentPage.selection;
 
   // TODO? include layers
