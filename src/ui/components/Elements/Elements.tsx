@@ -3,7 +3,7 @@ import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
-import { prepareOptionName } from '../../utils/prepareOptionName';
+import { mapOptionName } from '../../utils/mapOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
 import { useSearch } from '../../hooks/useSearch';
 import type { Group } from '../../types/Group';
@@ -12,26 +12,45 @@ import styles from './Elements.module.scss';
 
 type OptionsEntries = [Group, string[]];
 
-const configuratorsEntries = Object.entries(
+const configuratorEntries = Object.entries(
   availableOptions
 ) as OptionsEntries[];
 
 export const Elements = () => {
   const { searchValue, setSearchValue } = useSearch();
 
-  const [configurators, setConfigurators] = useState(configuratorsEntries);
+  const [configurators, setConfigurators] = useState(configuratorEntries);
 
   useEffect(() => {
-    const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
-      group,
-      options.filter((item) => prepareOptionName(item).includes(searchValue)),
-    ];
+    // const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
+    //   group,
+    //   options.filter((item) => mapOptionName(item).includes(searchValue)),
+    // ];
 
-    const filteredConfigurators = configuratorsEntries
-      .map(mapPattern)
-      .filter(([, options]) => options.length > 0);
+    const reducedConfigurators = configuratorEntries.reduce(
+      (acc, [group, options]) => {
+        if (options.length > 0) {
+          return [
+            ...acc,
+            [
+              group,
+              options.filter((item) =>
+                mapOptionName(item).includes(searchValue)
+              ),
+            ],
+          ];
+        }
 
-    setConfigurators(filteredConfigurators);
+        return acc;
+      },
+      []
+    );
+
+    // const filteredConfigurators = configuratorEntries
+    //   .map(mapPattern)
+    //   .filter(([, options]) => options.length > 0);
+
+    setConfigurators(reducedConfigurators);
   }, [searchValue]);
 
   return (

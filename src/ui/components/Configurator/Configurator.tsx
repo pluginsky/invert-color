@@ -3,7 +3,7 @@ import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
 import type { Group } from '../../types/Group';
-import { prepareOptionName } from '../../utils/prepareOptionName';
+import { mapOptionName } from '../../utils/mapOptionName';
 
 import styles from './Configurator.module.scss';
 
@@ -67,7 +67,7 @@ export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
           onClick={() => handleClick(option)}
           readOnly
         >
-          {prepareOptionName(option)}
+          {mapOptionName(option)}
         </Checkbox>
       ))}
     </div>
