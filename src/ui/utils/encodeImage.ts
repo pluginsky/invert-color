@@ -6,7 +6,7 @@ export const encodeImage = async (
   ctx.putImageData(imageData, 0, 0);
 
   return await new Promise((resolve, reject) => {
-    canvas.toBlob((blob: Blob) => {
+    canvas.toBlob((blob) => {
       const reader = new FileReader();
 
       reader.onload = () => {
@@ -17,7 +17,7 @@ export const encodeImage = async (
         reject(new Error('Could not read from blob'));
       };
 
-      reader.readAsArrayBuffer(blob);
+      reader.readAsArrayBuffer(blob as Blob);
     });
   });
 };

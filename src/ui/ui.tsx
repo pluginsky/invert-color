@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import { Icon, Type } from 'react-figma-ui';
 
 import { Actions } from './components/Actions/Actions';
 import { Elements } from './components/Elements/Elements';
@@ -9,6 +8,7 @@ import { mergeStoredOptions } from './utils/mergeStoredOptions';
 import { invertImage } from './utils/invertImage';
 import type { Options } from '../shared/types/Options';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
+import { Loader } from './components/Loader/Loader';
 
 import styles from './ui.module.scss';
 
@@ -32,16 +32,16 @@ export const App = () => {
     [setSelected]
   );
 
-  // TODO? check plugin ID in onmessage
-
   onmessage = (event: ExtendedMessageEvent) => {
     const message = event.data.pluginMessage;
 
     switch (message.type) {
       case 'get-settings':
+        // TODO handle
         return handleGetSettings(mergeStoredOptions(message.data.selected));
 
       case 'invert-image':
+        // TODO handle
         return invertImage(message.data.bytes);
 
       default:
@@ -49,29 +49,8 @@ export const App = () => {
     }
   };
 
-  // TODO update position
   if (isLoading) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
-          <Icon iconName="spinner" colorName="blue" spin />
-          {/* <Type>Loading...</Type> */}
-        </div>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

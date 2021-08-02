@@ -1,18 +1,18 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
 import type { Group } from '../../types/Group';
-import { prepareOptionName } from '../../utils/prepareOptionName';
+import { formatOptionName } from '../../utils/formatOptionName';
 
 import styles from './Configurator.module.scss';
 
 type HandleClickCallback = (option: string) => void;
 
-type ConfiguratorProps = {
+interface ConfiguratorProps {
   readonly group: Group;
   readonly options: string[];
-};
+}
 
 const SECTION_TITLES: Record<Group, string> = {
   parts: 'Parts',
@@ -20,7 +20,7 @@ const SECTION_TITLES: Record<Group, string> = {
   paints: 'Paints',
 };
 
-export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
+export const Configurator = ({ group, options }: ConfiguratorProps) => {
   const { selected, addToSelected, removeFromSelected } = useOptions();
 
   const handleTitleClick = useCallback(() => {
@@ -67,9 +67,9 @@ export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
           onClick={() => handleClick(option)}
           readOnly
         >
-          {prepareOptionName(option)}
+          {formatOptionName(option)}
         </Checkbox>
       ))}
     </div>
   );
-});
+};

@@ -47,9 +47,9 @@ const handleUIMessage = async (message: PluginMessage) => {
   }
 };
 
-type DefaultOptions = {
+interface DefaultOptions {
   readonly configuration?: Options;
-};
+}
 
 export const uiActions = async (params: DefaultOptions = {}) => {
   const { configuration } = params;

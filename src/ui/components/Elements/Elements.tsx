@@ -3,7 +3,7 @@ import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
-import { prepareOptionName } from '../../utils/prepareOptionName';
+import { formatOptionName } from '../../utils/formatOptionName';
 import { MessageScreen } from '../MessageScreen/MessageScreen';
 import { useSearch } from '../../hooks/useSearch';
 import type { Group } from '../../types/Group';
@@ -22,11 +22,13 @@ export const Elements = () => {
   const [configurators, setConfigurators] = useState(configuratorsEntries);
 
   useEffect(() => {
+    // TODO rename
     const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
       group,
-      options.filter((item) => prepareOptionName(item).includes(searchValue)),
+      options.filter((item) => formatOptionName(item).includes(searchValue)),
     ];
 
+    // TODO reduce
     const filteredConfigurators = configuratorsEntries
       .map(mapPattern)
       .filter(([, options]) => options.length > 0);
@@ -35,7 +37,6 @@ export const Elements = () => {
   }, [searchValue]);
 
   return (
-    // TODO classnames
     <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
         <Input

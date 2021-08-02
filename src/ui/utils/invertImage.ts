@@ -1,15 +1,10 @@
 import { encodeImage } from './encodeImage';
 import { decodeImage } from './decodeImage';
 
-// TODO rewrite to custom hook
-// TODO remove any
+// TODO convert to custom hook
 export const invertImage = async (bytes: Uint8Array) => {
-  // const bytes = event.data.pluginMessage;
-
-  // console.log(bytes);
-
   const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
   const imageData = await decodeImage(canvas, ctx, bytes);
   const pixels = imageData.data;
@@ -21,8 +16,6 @@ export const invertImage = async (bytes: Uint8Array) => {
   }
 
   const newBytes = await encodeImage(canvas, ctx, imageData);
-
-  // console.log({ newBytes });
 
   // TODO use PostMessageCallback
   // eslint-disable-next-line no-restricted-globals

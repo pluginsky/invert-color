@@ -1,9 +1,10 @@
 import type { Options } from './Options';
 
-type MessageData = {
+interface MessageData {
   readonly selected?: Options;
-};
+}
 
+// TODO readonly data
 export type PluginMessage =
   | { readonly type: 'cancel' }
   | { readonly type: 'save'; data: MessageData }
