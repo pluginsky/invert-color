@@ -3,7 +3,7 @@
 [![Figma downloads](https://img.shields.io/endpoint?style=flat-square&url=https://figma-plugin-badges.vercel.app/api/installs/738840049488759901)](https://www.figma.com/community/plugin/738840049488759901/Invert-Color)
 [![Figma likes](https://img.shields.io/endpoint?style=flat-square&url=https://figma-plugin-badges.vercel.app/api/likes/738840049488759901)](https://www.figma.com/community/plugin/738840049488759901/Invert-Color)
 [![GitHub license](https://img.shields.io/github/license/pluginsky/invert-color?style=flat-square)](https://github.com/pluginsky/invert-color)
-[![Travis](https://img.shields.io/travis/com/pluginsky/invert-color/master?style=flat-square)](https://travis-ci.com/pluginsky/invert-color)
+[![Travis](https://img.shields.io/travis/com/pluginsky/invert-color/main?style=flat-square)](https://travis-ci.com/pluginsky/invert-color)
 
 <p align="center">
   <img width="420" src="https://raw.githubusercontent.com/pluginsky/invert-color/main/assets/preview.jpg" alt="TODO">
