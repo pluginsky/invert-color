@@ -26,7 +26,7 @@ module.exports = (_env, argv) => ({
         ],
       },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
-      { test: /\.(png|jpg|gif|webp|svg|zip)$/, loader: "url-loader" },
+      { test: /\.(png|jpg|gif|webp|svg|zip)$/, type: "asset/inline" },
     ],
   },
   resolve: { extensions: [".tsx", ".ts", ".jsx", ".js"] },

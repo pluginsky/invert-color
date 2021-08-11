@@ -1,14 +1,26 @@
 import { availableOptions } from '../../shared/constants/availableOptions';
 import type { Options } from '../../shared/types/Options';
+import type { Group } from '../types/Group';
 
-// TODO rename
-const mapOptions = (options: string[], group: string) => {
-  // let x = availableOptions[q];
-  let updatedOptions = [];
+const OLD_GROUPS = ['elements', 'patterns'];
 
-  // console.log(availableOptions[group]);
+const mapGroup = (group: string) => {
+  // migration from old options
+  if (group === 'elements') {
+    return 'nodes';
+  }
 
-  // TODO save order?
+  // migration from old options
+  if (group === 'patterns') {
+    return 'paints';
+  }
+
+  return group as Group;
+};
+
+const mapOptions = (options: string[], group: Group) => {
+  let updatedOptions: string[] = [];
+
   options.forEach((option) => {
     if (availableOptions[group].includes(option)) {
       updatedOptions = [...updatedOptions, option];
@@ -18,42 +30,25 @@ const mapOptions = (options: string[], group: string) => {
   return updatedOptions;
 };
 
-const mapGroup = (group: string) => {
-  if (group === 'elements') {
-    return 'nodes';
-  }
-
-  if (group === 'patterns') {
-    return 'paints';
-  }
-
-  return group;
-};
-
 export const mergeStoredOptions = (selected: Record<string, string[]>) => {
-  // let updatedOptions = availableOptions;
-  let updatedOptions = {
+  let updatedOptions: Options = {
     parts: [],
     nodes: [],
     paints: [],
-  } as Options;
+  };
 
   Object.entries(selected).forEach(([group, options]) => {
-    if (
-      Object.keys({ ...availableOptions, elements: [], patterns: [] }).includes(
-        group
-      )
-    ) {
+    const supportedGroups = [...Object.keys(availableOptions), ...OLD_GROUPS];
+
+    if (supportedGroups.includes(group)) {
       const optionsGroup = mapGroup(group);
 
       updatedOptions = {
         ...updatedOptions,
-        [optionsGroup]: mapOptions(options, optionsGroup), // TODO
+        [optionsGroup]: mapOptions(options, optionsGroup),
       };
     }
   });
-
-  // console.log(updatedOptions);
 
   return updatedOptions;
 };

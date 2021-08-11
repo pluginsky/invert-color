@@ -8,6 +8,7 @@
     "moduleResolution": "Node",
     "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": true
   }
 }

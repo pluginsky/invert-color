@@ -1,20 +1,14 @@
-import { useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/useOptions';
-import type { PluginMessage } from '../../../shared/types/ExtendedMessageEvent';
+import { usePostMessage } from '../../hooks/usePostMessage';
 
 import styles from './Actions.module.scss';
-
-type PostMessageCallback = (pluginMessage: PluginMessage) => void;
 
 export const Actions = () => {
   const { selected } = useOptions();
 
-  const postMessage = useCallback<PostMessageCallback>((pluginMessage) => {
-    // eslint-disable-next-line no-restricted-globals
-    parent.postMessage({ pluginMessage }, '*');
-  }, []);
+  const postMessage = usePostMessage();
 
   return (
     <div className={styles.actionsWrapper}>

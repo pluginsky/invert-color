@@ -1,0 +1,13 @@
+// TODO refactor
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

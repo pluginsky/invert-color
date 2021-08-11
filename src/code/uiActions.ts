@@ -36,8 +36,6 @@ const handleUIMessage = async (message: PluginMessage) => {
 
       invert(message.data.selected);
 
-      // figma.closePlugin();
-
       break;
     }
 
@@ -49,9 +47,9 @@ const handleUIMessage = async (message: PluginMessage) => {
   }
 };
 
-type DefaultOptions = {
+interface DefaultOptions {
   readonly configuration?: Options;
-};
+}
 
 export const uiActions = async (params: DefaultOptions = {}) => {
   const { configuration } = params;
