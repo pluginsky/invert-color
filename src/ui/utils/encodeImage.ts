@@ -5,7 +5,7 @@ export const encodeImage = async (
 ) => {
   ctx.putImageData(imageData, 0, 0);
 
-  return await new Promise((resolve, reject) => {
+  return await new Promise<Uint8Array>((resolve, reject) => {
     canvas.toBlob((blob) => {
       const reader = new FileReader();
 

@@ -23,6 +23,7 @@ const SECTION_TITLES: Record<Group, string> = {
 export const Configurator = ({ group, options }: ConfiguratorProps) => {
   const { selected, addToSelected, removeFromSelected } = useOptions();
 
+  // TODO merge functions
   const handleTitleClick = useCallback(() => {
     const selectedAvailable = selected[group].filter((item) =>
       options.includes(item)

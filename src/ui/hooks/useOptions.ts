@@ -3,6 +3,7 @@ import create from 'zustand';
 import type { Options } from '../../shared/types/Options';
 import type { Group } from '../types/Group';
 
+// TODO move to stores
 interface OptionsState {
   readonly selected: Options;
   addToSelected: (item: string, group: Group) => void;

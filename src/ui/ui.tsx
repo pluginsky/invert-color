@@ -5,14 +5,16 @@ import { Elements } from './components/Elements/Elements';
 import { availableOptions } from '../shared/constants/availableOptions';
 import { useOptions } from './hooks/useOptions';
 import { mergeStoredOptions } from './utils/mergeStoredOptions';
-import { invertImage } from './utils/invertImage';
+import { useInvertImage } from './hooks/useInvertImage';
 import type { Options } from '../shared/types/Options';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
 import { Loader } from './components/Loader/Loader';
 
 import styles from './ui.module.scss';
 
-type HandleGetSettingsCallback = (data?: Options) => void;
+// TODO names settings/options
+
+type HandleGetSettingsCallback = (data: Options) => void;
 
 type ExtendedMessageEvent = MessageEvent<{
   readonly pluginMessage: PluginMessage;
@@ -21,11 +23,13 @@ type ExtendedMessageEvent = MessageEvent<{
 export const App = () => {
   const { setSelected } = useOptions();
 
+  const invertImage = useInvertImage();
+
   const [isLoading, setIsLoading] = useState(true);
 
   const handleGetSettings = useCallback<HandleGetSettingsCallback>(
-    (data) => {
-      setSelected(data ?? availableOptions);
+    (settings) => {
+      setSelected(settings);
 
       setIsLoading(false);
     },
@@ -36,12 +40,19 @@ export const App = () => {
     const message = event.data.pluginMessage;
 
     switch (message.type) {
-      case 'get-settings':
-        // TODO handle
-        return handleGetSettings(mergeStoredOptions(message.data.selected));
+      case 'get-settings': {
+        let options = availableOptions;
+
+        const selected = message?.data?.selected;
+
+        if (selected) {
+          options = mergeStoredOptions(selected);
+        }
+
+        return handleGetSettings(options);
+      }
 
       case 'invert-image':
-        // TODO handle
         return invertImage(message.data.bytes);
 
       default:

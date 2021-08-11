@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Input } from 'react-figma-ui';
 
 import { Configurator } from '../Configurator/Configurator';
@@ -36,20 +36,26 @@ export const Elements = () => {
     setConfigurators(filteredConfigurators);
   }, [searchValue]);
 
+  const hasFoundConfigurators = useMemo(
+    () => configurators.length > 0,
+    [configurators.length]
+  );
+
   return (
-    <div className={configurators.length > 0 ? undefined : styles.fullLayout}>
+    <div className={hasFoundConfigurators ? undefined : styles.fullLayout}>
       <div className={styles.toolbar}>
         <Input
           value={searchValue}
           placeholder="Search..."
           containerProps={{ className: styles.search }}
           iconProps={{ iconName: 'search' }}
+          // TODO remove as HTMLInputElement
           onChange={(e) => setSearchValue((e.target as HTMLInputElement).value)}
         />
       </div>
 
       <div className={styles.elementsContent}>
-        {configurators.length > 0 ? (
+        {hasFoundConfigurators ? (
           configurators.map(([group, options]) => (
             <Configurator group={group} options={options} key={group} />
           ))
