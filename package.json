@@ -9,6 +9,7 @@
     "release": "npm run prettier && npm run lint && npm run build",
     "prebuild": "rimraf dist/*",
     "build": "webpack --mode production",
+    "build:dev": "webpack",
     "watch": "webpack --watch",
     "lint": "eslint 'src/**/*.{tsx,ts}' --fix",
     "prettier": "prettier --write 'src/**/*.{html,scss,css,tsx,ts}'",
