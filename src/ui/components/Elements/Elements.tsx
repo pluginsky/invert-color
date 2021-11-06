@@ -16,11 +16,13 @@ const configuratorsEntries = Object.entries(
   availableOptions
 ) as OptionsEntries[];
 
+// TODO? memo
 export const Elements = () => {
   const { searchValue, setSearchValue } = useSearch();
 
   const [configurators, setConfigurators] = useState(configuratorsEntries);
 
+  // TODO? cancel action
   useEffect(() => {
     // TODO rename
     const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
@@ -36,6 +38,7 @@ export const Elements = () => {
     setConfigurators(filteredConfigurators);
   }, [searchValue]);
 
+// TODO? remove useMemo
   const hasFoundConfigurators = useMemo(
     () => configurators.length > 0,
     [configurators.length]

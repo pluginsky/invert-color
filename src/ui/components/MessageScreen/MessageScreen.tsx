@@ -5,6 +5,7 @@ interface MessageScreenProps {
   readonly message?: string;
 }
 
+// TODO? memo
 export const MessageScreen = ({ title, message }: MessageScreenProps) => (
   <div className={styles.messageScreen}>
     <div className={styles.contentWrapper}>

@@ -3,6 +3,8 @@ const parts = ['fills', 'strokes', 'effects'];
 const nodes = [
   'boolean_operation',
   'component',
+  // 'component_set',
+  // 'connector',
   'document',
   'ellipse',
   'frame',
@@ -12,10 +14,14 @@ const nodes = [
   'page',
   'polygon',
   'rectangle',
+  // 'shape_with_text',
   'slice',
+  // 'stamp',
   'star',
+  // 'sticky',
   'text',
   'vector',
+  // 'widget', ??
 ];
 
 const paints = [

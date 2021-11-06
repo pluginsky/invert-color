@@ -11,6 +11,7 @@ export const useInvertImage = () => {
 
   // TODO just return
   // TODO try/catch
+  // TODO? remove useCallback
   const invertImage = useCallback<InvertImageCallback>(
     async (bytes) => {
       const canvas = document.createElement('canvas');

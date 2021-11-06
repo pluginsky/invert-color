@@ -1,6 +1,6 @@
-const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 
 module.exports = (_env, argv) => ({
   mode: argv.mode || "development",
@@ -9,6 +9,11 @@ module.exports = (_env, argv) => ({
     ui: "./src/ui/index.tsx",
     code: "./src/code/code.ts",
   },
+  output: {
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  resolve: { extensions: [".tsx", ".ts", ".jsx", ".js"] },
   module: {
     rules: [
       { test: /\.tsx?$/, loader: "ts-loader", exclude: /node_modules/ },
@@ -28,11 +33,6 @@ module.exports = (_env, argv) => ({
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
       { test: /\.(png|jpg|gif|webp|svg|zip)$/, type: "asset/inline" },
     ],
-  },
-  resolve: { extensions: [".tsx", ".ts", ".jsx", ".js"] },
-  output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
   },
   plugins: [
     new HtmlWebpackPlugin({

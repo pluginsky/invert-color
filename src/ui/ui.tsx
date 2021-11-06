@@ -27,6 +27,7 @@ export const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  // TODO? remove useCallback
   const handleGetSettings = useCallback<HandleGetSettingsCallback>(
     (settings) => {
       setSelected(settings);
@@ -36,6 +37,7 @@ export const App = () => {
     [setSelected]
   );
 
+  // TODO? useEffect
   onmessage = (event: ExtendedMessageEvent) => {
     const message = event.data.pluginMessage;
 

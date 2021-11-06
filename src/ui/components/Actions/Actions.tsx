@@ -5,6 +5,7 @@ import { usePostMessage } from '../../hooks/usePostMessage';
 
 import styles from './Actions.module.scss';
 
+// TODO? memo
 export const Actions = () => {
   const { selected } = useOptions();
 

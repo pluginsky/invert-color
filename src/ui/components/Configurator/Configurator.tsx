@@ -20,10 +20,12 @@ const SECTION_TITLES: Record<Group, string> = {
   paints: 'Paints',
 };
 
+// TODO? memo
 export const Configurator = ({ group, options }: ConfiguratorProps) => {
   const { selected, addToSelected, removeFromSelected } = useOptions();
 
   // TODO merge functions
+  // TODO? remove useCallback
   const handleTitleClick = useCallback(() => {
     const selectedAvailable = selected[group].filter((item) =>
       options.includes(item)
@@ -42,6 +44,7 @@ export const Configurator = ({ group, options }: ConfiguratorProps) => {
     return options.map((option) => removeFromSelected(option, group));
   }, [addToSelected, options, removeFromSelected, selected, group]);
 
+  // TODO? remove useCallback
   const handleClick = useCallback<HandleClickCallback>(
     (option) => {
       if (selected?.[group].includes(option)) {

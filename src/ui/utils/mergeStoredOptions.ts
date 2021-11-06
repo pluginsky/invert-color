@@ -4,6 +4,9 @@ import type { Group } from '../types/Group';
 
 const OLD_GROUPS = ['elements', 'patterns'];
 
+// TODO
+type AllOptions = string[];
+
 const mapGroup = (group: string) => {
   // migration from old options
   if (group === 'elements') {
@@ -18,8 +21,8 @@ const mapGroup = (group: string) => {
   return group as Group;
 };
 
-const mapOptions = (options: string[], group: Group) => {
-  let updatedOptions: string[] = [];
+const mapOptions = (options: AllOptions, group: Group) => {
+  let updatedOptions: AllOptions = [];
 
   options.forEach((option) => {
     if (availableOptions[group].includes(option)) {
@@ -30,7 +33,7 @@ const mapOptions = (options: string[], group: Group) => {
   return updatedOptions;
 };
 
-export const mergeStoredOptions = (selected: Record<string, string[]>) => {
+export const mergeStoredOptions = (selected: Record<string, AllOptions>) => {
   let updatedOptions: Options = {
     parts: [],
     nodes: [],
