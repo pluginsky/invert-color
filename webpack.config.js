@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = (_env, argv) => ({
   mode: argv.mode || "development",
@@ -42,5 +44,6 @@ module.exports = (_env, argv) => ({
       inject: "body",
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/.(js)$/]),
+    new BundleAnalyzerPlugin(),
   ],
 });
