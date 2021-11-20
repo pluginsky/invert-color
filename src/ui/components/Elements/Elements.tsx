@@ -1,11 +1,11 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, memo } from 'react';
 import { Input } from 'react-figma-ui';
 
-import { Configurator } from '../Configurator/Configurator';
+import { Configurator } from '../Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
 import { formatOptionName } from '../../utils/formatOptionName';
-import { MessageScreen } from '../MessageScreen/MessageScreen';
-import { useSearch } from '../../hooks/useSearch';
+import { MessageScreen } from '../MessageScreen';
+import { useSearch } from '../../hooks/stores/useSearch';
 import type { Group } from '../../types/Group';
 
 import styles from './Elements.module.scss';
@@ -16,21 +16,17 @@ const configuratorsEntries = Object.entries(
   availableOptions
 ) as OptionsEntries[];
 
-// TODO? memo
-export const Elements = () => {
+export const Elements = memo(() => {
   const { searchValue, setSearchValue } = useSearch();
 
   const [configurators, setConfigurators] = useState(configuratorsEntries);
 
-  // TODO? cancel action
   useEffect(() => {
-    // TODO rename
     const mapPattern = ([group, options]: OptionsEntries): OptionsEntries => [
       group,
       options.filter((item) => formatOptionName(item).includes(searchValue)),
     ];
 
-    // TODO reduce
     const filteredConfigurators = configuratorsEntries
       .map(mapPattern)
       .filter(([, options]) => options.length > 0);
@@ -38,7 +34,6 @@ export const Elements = () => {
     setConfigurators(filteredConfigurators);
   }, [searchValue]);
 
-// TODO? remove useMemo
   const hasFoundConfigurators = useMemo(
     () => configurators.length > 0,
     [configurators.length]
@@ -71,4 +66,4 @@ export const Elements = () => {
       </div>
     </div>
   );
-};
+});

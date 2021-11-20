@@ -3,6 +3,7 @@ import { clone } from '../utils/clone/clone';
 import { invertColor } from '../utils/invertColor/invertColor';
 import { invertImage } from '../utils/invertImage/invertImage';
 
+// TODO try/catch
 export const invert = async ({
   parts,
   nodes: elements,

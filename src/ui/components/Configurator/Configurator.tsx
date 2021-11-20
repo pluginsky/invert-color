@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
-import { useOptions } from '../../hooks/useOptions';
+import { useOptions } from '../../hooks/stores/useOptions';
 import type { Group } from '../../types/Group';
 import { formatOptionName } from '../../utils/formatOptionName';
 
@@ -20,12 +20,9 @@ const SECTION_TITLES: Record<Group, string> = {
   paints: 'Paints',
 };
 
-// TODO? memo
-export const Configurator = ({ group, options }: ConfiguratorProps) => {
+export const Configurator = memo<ConfiguratorProps>(({ group, options }) => {
   const { selected, addToSelected, removeFromSelected } = useOptions();
 
-  // TODO merge functions
-  // TODO? remove useCallback
   const handleTitleClick = useCallback(() => {
     const selectedAvailable = selected[group].filter((item) =>
       options.includes(item)
@@ -44,7 +41,6 @@ export const Configurator = ({ group, options }: ConfiguratorProps) => {
     return options.map((option) => removeFromSelected(option, group));
   }, [addToSelected, options, removeFromSelected, selected, group]);
 
-  // TODO? remove useCallback
   const handleClick = useCallback<HandleClickCallback>(
     (option) => {
       if (selected?.[group].includes(option)) {
@@ -76,4 +72,4 @@ export const Configurator = ({ group, options }: ConfiguratorProps) => {
       ))}
     </div>
   );
-};
+});

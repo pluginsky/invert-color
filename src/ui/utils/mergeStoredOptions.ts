@@ -4,7 +4,6 @@ import type { Group } from '../types/Group';
 
 const OLD_GROUPS = ['elements', 'patterns'];
 
-// TODO
 type AllOptions = string[];
 
 const mapGroup = (group: string) => {

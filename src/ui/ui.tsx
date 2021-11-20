@@ -1,20 +1,18 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import { Actions } from './components/Actions/Actions';
-import { Elements } from './components/Elements/Elements';
+import { Actions } from './components/Actions';
+import { Elements } from './components/Elements';
+import { Loader } from './components/Loader';
 import { availableOptions } from '../shared/constants/availableOptions';
-import { useOptions } from './hooks/useOptions';
+import { useOptions } from './hooks/stores/useOptions';
 import { mergeStoredOptions } from './utils/mergeStoredOptions';
 import { useInvertImage } from './hooks/useInvertImage';
 import type { Options } from '../shared/types/Options';
 import type { PluginMessage } from '../shared/types/ExtendedMessageEvent';
-import { Loader } from './components/Loader/Loader';
 
 import styles from './ui.module.scss';
 
-// TODO names settings/options
-
-type HandleGetSettingsCallback = (data: Options) => void;
+type HandleGetOptionsCallback = (options: Options) => void;
 
 type ExtendedMessageEvent = MessageEvent<{
   readonly pluginMessage: PluginMessage;
@@ -27,40 +25,42 @@ export const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  // TODO? remove useCallback
-  const handleGetSettings = useCallback<HandleGetSettingsCallback>(
-    (settings) => {
-      setSelected(settings);
+  const handleGetOptions = useCallback<HandleGetOptionsCallback>(
+    (options) => {
+      setSelected(options);
 
       setIsLoading(false);
     },
     [setSelected]
   );
 
-  // TODO? useEffect
-  onmessage = (event: ExtendedMessageEvent) => {
-    const message = event.data.pluginMessage;
+  useEffect(() => {
+    onmessage = (event: ExtendedMessageEvent) => {
+      const message = event.data.pluginMessage;
 
-    switch (message.type) {
-      case 'get-settings': {
-        let options = availableOptions;
+      switch (message.type) {
+        case 'get-options': {
+          let options = availableOptions;
 
-        const selected = message?.data?.selected;
+          const selected = message?.data?.selected;
 
-        if (selected) {
-          options = mergeStoredOptions(selected);
+          if (selected) {
+            options = mergeStoredOptions(selected);
+          }
+
+          return handleGetOptions(options);
         }
 
-        return handleGetSettings(options);
+        case 'invert-image':
+          return invertImage(message.data.bytes);
+
+        default:
+          break;
       }
+    };
 
-      case 'invert-image':
-        return invertImage(message.data.bytes);
-
-      default:
-        break;
-    }
-  };
+    // TODO? cleanup
+  }, [handleGetOptions, invertImage]);
 
   if (isLoading) {
     return <Loader />;

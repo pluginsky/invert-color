@@ -1,12 +1,12 @@
+import { memo } from 'react';
 import { Button } from 'react-figma-ui';
 
-import { useOptions } from '../../hooks/useOptions';
+import { useOptions } from '../../hooks/stores/useOptions';
 import { usePostMessage } from '../../hooks/usePostMessage';
 
 import styles from './Actions.module.scss';
 
-// TODO? memo
-export const Actions = () => {
+export const Actions = memo(() => {
   const { selected } = useOptions();
 
   const postMessage = usePostMessage();
@@ -36,4 +36,4 @@ export const Actions = () => {
       </div>
     </div>
   );
-};
+});

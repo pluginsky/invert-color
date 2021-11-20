@@ -1,13 +1,15 @@
-// TODO refactor
-.loaderWrapper {
+@mixin flex-justify-content-center {
   display: flex;
   justify-content: center;
+}
+
+.loaderWrapper {
+  @include flex-justify-content-center;
   align-items: center;
   height: 100%;
 }
 
 .loader {
-  display: flex;
+  @include flex-justify-content-center;
   flex-direction: column;
-  justify-content: center;
 }

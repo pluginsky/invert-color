@@ -3,7 +3,7 @@ import { clone } from '../utils/clone/clone';
 import type { Options } from '../../shared/types/Options';
 
 export const configureFromElements = (selections?: readonly SceneNode[]) => {
-  const settings: Options = {
+  const options: Options = {
     nodes: [],
     parts: [],
     paints: [],
@@ -13,6 +13,7 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
   let z = selections || figma.currentPage.selection;
 
   // TODO? include layers
+  // TODO try/catch
   z.map(async (selected) => {
     // console.log(
     //   selected.type,
@@ -21,21 +22,21 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
     // );
 
     if (availableOptions.nodes.includes(selected.type.toLowerCase())) {
-      if (settings.nodes.includes(selected.type.toLowerCase())) {
+      if (options.nodes.includes(selected.type.toLowerCase())) {
         return;
       }
 
-      settings.nodes.push(selected.type.toLowerCase());
+      options.nodes.push(selected.type.toLowerCase());
     }
 
     availableOptions.parts.forEach((part) => {
       // console.log(part);
 
-      if (!selected[part] || settings.parts.includes(part.toLowerCase())) {
+      if (!selected[part] || options.parts.includes(part.toLowerCase())) {
         return;
       }
 
-      settings.parts.push(part);
+      options.parts.push(part);
 
       const temporary = clone(selected[part]);
 
@@ -46,11 +47,11 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
         // console.log(levelType);
 
         if (availableOptions.paints.includes(levelType)) {
-          if (settings.paints.includes(levelType)) {
+          if (options.paints.includes(levelType)) {
             return;
           }
 
-          settings.paints.push(levelType);
+          options.paints.push(levelType);
         }
       });
     });
@@ -64,5 +65,5 @@ export const configureFromElements = (selections?: readonly SceneNode[]) => {
 
   // console.log(settings);
 
-  return settings;
+  return options;
 };

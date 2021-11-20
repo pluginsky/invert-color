@@ -23,20 +23,22 @@ interface InvertMessage {
   readonly data: MessageData;
 }
 
-interface GetSettingMessage {
-  readonly type: 'get-settings';
-  // TODO extracto object
-  readonly data?: {
-    readonly selected: Record<string, string[]>;
-  };
+interface GetOptionsMessageData {
+  readonly selected: Record<string, string[]>;
+}
+
+interface GetOptionsMessage {
+  readonly type: 'get-options';
+  readonly data?: GetOptionsMessageData;
+}
+
+interface InvertImageMessageData {
+  readonly bytes: Uint8Array;
 }
 
 interface InvertImageMessage {
   readonly type: 'invert-image';
-  // TODO extracto object
-  readonly data: {
-    readonly bytes: Uint8Array;
-  };
+  readonly data: InvertImageMessageData;
 }
 
 export type PluginMessage =
@@ -44,5 +46,5 @@ export type PluginMessage =
   | SaveMessage
   | SaveInvertMessage
   | InvertMessage
-  | GetSettingMessage
+  | GetOptionsMessage
   | InvertImageMessage;

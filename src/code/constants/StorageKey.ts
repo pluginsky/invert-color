@@ -1,3 +1,3 @@
 export enum StorageKey {
-  Settings = 'invert-color-settings',
+  Options = 'invert-color-settings',
 }

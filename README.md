@@ -6,7 +6,7 @@
 [![Travis](https://img.shields.io/travis/com/pluginsky/invert-color/main?style=flat-square)](https://travis-ci.com/pluginsky/invert-color)
 
 <p align="center">
-  <img width="420" src="https://raw.githubusercontent.com/pluginsky/invert-color/main/assets/preview.jpg" alt="TODO">
+  <img width="420" src="https://raw.githubusercontent.com/pluginsky/invert-color/main/assets/preview.jpg" alt="">
 </p>
 
 ## About

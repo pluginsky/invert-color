@@ -1,3 +1,4 @@
+// TODO try/catch
 export const invertImage = async (node: ImagePaint) => {
   const newFills = [];
 

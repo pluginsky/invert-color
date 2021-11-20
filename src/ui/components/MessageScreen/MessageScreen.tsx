@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './MessageScreen.module.scss';
 
 interface MessageScreenProps {
@@ -5,12 +6,11 @@ interface MessageScreenProps {
   readonly message?: string;
 }
 
-// TODO? memo
-export const MessageScreen = ({ title, message }: MessageScreenProps) => (
+export const MessageScreen = memo<MessageScreenProps>(({ title, message }) => (
   <div className={styles.messageScreen}>
     <div className={styles.contentWrapper}>
       <h3 className={styles.title}>{title}</h3>
       {message && <p className={styles.message}>{message}</p>}
     </div>
   </div>
-);
+));
