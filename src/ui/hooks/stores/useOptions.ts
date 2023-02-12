@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 import type { Options } from '../../../shared/types/Options';
 import type { Group } from '../../types/Group';

@@ -6,6 +6,12 @@ const OLD_GROUPS = ['elements', 'patterns'];
 
 type AllOptions = string[];
 
+// TODO
+// const mappers: [old: string, new: string][] = [
+//   ['elements', 'nodes'],
+//   ['patterns', 'paints'],
+// ];
+
 const mapGroup = (group: string) => {
   // migration from old options
   if (group === 'elements') {

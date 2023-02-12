@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
 import { useOptions } from '../../hooks/stores/useOptions';
@@ -11,26 +11,30 @@ export const Actions = memo(() => {
 
   const postMessage = usePostMessage();
 
+  const handleCancel = useCallback(() => postMessage({ type: 'cancel' }), []);
+
+  const handleSave = useCallback(
+    () => postMessage({ type: 'save', data: { selected } }),
+    []
+  );
+
+  const handleSaveInvert = useCallback(
+    () => postMessage({ type: 'save-invert', data: { selected } }),
+    []
+  );
+
   return (
     <div className={styles.actionsWrapper}>
-      <Button tint="secondary" onClick={() => postMessage({ type: 'cancel' })}>
+      <Button tint="secondary" onClick={handleCancel}>
         Cancel
       </Button>
 
       <div className={styles.messageActions}>
-        <Button
-          tint="primary"
-          onClick={() => postMessage({ type: 'save', data: { selected } })}
-        >
+        <Button tint="primary" onClick={handleSave}>
           Save
         </Button>
 
-        <Button
-          tint="primary"
-          onClick={() =>
-            postMessage({ type: 'save-invert', data: { selected } })
-          }
-        >
+        <Button tint="primary" onClick={handleSaveInvert}>
           Save + Invert
         </Button>
       </div>

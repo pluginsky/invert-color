@@ -58,8 +58,6 @@ export const App = () => {
           break;
       }
     };
-
-    // TODO? cleanup
   }, [handleGetOptions, invertImage]);
 
   if (isLoading) {

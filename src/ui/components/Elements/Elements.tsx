@@ -47,7 +47,6 @@ export const Elements = memo(() => {
           placeholder="Search..."
           containerProps={{ className: styles.search }}
           iconProps={{ iconName: 'search' }}
-          // TODO remove as HTMLInputElement
           onChange={(e) => setSearchValue((e.target as HTMLInputElement).value)}
         />
       </div>
