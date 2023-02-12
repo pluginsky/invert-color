@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { Button } from 'react-figma-ui';
 
-import { useOptions } from '../../hooks/stores/useOptions';
+import { useOptions } from '../../hooks/useOptions';
 import { usePostMessage } from '../../hooks/usePostMessage';
 
 import styles from './Actions.module.scss';

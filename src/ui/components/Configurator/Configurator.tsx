@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { SectionTitle, Checkbox } from 'react-figma-ui';
 
-import { useOptions } from '../../hooks/stores/useOptions';
+import { useOptions } from '../../hooks/useOptions';
 import type { Group } from '../../types/Group';
 import { formatOptionName } from '../../utils/formatOptionName';
 

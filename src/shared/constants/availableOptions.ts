@@ -47,7 +47,7 @@ const gradientPaint = [
   'gradient_angular',
 ];
 const imagePaint = 'image';
-// const videoPaint = 'video'
+// const videoPaint = 'video';
 
 const paints = [
   solidPaint,

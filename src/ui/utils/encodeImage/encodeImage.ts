@@ -1,3 +1,5 @@
+import { Bytes } from '../../../shared/types/Bytes';
+
 export const encodeImage = async (
   canvas: HTMLCanvasElement,
   ctx: CanvasRenderingContext2D,
@@ -5,7 +7,7 @@ export const encodeImage = async (
 ) => {
   ctx.putImageData(imageData, 0, 0);
 
-  return await new Promise<Uint8Array>((resolve, reject) => {
+  return await new Promise<Bytes>((resolve, reject) => {
     canvas.toBlob((blob) => {
       const reader = new FileReader();
 

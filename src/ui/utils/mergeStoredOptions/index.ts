@@ -1,0 +1,1 @@
+export { mergeStoredOptions } from './mergeStoredOptions';

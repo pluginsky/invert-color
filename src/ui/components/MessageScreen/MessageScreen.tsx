@@ -1,4 +1,5 @@
 import { memo } from 'react';
+
 import styles from './MessageScreen.module.scss';
 
 interface MessageScreenProps {

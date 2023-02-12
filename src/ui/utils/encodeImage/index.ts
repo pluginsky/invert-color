@@ -1,0 +1,1 @@
+export { encodeImage } from './encodeImage';

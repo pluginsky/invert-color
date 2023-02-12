@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import type { PluginMessage } from '../../shared/types/ExtendedMessageEvent';
+
+import type { PluginMessage } from '../../../shared/types/ExtendedMessageEvent';
 
 type PostMessageCallback = (pluginMessage: PluginMessage) => void;
 

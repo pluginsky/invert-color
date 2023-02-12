@@ -4,7 +4,7 @@ import { Actions } from './components/Actions';
 import { Elements } from './components/Elements';
 import { Loader } from './components/Loader';
 import { availableOptions } from '../shared/constants/availableOptions';
-import { useOptions } from './hooks/stores/useOptions';
+import { useOptions } from './hooks/useOptions';
 import { mergeStoredOptions } from './utils/mergeStoredOptions';
 import { useInvertImage } from './hooks/useInvertImage';
 import type { Options } from '../shared/types/Options';

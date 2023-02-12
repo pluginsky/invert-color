@@ -34,22 +34,32 @@ Simply invert fills, strokes & effects colors in Figma
 - [x] Fills
 - [x] Strokes
 - [x] Effects
+  <!-- - [x] Backgrounds -->
+  <!-- - [x] Prototype Backgrounds -->
+  <!-- - [x] Paints -->
 
 #### Nodes
 
 - [x] Boolean Operation
+<!-- - [x] Code Block -->
 - [x] Component
 - [x] Component Set
 - [x] Connector
 - [x] Document
 - [x] Ellipse
+<!-- - [x] Embed -->
 - [x] Frame
 - [x] Group
+<!-- - [x] Highlight -->
 - [x] Instance
 - [x] Line
+  <!-- - [x] Link Unfurl -->
+  <!-- - [x] Media -->
 - [x] Page
 - [x] Polygon
 - [x] Rectangle
+- [x] Removed
+<!-- - [x] Section -->
 - [x] Shape With Text
 - [x] Slice
 - [x] Stamp
@@ -57,7 +67,8 @@ Simply invert fills, strokes & effects colors in Figma
 - [x] Sticky
 - [x] Text
 - [x] Vector
-- [x] Widget
+  <!-- - [x] Washi Tape -->
+  <!-- - [x] Widget -->
 
 #### Paints
 
@@ -67,6 +78,7 @@ Simply invert fills, strokes & effects colors in Figma
 - [x] Gradient Diamond
 - [x] Gradient Angular
 - [x] Image
+<!-- - [x] Video -->
 
 ## How to run locally
 

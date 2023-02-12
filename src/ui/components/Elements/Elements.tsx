@@ -5,7 +5,7 @@ import { Configurator } from '../Configurator';
 import { availableOptions } from '../../../shared/constants/availableOptions';
 import { formatOptionName } from '../../utils/formatOptionName';
 import { MessageScreen } from '../MessageScreen';
-import { useSearch } from '../../hooks/stores/useSearch';
+import { useSearch } from '../../hooks/useSearch';
 import type { Group } from '../../types/Group';
 
 import styles from './Elements.module.scss';

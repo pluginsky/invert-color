@@ -1,6 +1,6 @@
-import { availableOptions } from '../../shared/constants/availableOptions';
-import type { Options } from '../../shared/types/Options';
-import type { Group } from '../types/Group';
+import { availableOptions } from '../../../shared/constants/availableOptions';
+import type { Options } from '../../../shared/types/Options';
+import type { Group } from '../../types/Group';
 
 const OLD_GROUPS = ['elements', 'patterns'];
 

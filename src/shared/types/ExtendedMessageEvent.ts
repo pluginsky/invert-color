@@ -1,3 +1,4 @@
+import { Bytes } from './Bytes';
 import type { Options } from './Options';
 
 interface MessageData {
@@ -33,7 +34,7 @@ interface GetOptionsMessage {
 }
 
 interface InvertImageMessageData {
-  readonly bytes: Uint8Array;
+  readonly bytes: Bytes;
 }
 
 interface InvertImageMessage {
